@@ -6,12 +6,9 @@
 
 ---
 
-## 🛠️ Engineering Objective
-This repository documents the development of a professional-grade cybersecurity workstation hosted entirely on an Android mobile platform.
-
 ## 📂 Verified Engineering Proof:
-* **Version Control History:** [View My Original Commits](https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench/commits/master)
-* **Network Audit Artifacts:** [Internal Audit Log](./network_audit.txt)
-* **Subnet Architecture:** [Network Map Data](./subnet_audit.txt)
+* **Full Project Audit Trail:** [Click Here for Timestamped Commits](https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench/commits/master)
+* **Technical Audit File:** [Click Here to View network_audit.txt](https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench/blob/master/network_audit.txt)
+* **Subnet Architecture Data:** [Click Here to View subnet_audit.txt](https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench/blob/master/subnet_audit.txt)
 
-*Original Engineering Environment | Developed by Chad K. Bachoo*
+*Original Engineering Intellectual Property | Developed by Chad K. Bachoo*
