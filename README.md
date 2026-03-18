@@ -7,9 +7,10 @@
 ---
 
 ## 🛠️ Engineering Objective
-This repository documents the development of a professional-grade cybersecurity workstation hosted entirely on an Android mobile platform. It demonstrates advanced system configuration, network auditing capabilities, and mobile-first security engineering.
+This repository documents the development of a professional-grade cybersecurity workstation hosted entirely on an Android mobile platform.
 
-## 📂 Technical Assets & Logs:
+## 📂 Verified Engineering Proof:
+* **Version Control History:** [View My Original Commits](https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench/commits/master)
 * **Network Audit Artifacts:** [Internal Audit Log](./network_audit.txt)
 * **Subnet Architecture:** [Network Map Data](./subnet_audit.txt)
 
