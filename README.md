@@ -4,12 +4,12 @@
 
 ---
 
-## 📂 Official Submission Manifest (T1-M1):
-* **T1-M1-S01:** Portfolio Artifact Git Push
-* **T1-M1-S02:** Portfolio Artifact Git Push
-* **T1-M1-S03:** Portfolio Artifact Git Push
-* **TLAB-01:** [OPERATION CLEAN SWEEP](./network_audit.txt)
-* **T1-M1-S04:** Portfolio Artifact Git Commit
-* **T1-M1-S05:** [Portfolio Artifact Git Commit](./subnet_audit.txt)
+## 🛠️ Mobile Lab Environment
+* **Platform:** Android / Termux
+* **Focus:** Network Auditing, Security Hardening, and Mobile Pentesting
 
-*Verified against Official Canvas Gradebook Transcript.*
+## 📂 Technical Evidence & Logs:
+* **Network Audit Data:** [View Audit Log](./network_audit.txt)
+* **Subnet Architecture:** [View Subnet Data](./subnet_audit.txt)
+
+*Verified Professional Environment | Deployment Log 2026*
