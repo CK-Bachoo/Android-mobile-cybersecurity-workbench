@@ -7,13 +7,39 @@ Status: No-Root / Pure User-Space Execution
 ---
 
 1. Product Overview (The Box)
-The Bunker is a professional-grade, hardware-optimized cybersecurity suite engineered for mobile execution. It transforms a verified Android device (Samsung Note 20 Ultra) into a high-fidelity security workstation. Operating entirely in user-space (No Root), it provides a complete 'Microsoft Box' consumer experience for network auditing, packet analysis, and local AI execution.
+The Bunker is a professional-grade, hardware-optimized cybersecurity suite engineered for mobile execution. It transforms a verified Android device into a high-fidelity security workstation. Operating entirely in user-space (No Root), it provides a complete 'Microsoft Box' consumer experience for network auditing, packet analysis, and local AI execution.
 
 2. Hardware Specifications (The Foundation)
 To run this configuration at peak operational capacity, the following 'Biscuits' (hardware components) are required:
+* Supported Devices: Samsung S Series (S21 Ultra, S22 Ultra, S23 Ultra, S24 Ultra, S25 Ultra), Note Series (Note 10, Note 10 Plus, Note 20, Note 20 Ultra), Z Fold Series, and Tri-Fold devices. Mostly Ultra 5G variants recommended, or other high-tier Android devices with equivalent hardware specifications.
 * RAM: 8GB Minimum / 12GB LPDDR5 Recommended (Required for multi-threaded service stability and local LLM execution).
 * Storage: 256GB Internal UFS 3.1 + External microSD (Required for persistent forensic logging).
-* SoC: Exynos 990 / Snapdragon 865+ (Required for real-time traffic processing).
+* SoC: Exynos 990 / Snapdragon 865+ or newer (Required for real-time traffic processing).
+* OS: Android 11+ (Battery Optimization Disabled).
+
+3. Key Capabilities & Integrated Features
+* Local AI Intelligence (Ollama): High-density local AI execution using the device RAM for offline technical auditing and script analysis.
+* Cloud AI Command Layer (Gemini/XO-Protocol): Native cloud-based API integration acting as the
+
+cd ~/Android-mobile-cybersecurity-workbench
+cat << 'EOF' > README.md
+current environment; Android Device (Note 20 Ultra), 12GB LPDDR5 RAM, 256GB internal, external microSD.
+
+The Bunker: Full-Spectrum Mobile Cybersecurity Workbench
+Identity: Veteran
+Status: No-Root / Pure User-Space Execution
+
+---
+
+1. Product Overview (The Box)
+The Bunker is a professional-grade, hardware-optimized cybersecurity suite engineered for mobile execution. It transforms a verified Android device into a high-fidelity security workstation. Operating entirely in user-space (No Root), it provides a complete 'Microsoft Box' consumer experience for network auditing, packet analysis, and local AI execution.
+
+2. Hardware Specifications (The Foundation)
+To run this configuration at peak operational capacity, the following 'Biscuits' (hardware components) are required:
+* Supported Devices: Samsung S Series (S21 Ultra, S22 Ultra, S23 Ultra, S24 Ultra, S25 Ultra), Note Series (Note 10, Note 10 Plus, Note 20, Note 20 Ultra), Z Fold Series, and Tri-Fold devices. Mostly Ultra 5G variants recommended, or other high-tier Android devices with equivalent hardware specifications.
+* RAM: 8GB Minimum / 12GB LPDDR5 Recommended (Required for multi-threaded service stability and local LLM execution).
+* Storage: 256GB Internal UFS 3.1 + External microSD (Required for persistent forensic logging).
+* SoC: Exynos 990 / Snapdragon 865+ or newer (Required for real-time traffic processing).
 * OS: Android 11+ (Battery Optimization Disabled).
 
 3. Key Capabilities & Integrated Features
@@ -51,6 +77,6 @@ Step 4: AI Integration (Ollama & Gemini)
 4. Cloud AI (Gemini XO): pip install google-generativeai
 5. Gemini Uplink: export GOOGLE_API_KEY='your_key_here'
 
-Logic: Unified documentation establishing a clear consumer-to-professional pipeline, detailing exact hardware requirements, capabilities, and setup instructions.
+Logic: Unified documentation establishing a clear consumer-to-professional pipeline.
 Status: Mission Ready.
 Identity: Veteran.
