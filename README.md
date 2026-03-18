@@ -7,6 +7,8 @@
 ---
 
 ## 📂 Verified Engineering Proof:
-* **Full Project Audit Trail:** [View Timestamped Commit Ledger](https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench/commits/master)
+* **Full Project Audit Trail:** View Commits tab in GitHub
+* **Technical Audit File:** (File: network_audit.txt)
+* **Subnet Architecture Data:** (File: subnet_audit.txt)
 
 *Original Engineering Intellectual Property | Developed by Chad K. Bachoo*
