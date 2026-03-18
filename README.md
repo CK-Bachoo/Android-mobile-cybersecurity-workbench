@@ -1,15 +1,16 @@
 # Mobile Cybersecurity Workbench | Chad K. Bachoo
 
-### 🛡️ Dual-Certified: Google IT Support & CompTIA A+
+### 🛡️ Dual-Certified IT Support Engineer
+* **Google IT Support Professional Certificate**
+* **CompTIA A+ Certified**
 
 ---
 
-## 🛠️ Mobile Lab Environment
-* **Platform:** Android / Termux
-* **Focus:** Network Auditing, Security Hardening, and Mobile Pentesting
+## 🛠️ Engineering Objective
+This repository documents the development of a professional-grade cybersecurity workstation hosted entirely on an Android mobile platform. It demonstrates advanced system configuration, network auditing capabilities, and mobile-first security engineering.
 
-## 📂 Technical Evidence & Logs:
-* **Network Audit Data:** [View Audit Log](./network_audit.txt)
-* **Subnet Architecture:** [View Subnet Data](./subnet_audit.txt)
+## 📂 Technical Assets & Logs:
+* **Network Audit Artifacts:** [Internal Audit Log](./network_audit.txt)
+* **Subnet Architecture:** [Network Map Data](./subnet_audit.txt)
 
-*Verified Professional Environment | Deployment Log 2026*
+*Original Engineering Environment | Developed by Chad K. Bachoo*
