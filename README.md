@@ -11,8 +11,8 @@
 - **Zero-Trust Baseline:** Verified removal of rogue root-level git trackers.
 
 ## Operational Evidence (Artifacts)
-- [Network Audit Baseline](network_audit_baseline.txt) - Verified 2026-03-19
-- [Commit History & Technical Logs](https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench/commits/master)
+- Network Audit Baseline - Verified 2026-03-19
+- Commit History & Technical Logs
 
 ---
 *Verified by Navy Veteran / Armed Forces Service Medal Recipient*
