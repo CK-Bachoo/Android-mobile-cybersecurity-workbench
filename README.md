@@ -7,6 +7,7 @@
 ## 🚀 III. 6-Step Deployment
 
 ### 1. Acquisition
+termux-setup-storage
 git clone --depth 1 https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench.git
 
 ### 2. OPSEC
@@ -14,6 +15,7 @@ echo 'Vault/' >> .gitignore
 
 ### 3. SSH Keys
 ssh-keygen -t ed25519 -C 'ChadKBachoo'
+cat ~/.ssh/id_ed25519.pub
 
 ### 4. 🤖 AI Stack
 * Local: Ollama (Llama 3)
