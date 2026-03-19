@@ -1,0 +1,8 @@
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-03-19 00:24 -0400
+Stats: 0:00:00 elapsed; 0 hosts completed (0 up), 256 undergoing Ping Scan
+Ping Scan Timing: About 1.27% done; ETC: 00:24 (0:00:00 remaining)
+Nmap scan report for 192.168.1.XXX
+Host is up (0.012s latency).
+Nmap scan report for 192.168.1.XXX
+Host is up (0.00068s latency).
+Nmap done: 256 IP addresses (2 hosts up) scanned in 2.83 seconds
