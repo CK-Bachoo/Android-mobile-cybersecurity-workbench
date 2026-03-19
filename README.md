@@ -1,6 +1,3 @@
----
-
-```markdown
 # 🛡️ ARM64 Mobile-to-Cloud Security Workbench (The Bunker)
 
 **Operator:** C.K. Bachoo | Navy Veteran | Armed Forces Service Medal  
