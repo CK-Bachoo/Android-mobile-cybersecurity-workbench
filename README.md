@@ -1,9 +1,9 @@
 # 🛡️ ARM64 Mobile-to-Cloud Security Workbench (The Bunker)
 
-**Operator:** C.K. Bachoo | Navy Veteran | Armed Forces Service Medal  
-**Credentials:** CompTIA A+ | Google IT Support Professional  
-**Fellowship:** TKH Innovation Fellow | NY-IF-CS-26 | March 2026  
-**Platform:** Samsung Galaxy Note 20 Ultra | Termux | Mobile-Only Architecture  
+**Operator:** C.K. Bachoo | Navy Veteran | Armed Forces Service Medal
+**Credentials:** CompTIA A+ | Google IT Support Professional
+**Fellowship:** TKH Innovation Fellow | NY-IF-CS-26 | March 2026
+**Platform:** Samsung Galaxy Note 20 Ultra | Termux | Mobile-Only Architecture
 **Mission:** Scale enterprise-level cybersecurity workflows on constrained mobile hardware. No laptop required.
 
 > "The mission does not wait for better equipment." — C.K. Bachoo ⚓
@@ -596,8 +596,8 @@ cat /sys/class/thermal/thermal_zone0/temp
 ```
 Divide by 1000 for Celsius. Example: `45000` = 45C.
 
-**Safe range:** Below 40C  
-**Caution range:** 40C to 45C — reduce workload  
+**Safe range:** Below 40C
+**Caution range:** 40C to 45C — reduce workload
 **Danger range:** Above 45C — execute kill switch immediately
 
 **Thermal kill switch:**
@@ -723,6 +723,7 @@ github.com/CK-Bachoo
 | Certification | Identify and Prevent Phishing Attacks — Udemy — Apr 2025 |
 | Certification | Micro-Certification Welcome to ServiceNow — ServiceNow — Apr 2025 |
 | Team Alignment | Red Team Offense — Blue Team Defense — Purple Team Collaboration — Gold Team GRC |
+| AI Integration | AI-Orchestrated Security Operations — Gemini — Claude — Ollama Local LLM — Voice-Sec-Terminal Architect |
 | Platform | Samsung Galaxy Note 20 Ultra — Termux — Mobile Only |
 | GitHub | github.com/CK-Bachoo |
 | LinkedIn | linkedin.com/in/ckbachoo |
@@ -730,8 +731,5 @@ github.com/CK-Bachoo
 
 ---
 
-**"The mission does not wait for better equipment."**  
+**"The mission does not wait for better equipment."**
 — C.K. Bachoo, 2026 ⚓🫡
-```
-
----
