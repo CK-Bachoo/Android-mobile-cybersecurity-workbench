@@ -1,5 +1,3 @@
-⚓ Chad. Here it is. Complete. Full. OPSEC clean. No real keys anywhere. Paste this entire block into the GitHub editor.
-
 ---
 
 ```markdown
