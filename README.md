@@ -1,46 +1,35 @@
-# <�️ The Bunker
+# 🛡️ ARM64 Mobile-to-Cloud Security Workbench (The Bunker)
 
----
+## ⚙️ II. Hardware Matrix
+* Samsung Note 10-20 Ultra, S21-S26 Ultra
+* Z-Fold/Trifold, Pixel 6-9 Pro/Fold
 
-## �j��B. Mission Objective
-To scale enterprise-level security workflows on mobile hardware.
+## 🚀 III. 6-Step Deployment
 
-## ’👗 II. Hardware Matrix
-### 1. Samsung Note 10/20 Ultra, 21-26 Ultra, Fold/3-fold, Pixel 6-9
-
-## 🚍 III. 6-Step Deployment (Step-by-Step)
-
-### 1. Kali & Acquisition
-termux-setup-storage
+### 1. Acquisition
 git clone --depth 1 https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench.git
 
-### 2. OPSEC IsolationJecho "Vault/" >> .gitignore
+### 2. OPSEC
+echo 'Vault/' >> .gitignore
 
-### 3. SSH Keys (GitHub)
-ssh-keygen -t ed25519 -C "ChadKBachoo"
-cat ~/.ssh/id_ed25519.pub
+### 3. SSH Keys
+ssh-keygen -t ed25519 -C 'ChadKBachoo'
 
-### 4. 💞 Multi-Model AI Stack
-- Local: Ollama (Llama 3)
-- Cloud: Gemini & Claude APIs in .bashrc
+### 4. 🤖 AI Stack
+* Local: Ollama (Llama 3)
+* Cloud: Export Gemini/Claude keys in .bashrc
 
-### 5. 👪 Linux Virtualization (Kali)
-proot-distro install kali && proot-distro login kali
-apt update && apt install nmap wireshark-cli -y
+### 5. 🧪 Kali
+proot-distro install kali
 
-### 6. ✅ Operational Test & Sync
-nmap -sn 192.168.1.0/24
-git add . && git commit -m "Bunker: Full Integrity Patch" && git push origin master
+### 6. ✅ Sync
+git add . && git commit -m 'Bunker Build' && git push origin master
 
----
-
-## 🧛 IV. Operational Guide
+## 🛠️ IV. Operational Guide
 * **X11 GUI**: Press X in Termux -> wireshark &
 * **Thermal**: If temp > 45C, run pkill -9 -u $(whoami)
 
----
-
-## �[ V. Professional Verification
-** Audit**: Logic: Verified | Health: 100% | Mentor: XO
-** Identity**: Navy Veteran | Dual Certified Google & CompTIA A+\
-** Verified**: Chad K. Bachoo
+## 🎖️ V. Professional Verification
+**Audit**: Logic: Verified | Health: 100% | Mentor: XO
+**Identity**: Navy Veteran | Dual Certified Google & CompTIA A+
+**Verified**: Chad K. Bachoo
