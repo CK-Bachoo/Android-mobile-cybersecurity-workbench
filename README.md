@@ -2,7 +2,7 @@
 
 **Operator:** C.K. Bachoo | Navy Veteran | Armed Forces Service Medal
 **Credentials:** CompTIA A+ | Google IT Support Professional
-**Fellowship:** TKH Cybersecurity Innovation Fellow | NY-IF-CS-26 | March 2026
+**Fellowship:** TKH Innovation Fellow |Cybersecurity NY-IF-CS-26 | March 2026
 **Platform:** Samsung Galaxy Note 20 Ultra | Termux | Mobile-Only Architecture
 **Mission:** Scale enterprise-level cybersecurity workflows on constrained mobile hardware. No laptop required.
 
