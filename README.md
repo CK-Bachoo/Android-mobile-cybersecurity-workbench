@@ -1014,12 +1014,37 @@ github.com/CK-Bachoo
 ```
 
 
-## 🧠 XVI. Threat Intelligence Log
+## XVII. Threat Intelligence Log: Aeternum C2 (Blockchain C2)
 
-| Date | Threat | TTPs | Defense |
-|------|--------|------|---------|
-| 2026-03-21 | Aeternum C2 Blockchain Botnet | C2 commands stored as Polygon smart contracts — no server/domain to seize. Payloads pulled via DLL Loader. HWID fingerprinting. | Block outbound RPC endpoints (polygon-rpc.com). EDR behavioral detection on smart contract query patterns. Network segmentation. |
+| Threat Actor | Vector | Infrastructure | Status |
+| :--- | :--- | :--- | :--- |
+| **LenAI** | C++ Loader (x32/x64) | Polygon Mainnet (Smart Contracts) | **ACTIVE (MAR 2026)** |
 
-> **Source**: [@trumancyber](https://www.instagram.com/trumancyber) via Qrator Labs research
+### A. Technical Breakdown: "Living off the Chain"
+Aeternum C2 represents a shift from centralized servers to immutable, decentralized infrastructure.
+* **C2 Mechanism:** Commands are stored as encrypted state variables within Solidity smart contracts. The attacker updates the contract to change the "active" payload (Clipper, Stealer, or RAT).
+* **Communication:** Infected endpoints utilize JSON-RPC calls (`eth_call`) to public nodes (e.g., `polygon-rpc.com`) to retrieve instructions.
+* **Resilience:** Since the "server" is the Polygon blockchain, there is no domain to seize or server to take down.
+
+### B. Bunker Countermeasures: Note 20 Ultra / Termux Defense
+To "project" protection and neutralize this threat on the workbench, the following protocols are deployed:
+
+1.  **RPC Traffic Interception (tshark):**
+    Monitor for the specific JSON-RPC method used to poll the smart contract:
+    ```bash
+    tshark -i any -Y 'http.request.method == "POST"' -T fields -e http.file_data | grep -E "eth_call|eth_getStorageAt"
+    ```
+2.  **Infrastructure Decoupling (DNS Sinkhole):**
+    Force the malware to loop harmlessly by redirecting RPC traffic to localhost in the `proot` environment (`/etc/hosts`):
+    ```text
+    127.0.0.1 polygon-rpc.com
+    127.0.0.1 bor-mainnet.polygon.technology
+    ```
+3.  **Behavioral Audit:**
+    The workbench uses a background cron job to alert if outbound traffic to known Polygon/Ethereum RPC ports (8545, 443) exceeds a 60-second polling threshold, identifying the C2 "heartbeat."
+
+---
+**Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** 21 MAR 2026
+/trumancyber) via Qrator Labs research
 > **Analyst**: C.K. Bachoo | TKH Innovation Fellow NY-IF-CS-26
 
