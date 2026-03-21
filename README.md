@@ -260,25 +260,21 @@ Then type your wake word every session. Example: `bunker`
 
 **Mode 2 — Manual Control:**
 Skip the wake word. Run each tool individually.
-Use the manual commands below.
-No AI. No automation. Full control.
+Use the manual commands below. No AI. No automation.
 
 **Mode 3 — Terminal Only:**
 Skip X11 entirely. Run everything in Termux terminal.
-Lightweight. Fast. No GUI.
-Best for low battery or quick operations.
-
----
+Lightweight. Fast. Best for low battery or quick operations.
 
 ### HOW TO WAKE X11
 
-**Automatic — wake word (Mode 1):**
+**Automatic — wake word:**
 ```bash
 bunker
 ```
 Replace `bunker` with your personal wake word.
 
-**Manual — step by step (Mode 2):**
+**Manual — step by step:**
 ```bash
 termux-x11 :1 &
 DISPLAY=:1 xfce4-session &
@@ -288,38 +284,30 @@ Then open Termux-X11 app. Acquire wakelock from notification bar.
 ### HOW TO LAUNCH APPS IN X11
 
 ```bash
-# Wireshark
 DISPLAY=:1 wireshark &
-
-# File manager
 DISPLAY=:1 thunar &
-
-# Terminal inside X11
 DISPLAY=:1 xterm &
-
-# Any app
 DISPLAY=:1 [appname] &
 ```
 
 ### HOW TO CLOSE X11
 
-**Clean shutdown:**
 ```bash
 pkill xfce4-session && pkill termux-x11
 ```
 
-**Nuclear option if frozen:**
+Nuclear option if frozen:
 ```bash
 pkill -9 -u $(whoami)
 ```
-WARNING: Kills ALL processes. Reopen Termux after.
 
 ### X11 Wake Lock — CRITICAL
 
-Without this Android will kill X11 within minutes:
 1. Swipe down notification bar
 2. Find Termux notification
-3. Tap **Acquire Wakelock**
+3. Tap Acquire Wakelock
+
+Do this EVERY TIME or X11 freezes within minutes.
 
 **X11 Troubleshooting:**
 
@@ -372,14 +360,6 @@ exit
 proot-distro login kali -- nmap -sn 192.168.1.0/24
 ```
 
-**Kali + Jarvis workflow:**
-```bash
-# Say to Jarvis: "enter Kali and run a scan"
-# Jarvis suggests the proot command
-# Confirm through Zero Trust gate
-# Results saved to Vault automatically
-```
-
 **Kali Troubleshooting:**
 
 | Problem | Fix |
@@ -391,9 +371,9 @@ proot-distro login kali -- nmap -sn 192.168.1.0/24
 | Cannot push from inside Kali | Exit Kali first. Push from Termux. |
 | Metasploit takes too long | Normal. First launch downloads dependencies. Wait 5 minutes. |
 | No internet inside Kali | Exit Kali. Check Wi-Fi. Re-enter Kali. |
-```
 
 ---
+
 ## 🤖 VIII. AI Stack Deployment & Security Tooling
 
 ### Resource Management — Note 20 Ultra 12GB RAM
@@ -411,15 +391,12 @@ proot-distro login kali -- nmap -sn 192.168.1.0/24
 
 **Golden Rule:** Never run Ollama with anything else.
 Exynos 990 will overheat and 12GB RAM will max out.
-One mission at a time. Zero Trust applies to your RAM too.
 
 ---
 
 ### 🎙️ Jarvis Voice AI — Primary Command Interface
 
 Voice-activated AI built natively on the Note 20 Ultra.
-Connects termux-speech-to-text to Gemini AI.
-Speaks responses via termux-tts-speak.
 Zero Trust gate on all execute commands.
 All sessions logged to Vault and 512GB MicroSD and GitHub.
 
@@ -429,7 +406,7 @@ All sessions logged to Vault and 512GB MicroSD and GitHub.
 - RAM: 12GB
 - Storage: 256GB Internal + 512GB MicroSD
 
-**Install Jarvis dependencies:**
+**Install Jarvis:**
 ```bash
 pkg install termux-api -y && pip install requests
 ```
@@ -444,33 +421,14 @@ python3 scripts/jarvis.py
 ```bash
 bunker
 ```
-Replace `bunker` with your personal wake word.
 
 **Jarvis voice commands:**
 - Say anything — Jarvis processes via Gemini and responds
 - Say "hardware check" — thermal and storage diagnostics
 - Say "scan my network" — suggests nmap command with Zero Trust gate
 - Say "start packet capture" — suggests tshark command
-- Say "check my storage" — shows disk usage
 - Say "help" — lists all capabilities
 - Say "exit" or "shutdown" — clean shutdown with session log
-
-**Jarvis + Nmap workflow:**
-```bash
-# Say: "scan my network for active hosts"
-# Jarvis suggests: nmap -sn 192.168.1.0/24
-# Say confirm — Zero Trust gate executes
-# Results auto-saved to Vault/Scans/
-```
-
-**Jarvis + Wireshark workflow:**
-```bash
-# Say: "start packet capture"
-# Jarvis suggests: tshark -i wlan0 -w Vault/PCAPs/capture.pcap
-# Say confirm — Zero Trust gate executes
-# Open Wireshark in X11 to analyze visually
-DISPLAY=:1 wireshark Vault/PCAPs/capture.pcap &
-```
 
 **Stop Jarvis:**
 ```bash
@@ -488,7 +446,6 @@ pkill -f jarvis.py
 | Jarvis loop crashes | Run `source ~/.bashrc` then restart jarvis.py |
 | Zero Trust gate not hearing confirm | Speak clearly. Move closer to mic. |
 | Wake word not launching Jarvis | Run `source ~/.bashrc` then try wake word again |
-| Jarvis and X11 not starting together | Run `bash scripts/bunker_wake.sh` directly |
 
 ---
 
@@ -549,52 +506,21 @@ pkg install nmap -y
 
 **Essential commands:**
 ```bash
-# Discover all live hosts
 nmap -sn 192.168.1.0/24
-
-# Full port scan with service detection
 nmap -sV 192.168.1.1
-
-# OS detection and full scan
 nmap -A 192.168.1.1
-
-# Scan specific ports
 nmap -p 22,80,443,8080 192.168.1.1
-
-# Fast scan top 100 ports
 nmap -F 192.168.1.1
-
-# Save to Vault
 nmap -oN Vault/Scans/scan_$(date +%Y%m%d_%H%M%S).txt 192.168.1.1
-
-# Save all formats
 nmap -oA Vault/Scans/scan_$(date +%Y%m%d) 192.168.1.1
-
-# Scan subnet and save
-nmap -sn 192.168.1.0/24 -oN Vault/Scans/network_$(date +%Y%m%d).txt
 ```
 
 **Nmap + Wireshark workflow:**
 ```bash
-# Start capture first
 tshark -i wlan0 -w Vault/PCAPs/nmap_capture.pcap &
-
-# Run scan
 nmap -sV 192.168.1.1
-
-# Stop capture
 pkill tshark
-
-# Open in Wireshark X11
 DISPLAY=:1 wireshark Vault/PCAPs/nmap_capture.pcap &
-```
-
-**Nmap + Jarvis workflow:**
-```bash
-# Say: "scan my network"
-# Jarvis suggests command
-# Confirm through Zero Trust gate
-# Results auto-saved to Vault
 ```
 
 **Nmap Troubleshooting:**
@@ -607,7 +533,6 @@ DISPLAY=:1 wireshark Vault/PCAPs/nmap_capture.pcap &
 | nmap not found | `pkg install nmap -y` |
 | Results not saving | `mkdir -p Vault/Scans` |
 | SYN scan requires root | Enter Kali proot for root-level scans |
-| Scan blocked by firewall | Try `-Pn` to skip host discovery |
 
 ---
 
@@ -620,44 +545,15 @@ proot-distro login kali && apt install wireshark-cli tshark -y
 
 **Essential commands:**
 ```bash
-# List interfaces
 tshark -D
-
-# Capture on WiFi
 tshark -i wlan0
-
-# Save to Vault
 tshark -i wlan0 -w Vault/PCAPs/capture_$(date +%Y%m%d_%H%M%S).pcap
-
-# Capture 100 packets then stop
 tshark -i wlan0 -c 100 -w Vault/PCAPs/capture.pcap
-
-# Read saved capture
 tshark -r Vault/PCAPs/capture.pcap
-
-# Filter HTTP traffic
 tshark -i wlan0 -Y "http"
-
-# Filter DNS
 tshark -i wlan0 -Y "dns"
-
-# Filter specific IP
 tshark -i wlan0 -Y "ip.addr == 192.168.1.1"
-
-# Open in X11 Wireshark
 DISPLAY=:1 wireshark Vault/PCAPs/capture.pcap &
-```
-
-**Wireshark + AI analysis:**
-```bash
-# Capture traffic
-tshark -i wlan0 -c 200 -w Vault/PCAPs/analysis.pcap
-
-# Extract summary
-tshark -r Vault/PCAPs/analysis.pcap -q -z io,phs > Vault/Logs/traffic_summary.txt
-
-# Ask Jarvis to analyze
-# Say: "analyze my traffic summary"
 ```
 
 **Wireshark Troubleshooting:**
@@ -670,7 +566,6 @@ tshark -r Vault/PCAPs/analysis.pcap -q -z io,phs > Vault/Logs/traffic_summary.tx
 | Wireshark GUI not opening | Make sure X11 is running and `DISPLAY=:1` is set |
 | Capture file too large | Add `-c 500` to limit packet count |
 | Cannot read pcap file | Run `ls Vault/PCAPs/` to verify path |
-| Wireshark crashes in X11 | Acquire wakelock first then relaunch |
 
 ---
 
@@ -683,18 +578,6 @@ tshark -r Vault/PCAPs/analysis.pcap -q -z io,phs > Vault/Logs/traffic_summary.tx
 # Tap Code → Codespaces → Create codespace on master
 ```
 
-**VS Code + Jarvis workflow:**
-```bash
-# Edit scripts in VS Code Codespaces
-# Test in cloud terminal
-# Push to GitHub
-git add . && git commit -m "Update — CK-Bachoo" && git push origin master
-
-# Pull to phone and run
-cd ~/Android-mobile-cybersecurity-workbench && git pull origin master
-python3 scripts/jarvis.py
-```
-
 **VS Code Troubleshooting:**
 
 | Problem | Fix |
@@ -702,9 +585,7 @@ python3 scripts/jarvis.py
 | Codespace takes too long | Close and reopen. Free tier has limits. |
 | Changes not saving | Commit and push before closing |
 | Terminal not responding | Refresh the browser tab |
-| Extensions not loading | Clear browser cache in Kiwi |
 | Codespace expired | Create a new one — repo is safe on GitHub |
-| Cannot push from Codespace | Check PAT permissions. Regenerate if needed. |
 
 ---
 
@@ -713,28 +594,11 @@ python3 scripts/jarvis.py
 Offline AI. No internet required.
 Heavy RAM usage. Run ALONE. Never with other tools.
 
-**Install:**
-```bash
-pkg install ollama -y
-```
-
 **Wake Ollama — close everything else first:**
 ```bash
 pkill -f jarvis.py && pkill xfce4-session && pkill termux-x11
 ollama serve &
 ollama run llama3
-```
-
-**Ollama security workflows:**
-```bash
-# Analyze logs offline
-ollama run llama3 "Analyze this and find anomalies: $(cat Vault/Logs/jarvis_sessions.log | tail -20)"
-
-# Generate security report offline
-ollama run llama3 "Write a security assessment: $(cat Vault/Scans/scan_latest.txt)"
-
-# Get offline command help
-ollama run llama3 "What does nmap flag -sS -A -T4 mean?"
 ```
 
 **Stop Ollama:**
@@ -759,7 +623,7 @@ pkill ollama
 
 Built into Jarvis automatically. Zero local RAM.
 
-**Setup API keys:**
+**Setup:**
 ```bash
 nano ~/.bashrc
 ```
@@ -773,11 +637,6 @@ export CLAUDE_API_KEY="PASTE-YOUR-CLAUDE-API-KEY-HERE"
 Save with CTRL+X then Y then ENTER. Then:
 ```bash
 source ~/.bashrc
-```
-
-**Verify:**
-```bash
-echo $GEMINI_API_KEY && echo $CLAUDE_API_KEY
 ```
 
 **Cloud AI Troubleshooting:**
@@ -839,48 +698,32 @@ git add . && git commit -m "Sync — YOUR-GITHUB-USERNAME" && git push origin ma
 
 ## 🛰️ X. Operational Commands
 
-**Network Discovery:**
 ```bash
+# Network Discovery
 nmap -sn 192.168.1.0/24
-```
 
-**Full Port Scan:**
-```bash
+# Full Port Scan
 nmap -A 192.168.1.1
-```
 
-**Save Scan to Vault:**
-```bash
+# Save Scan to Vault
 nmap -oN Vault/Scans/audit_$(date +%Y%m%d).txt 192.168.1.1
-```
 
-**Packet Capture:**
-```bash
+# Packet Capture
 tshark -i wlan0 -w Vault/PCAPs/capture_$(date +%Y%m%d).pcap
-```
 
-**Read Capture:**
-```bash
+# Read Capture
 tshark -r Vault/PCAPs/capture_$(date +%Y%m%d).pcap
-```
 
-**Open Capture in Wireshark X11:**
-```bash
+# Open Capture in Wireshark X11
 DISPLAY=:1 wireshark Vault/PCAPs/capture_$(date +%Y%m%d).pcap &
-```
 
-**Wake Jarvis:**
-```bash
+# Wake Jarvis
 python3 scripts/jarvis.py
-```
 
-**Wake full Bunker:**
-```bash
+# Wake full Bunker
 bunker
-```
 
-**Sync Everything to GitHub:**
-```bash
+# Sync to GitHub
 export GITHUB_PAT=$(cat ~/.secrets/github_pat.txt) && git add . && git commit -m "Audit sync $(date +%Y-%m-%d) — CK-Bachoo" && git push origin master
 ```
 
@@ -901,7 +744,6 @@ export GITHUB_PAT=$(cat ~/.secrets/github_pat.txt) && git add . && git commit -m
 ### 🎯 Choose Your Operating Mode
 
 **Mode 1 — Full Automation (Recommended):**
-Set your wake word once. Type it. Everything launches.
 ```bash
 bash scripts/set_wakeword.sh
 ```
@@ -909,11 +751,9 @@ Then type your wake word every session. Example: `bunker`
 
 **Mode 2 — Manual Control:**
 Run each tool individually from commands below.
-No automation. Full control.
 
 **Mode 3 — Terminal Only:**
-Skip X11 entirely. Run everything in Termux terminal.
-Lightweight. Best for low battery or quick operations.
+Skip X11 entirely. Lightweight. Best for low battery.
 
 ---
 
@@ -935,7 +775,7 @@ bash scripts/set_wakeword.sh
 
 ---
 
-### WAKE COMMANDS — Manual Control
+### WAKE COMMANDS
 
 ```bash
 # Wake environment
@@ -974,9 +814,6 @@ pkill ollama
 
 # Close Kali
 exit
-
-# Close specific X11 app
-pkill wireshark
 
 # Nuclear — close everything
 pkill -9 -u $(whoami)
