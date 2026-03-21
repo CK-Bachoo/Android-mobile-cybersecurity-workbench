@@ -1015,3 +1015,15 @@ github.com/CK-Bachoo
 
 ---
 
+
+---
+
+## 🧠 XIII. Threat Intelligence Log
+
+| Date | Threat | TTPs | Defense |
+|------|--------|------|---------|
+| 2026-03-21 | Aeternum C2 Blockchain Botnet | C2 commands stored as Polygon smart contracts — no server/domain to seize. Payloads pulled via DLL Loader. HWID fingerprinting. | Block outbound RPC endpoints (polygon-rpc.com). EDR behavioral detection on smart contract query patterns. Network segmentation. |
+
+> **Source**: [@trumancyber](https://www.instagram.com/trumancyber) via Qrator Labs research
+> **Analyst**: C.K. Bachoo | TKH Innovation Fellow NY-IF-CS-26
+
