@@ -40,7 +40,7 @@ def query_gemini(command, key):
     try:
         import requests
         payload = {"contents": [{"parts": [{"text": f"You are Jarvis — professional AI assistant for C.K. Bachoo, Navy Veteran and Cybersecurity Analyst on Samsung Galaxy Note 20 Ultra with Exynos 990, 12GB RAM, 256GB storage, 512GB MicroSD. Keep responses concise and professional.\n\nRequest: {command}"}]}]}
-        resp = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={key}", json=payload, timeout=20)
+        resp = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash:generateContent?key={key}", json=payload, timeout=20)
         resp.raise_for_status()
         return resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
     except Exception as e:
