@@ -1018,7 +1018,7 @@ github.com/CK-Bachoo
 
 ---
 
-## 🧠 XIII. Threat Intelligence Log
+## 🧠 XVI. Threat Intelligence Log
 
 | Date | Threat | TTPs | Defense |
 |------|--------|------|---------|
