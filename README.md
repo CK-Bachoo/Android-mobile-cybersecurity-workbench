@@ -1014,7 +1014,6 @@ github.com/CK-Bachoo
 ```
 
 ---
----
 
 ## 🧠 XVI. Threat Intelligence Log
 
