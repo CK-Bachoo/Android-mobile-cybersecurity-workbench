@@ -394,7 +394,6 @@ proot-distro login kali -- nmap -sn 192.168.1.0/24
 ```
 
 ---
-
 ## 🤖 VIII. AI Stack Deployment & Security Tooling
 
 ### Resource Management — Note 20 Ultra 12GB RAM
@@ -1178,3 +1177,4 @@ github.com/CK-Bachoo
 ```
 
 ---
+
