@@ -979,17 +979,22 @@ This repository proves enterprise-level cybersecurity runs on a $400 mobile devi
 github.com/CK-Bachoo
 
 ---
+Operator: Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fellow | New York IF-CS-26 | AI Architect | Principal Security Engineer (Purple Team & GRC)
 
-## 🎖️ XV. Professional Verification
+---
+
+## 🏅 XV. Professional Verification
 
 | Field | Details |
-|---|---|
-| Operator | C.K. Bachoo |
-| Service | United States Navy Veteran |
-| Award | Armed Forces Service Medal |
-| Target Role | Junior Cybersecurity Analyst — SOC / NOC / GRC |
-| Fellowship | TKH Cybersecurity Innovation Fellow — NY-IF-CS-26 — Jan 2026 to Aug 2026 |
-| Institution | The Knowledge House — New York |
+| :--- | :--- |
+| **Operator** | C.K. Bachoo |
+| **Status** | Navy Veteran |
+| **Credentials** | Dual Google/CompTIA A+ |
+| **Cohort** | New York IF-CS-26 |
+| **Current Role** | Innovation Fellow | AI Security Architect | Principal Security Engineer |
+| **Operational Tier** | Purple Team (Offensive/Defensive Ops) |
+| **Compliance** | NIST CSF / GRC / IT Audit Ready |
+| **Institution** | The Knowledge House — New York |
 | Education | Per Scholas — CompTIA A+ Program — Feb 2025 to May 2025 |
 | Certification | CompTIA A+ ce — Issued May 2025 — Expires May 2028 |
 | Certification | Google IT Support Professional Certificate — Coursera |
