@@ -26,6 +26,8 @@
 13. [Full Troubleshooting Guide](#xiii-full-troubleshooting-guide)
 14. [Business Integration Guide](#xiv-business-integration-guide)
 15. [Professional Verification](#xv-professional-verification)
+16. [Threat Intelligence Log] (#xvi-threat-intelligence-log)
+17. [Forensic Mission Report] (#xvii-forensic-mission-report)
 
 ---
 
