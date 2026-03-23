@@ -1,6 +1,8 @@
 # 🛡️ ARM64 Mobile-to-Cloud Security Workbench (The Bunker)
 
-**Operator:** Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | AI Architect | Principal Security Engineer (Purple Team & GRC)
+Operator: Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fellow | New York IF-CS-26 | AI Architect | Principal Security Engineer (Purple Team & GRC)
+
+---
 
 **Platform:** Samsung Galaxy Note 20 Ultra | Termux | Mobile-Only Architecture
 
