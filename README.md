@@ -26,8 +26,9 @@
 13. [Full Troubleshooting Guide](#xiii-full-troubleshooting-guide)
 14. [Business Integration Guide](#xiv-business-integration-guide)
 15. [Professional Verification](#xv-professional-verification)
-16. [Threat Intelligence Log] (#xvi-threat-intelligence-log)
-17. [Forensic Mission Report] (#xvii-forensic-mission-report)
+16. [XVII. Threat Intelligence Log: Aeternum C2 🔗](#xvii-threat-intelligence-log-aeternum-c2-)
+17. [XVIII. Forensic Mission Report: DNS Sabotage / OOB Recovery 🛡️📡](#xviii-forensic-mission-report-dns-sabotage--oob-recovery-)
+
 
 ---
 
