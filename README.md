@@ -6,7 +6,7 @@ Operator: Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fel
 
 **Platform:** Samsung Galaxy Note 20 Ultra | Termux | Mobile-Only Architecture
 
-**Mission:** Scale enterprise-level cybersecurity workflows on constrained mobile hardware. No laptop required.
+**Mission:** Scale enterprise-level cybersecurity workflows on constrained mobile hardware.
 
 > "The mission does not wait for better equipment." — C.K. Bachoo ⚓
 
