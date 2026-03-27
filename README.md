@@ -1172,3 +1172,6 @@ AUDIT COMPLETE. STANDING BY FOR UPLOAD.
 ---
 **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** 23 MAR 2026 ⚓🫡
 EOF
+
+## Directory Structure (Enterprise Taxonomy)
+This structure separates Infrastructure-as-Code, Automation, and SOPs, making the workbench scalable and easier to audit.
