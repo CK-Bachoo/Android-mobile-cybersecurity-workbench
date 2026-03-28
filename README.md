@@ -1175,3 +1175,47 @@ EOF
 
 ## Directory Structure (Enterprise Taxonomy)
 This structure separates Infrastructure-as-Code, Automation, and SOPs, making the workbench scalable and easier to audit.
+
+## 03 / Hardware Benchmarking & Field Reports
+
+### [EXPERIMENT-01]: MiroFish-Offline Swarm Intelligence
+**Status:** SUCCESSFUL DEPLOYMENT / STRATEGIC DECOMMISSIONING
+**Hardware:** Samsung Note 20 Ultra (Exynos 990 / 12GB RAM)
+
+#### **1. Deployment Narrative (Installation Workarounds)**
+- **Challenge:** Encountered "Signal 9" (OOM) and thermal protection locks during build.
+- **Solution:** Executed manual metadata overrides and forced package reconciliation.
+- **Result:** **SYSTEM READY.** Successfully bypassed mobile OS constraints for GraphRAG orchestration.
+
+#### **2. Runtime Performance Data**
+- **Thermal Efficiency:** Sustained **32°C battery temperature** during active build + fast-charging (20% SOC).
+- **RAM Utilization:** Successfully utilized the 12GB LPDDR5 pool for concurrent AI agent negotiation.
+- **Inference:** Verified 100% handshake with local **phi-4 (Ollama)**.
+
+#### **3. Strategic Decommissioning Audit**
+- [x] All 2GB+ of recursive dependencies purged.
+- [x] Ports 7474, 5001, and 3000 sanitized.
+- [x] System verified "Cold & Clear" via forensics.
+
+---
+
+## 03 / Hardware Benchmarking & Field Reports
+
+### [EXPERIMENT-01]: MiroFish-Offline Swarm Intelligence
+**Status:** SUCCESSFUL DEPLOYMENT / STRATEGIC DECOMMISSIONING
+**Hardware:** Samsung Note 20 Ultra (Exynos 990 / 12GB RAM)
+
+#### **1. Deployment Narrative (Installation Workarounds)**
+- **Challenge:** Encountered "Signal 9" (OOM) and thermal protection locks during build.
+- **Solution:** Executed manual metadata overrides and forced package reconciliation.
+- **Result:** **SYSTEM READY.** Successfully bypassed mobile OS constraints for GraphRAG orchestration.
+
+#### **2. Runtime Performance Data**
+- **Thermal Efficiency:** Sustained **32°C battery temperature** during active build + fast-charging (20% SOC).
+- **RAM Utilization:** Successfully utilized the 12GB LPDDR5 pool for concurrent AI agent negotiation.
+- **Inference:** Verified 100% handshake with local **phi-4 (Ollama)**.
+
+#### **3. Strategic Decommissioning Audit**
+- [x] All 2GB+ of recursive dependencies purged.
+- [x] Ports 7474, 5001, and 3000 sanitized.
+- [x] System verified "Cold & Clear" via forensics.
