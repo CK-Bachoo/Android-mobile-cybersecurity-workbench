@@ -1176,46 +1176,31 @@ EOF
 ## Directory Structure (Enterprise Taxonomy)
 This structure separates Infrastructure-as-Code, Automation, and SOPs, making the workbench scalable and easier to audit.
 
-## 03 / Hardware Benchmarking & Field Reports
-
-### [EXPERIMENT-01]: MiroFish-Offline Swarm Intelligence
-**Status:** SUCCESSFUL DEPLOYMENT / STRATEGIC DECOMMISSIONING
-**Hardware:** Samsung Note 20 Ultra (Exynos 990 / 12GB RAM)
-
-#### **1. Deployment Narrative (Installation Workarounds)**
-- **Challenge:** Encountered "Signal 9" (OOM) and thermal protection locks during build.
-- **Solution:** Executed manual metadata overrides and forced package reconciliation.
-- **Result:** **SYSTEM READY.** Successfully bypassed mobile OS constraints for GraphRAG orchestration.
-
-#### **2. Runtime Performance Data**
-- **Thermal Efficiency:** Sustained **32°C battery temperature** during active build + fast-charging (20% SOC).
-- **RAM Utilization:** Successfully utilized the 12GB LPDDR5 pool for concurrent AI agent negotiation.
-- **Inference:** Verified 100% handshake with local **phi-4 (Ollama)**.
-
-#### **3. Strategic Decommissioning Audit**
-- [x] All 2GB+ of recursive dependencies purged.
-- [x] Ports 7474, 5001, and 3000 sanitized.
-- [x] System verified "Cold & Clear" via forensics.
 
 ---
 
 ## 03 / Hardware Benchmarking & Field Reports
 
-### [EXPERIMENT-01]: MiroFish-Offline Swarm Intelligence
-**Status:** SUCCESSFUL DEPLOYMENT / STRATEGIC DECOMMISSIONING
-**Hardware:** Samsung Note 20 Ultra (Exynos 990 / 12GB RAM)
+### [MISSION]: MiroFish-Offline Red/Blue Swarm (Terminal 0438)
+**Status:** SUCCESSFUL TASK EXECUTION / STRATEGIC HARDWARE DECOMMISSIONING
+**Hardware:** Samsung Note 20 Ultra 5G (Exynos 990 / 12GB RAM / 256GB Storage / SD Expanded Vault)
+**Conditions:** 20% SOC | No Sleep | Manual OS Override (Phantom Process Killer Bypass)
 
-#### **1. Deployment Narrative (Installation Workarounds)**
-- **Challenge:** Encountered "Signal 9" (OOM) and thermal protection locks during build.
-- **Solution:** Executed manual metadata overrides and forced package reconciliation.
-- **Result:** **SYSTEM READY.** Successfully bypassed mobile OS constraints for GraphRAG orchestration.
+#### **1. Miro-Swarm-Offline: Terminal Functionality**
+- **The Local Handshake:** The terminal displayed active negotiation between the **Ollama (Tactical Brain)** and the **Miro-Swarm (Orchestra)**. 
+- **The Mechanism:** Unlike cloud AI, the swarm functioned by creating a local loopback. One terminal instance acted as the "Red" (Offensive) agent querying the local Knowledge Graph, while the second instance provided "Blue" (Defensive) feedback—all without an internet handshake.
+- **Data Flow:** Weights were pulled directly from the **SD Expanded Vault** into the 12GB LPDDR5 RAM pool, bypassing standard Android storage latency.
 
-#### **2. Runtime Performance Data**
-- **Thermal Efficiency:** Sustained **32°C battery temperature** during active build + fast-charging (20% SOC).
-- **RAM Utilization:** Successfully utilized the 12GB LPDDR5 pool for concurrent AI agent negotiation.
-- **Inference:** Verified 100% handshake with local **phi-4 (Ollama)**.
+#### **2. Tactical Deployment & System Overrides**
+- **Technical Logic:** Encountered Signal 9 (OOM) execution kills and pip-metadata locks due to aggressive Android system background limits. Executed manual dependency reconciliation and metadata overrides. Bypassed the Android Phantom Process Killer to force-initialize the swarm on a 20% SOC battery baseline.
+- **(Layman's Version):** (The phone's software kept trying to "kill" the project to save power. I manually forced it to stay awake and broke through the system's "locks" to finish the install on a dying battery. The Offensive and Defensive AI teams successfully started working together on the terminal for the first time.)
 
-#### **3. Strategic Decommissioning Audit**
-- [x] All 2GB+ of recursive dependencies purged.
-- [x] Ports 7474, 5001, and 3000 sanitized.
-- [x] System verified "Cold & Clear" via forensics.
+#### **3. Hardware Preservation & Uninstall Logic**
+- **The Audit:** System maintained a **32°C battery baseline** during active GraphRAG builds. This is the thermal "Red Line" for an Exynos 990. 
+- **The Decision:** **UNINSTALLED & PURGED.** Sustained heat over time from a recursive AI swarm would ruin the Mobile Cybersecurity Workbench. I proved the "Orchestra" works; then I decommissioned to save the rig.
+
+#### **4. Decommissioning Forensic Checklist**
+- [x] **Full Uninstall:** Purged 2GB+ of recursive dependencies and model weights.
+- [x] **Port Sanitization:** 7474 (Neo4j), 5001 (Backend), 3000 (Vite) verified CLOSED.
+- [x] **SD Vault Integrity:** Verified vault remains secure and uncompromised post-purge.
+- [x] **Forensic Clear:** ps aux confirms no ghost processes remaining.
