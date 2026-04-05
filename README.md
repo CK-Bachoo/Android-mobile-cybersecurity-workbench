@@ -1,40 +1,104 @@
-# Android Mobile Cybersecurity Workbench: The Bunker SOP 🛡️
-**Role:** AI Security Architect | **Deployment:** Samsung Note 20 Ultra (Node-7)
+# C.K. Bachoo — 🛡️Cybersecurity Innovation Fellow. Purple Team Ops IF-CS-26 NY | Mobile-to-Cloud Lab Environments | IT Support & AI Security Architect | Navy Veteran  Veteran |
 
-## 📑 Tactical Phases (Canvas Aligned)
+Mobile-first cybersecurity practitioner building enterprise-grade Purple Team capabilities on constrained Android hardware (Samsung Note 20 Ultra + Termux). 
+
+**Core Strengths**
+- Purple Team operations and defensive automation
+- Mobile-to-cloud security pipelines
+- AI-assisted analysis and documentation
+- Zero Trust enforcement in resource-limited environments
+
+**Current Deployment**
+- The Knowledge House NY Innovation Fellowship (IF-CS-26)
+- Full Portfolio: https://github.com/CK-Bachoo/IF-Cyber-Portfolio
+- Mobile SOC Rig: https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench
+
+Open to connecting on mobile security, DevSecOps, automation, and Purple Team topics.
+
+---
+
+# Android Mobile Cybersecurity Workbench: The Bunker SOP 🛡️
+
+**Role:**🛡️Cybersecurity Innovation Fellow. Purple Team Ops | Mobile-to-Cloud Lab Environments | IT Support & AI Security Architect | Navy Veteran  **Deployment:** Samsung Note 20 Ultra (Node-7)
+**Operator:**| Bachoo, C. K. | Cybersecurity Innovation Fellow NY IF-CS-26
+
+## 00 / Core Directives & GodMode AI Orchestration
+
+### GodMode AI & OpenClaw Agent Integration
+The Bunker utilizes a native GodMode AI orchestration framework to manage multiple LLMs simultaneously. This prevents vendor lock-in, ensures operational continuity during network degradation, and enables multi-model cross-validation for complex threat hunting.
+
+1. **GodMode Chat Browser Initialization (smol-ai):**
+The GodMode webview wrapper is deployed to access ChatGPT, Claude 3.5, Bard, Bing, and Gemini 1.5 Pro concurrently.
+- **Execution:** `cd ~/GodMode && npm run start`
+- **Architecture Context:** Running multiple heavy web-apps natively in Android Chrome crashes the Exynos 990 due to RAM constraints. The GodMode Electron/webview wrapper bypasses standard browser memory limits, creating a unified, lightweight interface for all API-less chat models.
+
+2. **OpenClaw / PicoClaw Agentic Automation:**
+Local AI agents deployed via OpenClaw to perform autonomous log parsing, system audits, and threat hunting without requiring human-in-the-loop for every command.
+- **Security Constraint (MCP Security 101):** The Model Context Protocol (MCP) acts as the API layer for these agents. To prevent "God-Mode" privilege escalation (e.g., tool poisoning or unauthorized system writes), all MCP tools are strictly sandboxed. 
+- **Enforcement:** Implemented Client-Side Validation to strip Prompt Injection vectors before execution, and the Principle of Least Privilege is strictly enforced on the Termux environment (e.g., agents cannot write to `/var/log`, only read).
+
+3. **Local Fallback (Ollama + Llama 3.2):**
+When external networks are compromised or air-gapped, the Bunker relies on 100% local, offline inference.
+- **Hardware Pool:** 12GB LPDDR5 RAM.
+- **Execution:** `ollama serve & ollama run llama3.2`
+- **Constraint:** Never run Ollama simultaneously with X11/Jarvis. The Android kernel's Signal 9 (Out of Memory) Phantom Process Killer will terminate the session.
+
+---
+
+## 01 / Tactical Phases (Canvas Aligned)
+
 ### Phase 0: System Foundations (S01 - S03)
-* **CTI:** Linux Scavenger Hunt & Access Control Hardening (`harden.sh`).
-* **Text Plumbing:** Advanced log filtering using Grep/Sed/Awk.
+* **CTI & Navigation:** Linux Scavenger Hunt & Access Control Hardening (`harden.sh`). Mastered the Filesystem Hierarchy Standard (FHS) to locate and extract hidden tokens from `/var/tmp/.blackout/`.
+* **Permissions:** Applied the Read-Write-Execute (RWX) matrix (700 for private, 755 for scripts, 644 for standard files).
+* **Text Plumbing:** Advanced log filtering using Grep, Sed, and Awk. Extracted top malicious IP addresses from a 10,000-line Apache `access.log` using standard streams.
 
 ### Phase 1: Network & Protocol Defense (S04 - S06)
-* **Architecture:** Network mapping and Subnetting analysis (`subnet_audit.txt`).
-* **Interrogation:** Malicious traffic analysis using `protocol_audit.txt` and Wireshark.
+* **Operation Broken Link (L1-L3):** Restored Layer 3 connectivity by diagnosing a missing default route and manually rebuilding the routing table (`sudo ip route add default via 10.0.0.1`).
+* **Operation Grid Lock (Subnetting Crucible):** Bypassed isolation caused by a CIDR mismatch. Expanded the subnet mask from a `/26` to a `/24` to include the gateway, allowing the terminal to successfully ping `10.50.50.1`.
+* **Operation Hidden Door:** Protocol interrogation using `ss -tuln` and `curl -I localhost:8080`. Remediated local DNS deception by purging poisoned entries in `/etc/hosts` to restore legitimate resolution for Google.
 
-### Phase 2: Virtualization & Automation (S07)
-* **Infrastructure:** Sandboxed Debian via Proot-Distro in Termux.
-* **The Forge:** Automation of network service interrogation via `port_check.py`.
+### Phase 2: Virtualization & Automation (S07 - S09)
+* **Infrastructure:** Sandboxed Debian via Proot-Distro in Termux, replacing resource-heavy Type-2 Hypervisors (VirtualBox/VMware).
+* **The Forge:** Developed Python-based security automation (`port_check.py`, `log_filter.py`, `firewall_bot.py`). Implemented `try/except` error handlers to build graceful failure into scripts, ensuring tools don't crash when logs are missing.
 
-## 03 / Hardware Benchmarking & Field Reports
+---
+
+## 02 / Hardware Benchmarking & Field Reports
+
 ### [MISSION]: MiroFish-Offline Red/Blue Swarm (Terminal 0500)
 **Status:** SUCCESSFUL TASK EXECUTION / STRATEGIC HARDWARE DECOMMISSIONING
 **Hardware:** Samsung Note 20 Ultra 5G (Exynos 990 / 12GB RAM / 256GB Storage / SD Expanded Vault)
 **Conditions:** 20% SOC | No Sleep | Manual OS Override (Phantom Process Killer Bypass)
 
 #### **1. Miro-Swarm-Offline: Terminal Functionality**
-- **The Local Handshake:** The terminal displayed active negotiation between the **Ollama (Tactical Brain)** and the **Miro-Swarm (Orchestra)**. 
+- **The Local Handshake:** The terminal displayed active negotiation between the **Ollama (Tactical Brain)** and the **Miro-Swarm (Orchestra)**. 
 - **The Mechanism:** Executed via local loopback. One terminal instance acted as the "Red" (Offensive) agent querying the Knowledge Graph, while the second instance provided "Blue" (Defensive) feedback—all without an internet handshake.
 - **Data Flow:** Logic weights were pulled from the **SD Expanded Vault** into the 12GB LPDDR5 RAM pool, bypassing standard Android storage latency.
+
 #### **2. Tactical Deployment & System Overrides**
 - **Technical Logic:** Encountered Signal 9 (OOM) execution kills and pip-metadata locks due to aggressive Android system background limits. Executed manual dependency reconciliation and metadata overrides. Bypassed the Android Phantom Process Killer to force-initialize the swarm on a 20% SOC battery baseline.
-- **(Layman's Version):** (The phone's software kept trying to "kill" the project to save power. I manually forced it to stay awake and broke through the system's "locks" to finish the install on a dying battery. The Offensive and Defensive AI teams successfully started working together on the terminal for the first time.)
+- **(Layman's Version):** The phone's software kept trying to "kill" the project to save power. I manually forced it to stay awake and broke through the system's "locks" to finish the install on a dying battery. The Offensive and Defensive AI teams successfully started working together on the terminal for the first time.
+
 #### **3. Hardware Preservation & Uninstall Logic**
-- **The Audit:** System maintained a **32°C battery baseline** during active GraphRAG builds. This is the thermal "Red Line" for an Exynos 990. 
+- **The Audit:** System maintained a **32°C battery baseline** during active GraphRAG builds. This is the thermal "Red Line" for an Exynos 990. 
 - **The Decision:** **UNINSTALLED & PURGED.** Sustained heat over time from a recursive AI swarm would ruin the Mobile Cybersecurity Workbench. I proved the "Orchestra" works; then I decommissioned to save the rig.
+
 #### **4. Decommissioning Forensic Checklist**
 - [x] **Full Uninstall:** Purged 2GB+ of recursive dependencies and model weights.
 - [x] **Port Sanitization:** 7474 (Neo4j), 5001 (Backend), 3000 (Vite) verified CLOSED.
 - [x] **SD Vault Integrity:** Verified vault remains secure and uncompromised post-purge.
-- [x] **Forensic Clear:** ps aux confirms no ghost processes remaining.
+- [x] **Forensic Clear:** `ps aux` confirms no ghost processes remaining.
+
+---
+
+## 03 / Infrastructure as Code & Desktop Rendering
+
+### Termux-X11 & Hardware Acceleration
+Bypassing standard VNC overhead to run XFCE4 natively on Android.
+* **Initialization:** `termux-x11 :1 & DISPLAY=:1 xfce4-session &`
+* **GPU Acceleration:** Virglrenderer deployed to bypass llvmpipe CPU rendering, allowing graphical analysis tools (Wireshark, Autopsy) to run smoothly using the device's native Mali GPU.
+* **Audio Routing:** PulseAudio TCP bridge established via `PULSE_SERVER=tcp:127.0.0.1:4713` (Pre-loaded `libskcodec.so` via `LD_PRELOAD` to fix Samsung OneUI 6.1 codec crashes).
+* **x86 Emulation:** Box86/Box64 and Wine installed via proot to execute legacy Windows/Linux x86 security binaries on the ARM64 architecture, bridging the gap between mobile hardware and enterprise software.
 
 ---
 
