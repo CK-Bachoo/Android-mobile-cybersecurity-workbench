@@ -1,5 +1,6 @@
-🛡️ Mobile-first cybersecurity practitioner building enterprise-grade Purple Team capabilities on constrained Android hardware (Samsung Note 20 Ultra + Termux).
-Core Strengths
+# 🛡️ Mobile-first cybersecurity practitioner building enterprise-grade Purple Team capabilities on constrained Android hardware (Samsung Note 20 Ultra + Termux).
+
+**Core Strengths**
 
 Purple Team operations and defensive automation
 Mobile-to-cloud security pipelines
