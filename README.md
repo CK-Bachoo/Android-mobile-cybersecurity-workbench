@@ -1,5 +1,5 @@
 # 🛡️Mobile Cybersecurity Enterprise-Grade Purple Team capabilities on constrained Android hardware 
-(Samsung Note 20 Ultra 5g Exynos990 + Termux App + Chrome Browser +Google Cloud Shell +Azure +Aws) 
+(Samsung Note 20 Ultra 5g Exynos990 + Termux App + Chrome Browser +Google Cloud Shell +Azure +Aws +Github) 
 
 **Core Strengths**
 - Purple Team operations and defensive automation
