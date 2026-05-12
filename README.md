@@ -111,25 +111,26 @@ Open to collaboration on mobile security, Purple Team ops, DevSecOps automation,
 *Last updated: May 12, 2026*
 ---
 
-🛡️ Mobile-first cybersecurity practitioner building enterprise-grade Purple Team capabilities on constrained Android hardware (Samsung Note 20 Ultra + Termux).
-Core Strengths
+# 🛡️ Mobile-first cybersecurity practitioner building enterprise-grade Purple Team capabilities on constrained Android hardware (Samsung Note 20 Ultra + Termux)
+
+**Core Strengths**
 Purple Team operations and defensive automation
 Mobile-to-cloud security pipelines
 AI-assisted analysis and documentation
 Zero Trust enforcement in resource-limited environments
-Current Deployment
+**Current Deployment**
 The Knowledge House NY Innovation Fellowship (IF-CS-26)
 Full Portfolio: https://github.com/CK-Bachoo/IF-Cyber-Portfolio
 Mobile SOC Rig: https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench
 Open to connecting on mobile security, DevSecOps, automation, and Purple Team topics.
 
-Android Mobile Cybersecurity Workbench: The Bunker SOP 🛡️
+# Android Mobile Cybersecurity Workbench: The Bunker SOP 🛡️
 Role: 🛡️Cybersecurity Innovation Fellow. Purple Team Ops | Mobile-to-Cloud Lab Environments | IT Support & AI Security Architect | Navy Veteran
 Deployment: Samsung Note 20 Ultra Exynos 990 12 GB RAM 256 GB internal storage with exp. SD card storage & Legacy MacBook Pro 13 2011 High Sierra (Decommissioned Feb 1, 2025 - Black Screen of Death)
 Operator: | Bachoo, C. K. | Cybersecurity Innovation Fellow NY IF-CS-26 | The Knowledge House Bronx, NY
 DEFCON Status: CHARLIE (Active Threat: ShinyHunters May 12 Deadline)
 00 / Core Directives & GodMode AI Orchestration
-GodMode AI & OpenClaw Agent Integration
+# GodMode AI & OpenClaw Agent Integration
 The Bunker utilizes a native GodMode AI orchestration framework to manage multiple LLMs simultaneously. This prevents vendor lock-in, ensures operational continuity during network degradation, and enables multi-model cross-validation for complex threat hunting.
 GodMode Chat Browser Initialization (smol-ai): The GodMode webview wrapper is deployed to access ChatGPT, Claude 3.5, Bard, Bing, and Gemini 1.5 Pro concurrently.
 Execution (The Agile Pivot): cd ~/GodMode && python -m http.server 8000 (Pivoted from heavy NodeJS/npm dependencies to a native Python HTTP server for "Intelligent Laziness" resource optimization, eliminating compiler overhead).
@@ -143,7 +144,7 @@ Hardware Pool: 12GB LPDDR5 RAM.
 Execution: ollama serve & ollama run gemma:2b
 Constraint: Never run Ollama simultaneously with X11/Jarvis. The Android kernel's Signal 9 (Out of Memory) Phantom Process Killer will terminate the session. Graceful teardown requires pkill ollama to flush RAM.
 
-01 / Tactical Phases (Canvas Aligned)
+# 01 / Tactical Phases (Canvas Aligned)
 Phase 0: System Foundations (S01 - S03)
 CTI & Navigation: Linux Scavenger Hunt & Access Control Hardening (harden.sh). Mastered the Filesystem Hierarchy Standard (FHS) to locate and extract hidden tokens from /var/tmp/.blackout/.
 Permissions: Applied the Read-Write-Execute (RWX) matrix (700 for private, 755 for scripts, 644 for standard files).
@@ -160,7 +161,7 @@ Hardening Obsolete Infrastructure (MacBook Pivot): Enforced a Strict Kill Switch
 The Mobile Bunker (Note 20 Ultra): Implemented Layer 3 Traffic Isolation via Android's "Block connections without VPN" kernel setting. The Termux terminal now operates as a "Ghost." ISP and local eavesdroppers cannot sniff SSH sessions or cloud-bridge payloads.
 Secure AI Orchestration: By serving the GodMode UI locally over Python and tunneling it through Proton, we achieved a Hybrid Intelligence Pipeline. Heavy compute is securely passed to Gemini/Claude, while sensitive telemetry is analyzed offline by Gemma 2B.
 
-02 / Hardware Benchmarking & Field Reports
+# 02 / Hardware Benchmarking & Field Reports
 [MISSION]: MiroFish-Offline Red/Blue Swarm (Terminal 0500)
 Status: SUCCESSFUL TASK EXECUTION / STRATEGIC HARDWARE DECOMMISSIONING
 Hardware: Samsung Note 20 Ultra 5G (Exynos 990 / 12GB RAM / 256GB Storage / SD Expanded Vault)
@@ -181,7 +182,7 @@ Port Sanitization: 7474 (Neo4j), 5001 (Backend), 3000 (Vite) verified CLOSED.
 SD Vault Integrity: Verified vault remains secure and uncompromised post-purge.
 Forensic Clear: ps aux confirms no ghost processes remaining.
 
-03 / Infrastructure as Code & Desktop Rendering
+# 03 / Infrastructure as Code & Desktop Rendering
 Termux-X11 & Hardware Acceleration
 Bypassing standard VNC overhead to run XFCE4 natively on Android.
 Initialization: termux-x11 :1 & DISPLAY=:1 xfce4-session &
@@ -189,7 +190,7 @@ GPU Acceleration: Virglrenderer deployed to bypass llvmpipe CPU rendering, allow
 Audio Routing: PulseAudio TCP bridge established via PULSE_SERVER=tcp:127.0.0.1:4713 (Pre-loaded libskcodec.so via LD_PRELOAD to fix Samsung OneUI 6.1 codec crashes).
 x86 Emulation: Box86/Box64 and Wine installed via proot to execute legacy Windows/Linux x86 security binaries on the ARM64 architecture, bridging the gap between mobile hardware and enterprise software.
 
-⚙️ RAW WORKBENCH LOGS & HISTORICAL SPECS BELOW:
+# ⚙️ RAW WORKBENCH LOGS & HISTORICAL SPECS BELOW:
 🛡️ ARM64 Mobile-to-Cloud Security Workbench (The Bunker)
 Operator: Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fellow | New York IF-CS-26 | AI Security Architect | Principal Security Engineer (Purple Team & GRC)
 Platform: Samsung Galaxy Note 20 Ultra | Termux | Mobile-Only Architecture
@@ -1214,135 +1215,4 @@ If an attacker managed to bypass the VPN and breach the local Termux environment
 The Logic: If the automated port sentry (port_harden.py) detects an unauthorized IP binding to Port 8022 (SSH) or Port 8080 (AI Server), it instantly triggers the air_gap_isolate.py protocol.
 The Execution: The device immediately drops all network interfaces, severing the connection to the outside world.
 The Result: The attacker is locked inside a dead, disconnected session. Simultaneously, the system flushes volatile memory, wiping ~/.bash_history and ~/.git-credentials. The operator is no longer in the same "room," and the attacker is left holding an empty, isolated shell.
-Analyst: C.K. Bachoo | Verified: XO | Date: MAY 2026 ⚓🫡
-
-
-
-
-
-
-
-
-Vs
-
-
-
-
-
-
-# 🛡️ Android Mobile Cybersecurity Workbench (The Bunker) v2.8
-
-**Mobile-first Purple Team automation lab** running on Samsung Galaxy Note 20 Ultra + Termux.
-
-A living proof that enterprise-grade security operations, threat hunting, defensive automation, and AI orchestration can run effectively on constrained Android hardware.
-
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Version](https://img.shields.io/badge/Version-2.8-blue)
-![Platform](https://img.shields.io/badge/Platform-Android_Termux-orange)
-
----
-
-### ✨ v2.8 Release Highlights
-
-- **`bunker_audit.sh`** — NIST-style mobile security audit engine with colored output
-- **Automation Suite** (`scripts/` folder) — Fully deployed and improved:
-
-| Script                    | Purpose |
-|---------------------------|--------|
-| `privacy_guard.py`        | PII, secrets & token sanitizer before Git pushes |
-| `port_harden.py`          | Continuous port sentry & trap trigger |
-| `air_gap_isolate.py`      | Emergency air-gap / trap-door isolation |
-| `osint_agent.py`          | Passive reconnaissance agent |
-| `threat_hunt_logs.py`     | TTP & IoC log analyzer |
-
----
-
-## 🚀 Quick Start
-
-```bash
-cd ~/Android-mobile-cybersecurity-workbench
-
-bash bunker_audit.sh                    # Run full NIST audit
-chmod 700 scripts/*.py && chmod +x bunker_audit.sh
-```
-
----
-
-## Core Strengths
-
-- Purple Team operations on mobile hardware
-- Defensive automation & threat hunting
-- AI-assisted analysis (Jarvis + Gemini + Claude + local Ollama)
-- Zero Trust enforcement in resource-limited environments
-- Mobile-to-cloud secure pipelines
-
-**Current Role**: Cybersecurity Innovation Fellow — The Knowledge House NY (IF-CS-26)  
-**Operator**: C.K. Bachoo | Navy Veteran
-
----
-
-## 📋 Full Table of Contents
-
-- [Hardware & Deployment](#hardware--deployment)
-- [Automation Suite](#automation-suite)
-- [GodMode AI Orchestration](#godmode-ai-orchestration)
-- [OPSEC & Security](#opsec--security)
-- [Setup & Troubleshooting](#setup--troubleshooting)
-
----
-
-## Hardware & Deployment
-
-- **Primary Device**: Samsung Galaxy Note 20 Ultra (Exynos 990, 12GB RAM, 256GB + MicroSD)
-- **Environment**: Termux + proot-distro (Kali) + X11
-- **Philosophy**: "The mission does not wait for better equipment."
-
----
-
-## Automation Suite
-
-All scripts are built with **zero third-party dependencies** to prevent RAM spikes and OOM kills on Android.
-
-Run `bunker_audit.sh` regularly to verify system hardening and compliance.
-
----
-
-## GodMode AI Orchestration
-
-- Jarvis Voice AI as primary interface
-- Multi-LLM support (Gemini, Claude, local Ollama/Gemma)
-- GodMode web wrapper for concurrent model access
-- Strict sandboxing and Zero Trust gates
-
----
-
-## OPSEC & Security
-
-- Sensitive data stays in `Vault/` (never committed)
-- `privacy_guard.py` scrubs PII/secrets before every push
-- Air-gap trap door via `air_gap_isolate.py`
-- Strong `.gitignore` + secrets folder protection
-
----
-
-## Full Detailed Documentation
-
-The complete setup guide (X11, Jarvis, Kali, AI stack, GitHub sync, thermal safety, troubleshooting, etc.) is maintained inside the repository.
-
----
-
-**"The mission does not wait for better equipment."** — C.K. Bachoo ⚓🫡
-
----
-
-**Connect**  
-Open to collaboration on mobile security, Purple Team ops, DevSecOps automation, and constrained-environment security.
-
----
-
-*Last updated: May 12, 2026*
-
-```
-
----
-
+Analyst: C.K. Bachoo | Verified: XO | Date: MAY 2026
