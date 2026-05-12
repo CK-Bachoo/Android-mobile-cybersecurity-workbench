@@ -1,72 +1,62 @@
 #!/bin/bash
-# BUNKER MOBILE AUDIT ENGINE v1.0
-# Operator : C.K. Bachoo | NY IF-CS-26 | The Knowledge House
-# Purpose  : NIST CSF 2.0 compliance check
-# Usage    : bash bunker_audit.sh
+# =============================================
+# BUNKER AUDIT v2.8 - NIST + Android Hardening
+# =============================================
 
-VAULT_DIR="$HOME/Android-mobile-cybersecurity-workbench/Vault/Logs"
-LOG_FILE="$VAULT_DIR/audit_$(date '+%Y%m%d_%H%M%S').txt"
-mkdir -p "$VAULT_DIR"
+echo -e "\033[1;34m🔒 BUNKER AUDIT v2.8 - Mobile Cybersecurity Workbench\033[0m"
+echo "Started: $(date)"
+echo "========================================"
 
-log() {
-    echo -e "$1"
-    echo -e "$1" | sed 's/\x1b\[[0-9;]*m//g' >> "$LOG_FILE" 2>/dev/null
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+check() {
+    echo -e "\( {YELLOW}[CHECK] \){NC} $1"
 }
 
-log "--- [BUNKER MOBILE AUDIT ENGINE v1.0] ---"
-log "STATUS: NIST CSF COMPLIANCE CHECK"
-log "Timestamp : $(date '+%Y-%m-%d %H:%M:%S')"
-log "Operator  : C.K. Bachoo | NY IF-CS-26"
-log "----------------------------------------"
+pass() { echo -e "\( {GREEN}[PASS] \){NC} $1"; }
+warn() { echo -e "\( {YELLOW}[WARN] \){NC} $1"; }
+fail() { echo -e "\( {RED}[FAIL] \){NC} $1"; }
 
-log "[ID.1] Checking Root Status..."
-if [ -f "/system/xbin/su" ] || [ -f "/system/bin/su" ] || [ -f "/sbin/su" ]; then
-    log "  > su binary detected. Compliance: WARNING."
+# 1. Basic System Info
+check "System Information"
+echo "Device: $(getprop ro.product.model 2>/dev/null || echo 'N/A')"
+echo "Android Version: $(getprop ro.build.version.release 2>/dev/null || echo 'N/A')"
+echo "Kernel: $(uname -r)"
+echo "User: $USER"
+
+# 2. Root / Privilege Check
+check "Root / SELinux Status"
+if command -v su >/dev/null 2>&1; then
+    warn "Root access (su) is available"
 else
-    log "  > Device is Not Rooted. Compliance: PASS."
+    pass "No su binary found"
 fi
 
-log "[PR.AC] Checking ADB Status..."
-ADB_STATUS=""
-if command -v getprop >/dev/null 2>&1; then
-    ADB_STATUS=$(getprop init.svc.adbd 2>/dev/null)
-fi
-if [ "$ADB_STATUS" = "running" ]; then
-    log "  > ADB Daemon: RUNNING — WARNING open attack surface"
-else
-    log "  > ADB Daemon: stopped"
-fi
+# 3. Network & Connectivity
+check "Network Interfaces"
+ip addr show 2>/dev/null | grep -E "inet " | awk '{print $2}' || echo "No ip command output"
 
-log "[PR.IP] Checking VPN / Network Isolation..."
-if ip link show 2>/dev/null | grep -qE 'tun|ppp'; then
-    log "  > Tunnel interface detected (VPN active). PASS."
-else
-    log "  > No tunnel interface found. VPN may be inactive. WARNING."
-fi
+check "Listening Ports"
+(netstat -tuln 2>/dev/null || ss -tuln 2>/dev/null) || echo "No network tools available"
 
-log "[PR.DS] Checking Vault OPSEC..."
-GITIGNORE="$HOME/Android-mobile-cybersecurity-workbench/.gitignore"
-if [ -f "$GITIGNORE" ] && grep -q "Vault/" "$GITIGNORE"; then
-    log "  > Vault/ in .gitignore. PASS."
-else
-    log "  > Vault/ NOT in .gitignore. FAIL."
-fi
+# 4. Security Features
+check "Developer Options & USB Debugging"
+settings get global adb_enabled 2>/dev/null || echo "N/A"
 
-log "[DE.CM] Scanning Active Processes..."
-log "  PID TTY          TIME CMD"
-ps -o pid,tname,time,comm 2>/dev/null | head -n 4 | tail -n 3 | \
-    while read -r line; do log "  $line"; done
+check "Unknown Sources"
+settings get secure install_non_market_apps 2>/dev/null || echo "N/A"
 
-log "[RS.MI] Checking Automation Scripts..."
-SCRIPT_DIR="$HOME/Android-mobile-cybersecurity-workbench/scripts"
-for script in privacy_guard.py port_harden.py air_gap_isolate.py osint_agent.py threat_hunt_logs.py; do
-    if [ -f "$SCRIPT_DIR/$script" ]; then
-        log "  > $script — PASS"
-    else
-        log "  > $script — NOT FOUND — FAIL"
-    fi
-done
+# 5. File System Permissions
+check "Sensitive Directories Permissions"
+ls -ld /sdcard /data /system 2>/dev/null || echo "Limited access (normal in Termux)"
 
-log "----------------------------------------"
-log "AUDIT COMPLETE. STANDING BY FOR UPLOAD."
-log "Report: $LOG_FILE"
+# 6. Running Processes
+check "Top Running Processes"
+ps -ef | head -n 15
+
+echo -e "\n\033[1;32m✅ Audit completed at $(date)\033[0m"
+echo "Recommendation: Review output and run individual hardening scripts."
