@@ -1,4 +1,4 @@
-# 🛡️ Mobile Cybersecurity Enterprise-Grade Purple Team capabilities on constrained Android Hardware 
+# 🛡️ Mobile Cybersecurity Enterprise-Grade Purple Team capabilities on constrained Android hardware 
 
 **Core Strengths**
 - Purple Team operations and defensive automation
