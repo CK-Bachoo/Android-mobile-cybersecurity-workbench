@@ -110,5 +110,3 @@ Open to collaboration on mobile security, Purple Team ops, DevSecOps automation,
 ---
 
 *Last updated: May 12, 2026*
-
-```
