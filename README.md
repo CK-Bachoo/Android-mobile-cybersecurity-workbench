@@ -117,7 +117,8 @@ Open to collaboration on mobile security, Purple Team ops, DevSecOps automation,
 Deployment: Samsung Note 20 Ultra Exynos 990 12 GB RAM 256 GB internal storage with exp. SD card storage & Legacy MacBook Pro 13 2011 High Sierra (Decommissioned Feb 1, 2025 - Black Screen of Death)
 Operator: | Bachoo, C. K. | Cybersecurity Innovation Fellow NY IF-CS-26 | The Knowledge House Bronx, NY
 DEFCON Status: CHARLIE (Active Threat: ShinyHunters May 12 Deadline)
-##00 / Core Directives & GodMode AI Orchestration
+
+00 / Core Directives & GodMode AI Orchestration
 GodMode AI & OpenClaw Agent Integration
 The Bunker utilizes a native GodMode AI orchestration framework to manage multiple LLMs simultaneously. This prevents vendor lock-in, ensures operational continuity during network degradation, and enables multi-model cross-validation for complex threat hunting.
 GodMode Chat Browser Initialization (smol-ai): The GodMode webview wrapper is deployed to access ChatGPT, Claude 3.5, Bard, Bing, and Gemini 1.5 Pro concurrently.
@@ -125,14 +126,16 @@ Execution (The Agile Pivot): cd ~/GodMode && python -m http.server 8000 (Pivoted
 Architecture Context: Running multiple heavy web-apps natively in Android Chrome crashes the Exynos 990 due to RAM constraints. The GodMode wrapper bypasses standard browser memory limits, creating a unified, lightweight interface for all API-less chat models, completely tunneled through our encrypted VPN.
 OpenClaw / PicoClaw Agentic Automation: Local AI agents deployed via OpenClaw to perform autonomous log parsing, system audits, and threat hunting without requiring human-in-the-loop for every command.
 Security Constraint (MCP Security 101): The Model Context Protocol (MCP) acts as the API layer for these agents. To prevent "God-Mode" privilege escalation (e.g., tool poisoning or unauthorized system writes), all MCP tools are strictly sandboxed.
+
 Enforcement: Implemented Client-Side Validation to strip Prompt Injection vectors before execution, and the Principle of Least Privilege is strictly enforced on the Termux environment (e.g., agents cannot write to /var/log, only read).
 Local Fallback (Ollama + Llama 3.2 / Gemma 2B):
 When external networks are compromised or air-gapped, the Bunker relies on 100% local, offline inference to parse sensitive logs without leaking proprietary data to cloud providers.
 Hardware Pool: 12GB LPDDR5 RAM.
+
 Execution: ollama serve & ollama run gemma:2b
 Constraint: Never run Ollama simultaneously with X11/Jarvis. The Android kernel's Signal 9 (Out of Memory) Phantom Process Killer will terminate the session. Graceful teardown requires pkill ollama to flush RAM.
 
-##01 / Tactical Phases (Canvas Aligned)
+01 / Tactical Phases (Canvas Aligned)
 Phase 0: System Foundations (S01 - S03)
 CTI & Navigation: Linux Scavenger Hunt & Access Control Hardening (harden.sh). Mastered the Filesystem Hierarchy Standard (FHS) to locate and extract hidden tokens from /var/tmp/.blackout/.
 Permissions: Applied the Read-Write-Execute (RWX) matrix (700 for private, 755 for scripts, 644 for standard files).
@@ -1204,134 +1207,3 @@ The Logic: If the automated port sentry (port_harden.py) detects an unauthorized
 The Execution: The device immediately drops all network interfaces, severing the connection to the outside world.
 The Result: The attacker is locked inside a dead, disconnected session. Simultaneously, the system flushes volatile memory, wiping ~/.bash_history and ~/.git-credentials. The operator is no longer in the same "room," and the attacker is left holding an empty, isolated shell.
 Analyst: C.K. Bachoo | Verified: XO | Date: MAY 2026 ⚓🫡
-
-
-
-
-
-
-
-
-Vs
-
-
-
-
-
-
-# 🛡️ Android Mobile Cybersecurity Workbench (The Bunker) v2.8
-
-**Mobile-first Purple Team automation lab** running on Samsung Galaxy Note 20 Ultra + Termux.
-
-A living proof that enterprise-grade security operations, threat hunting, defensive automation, and AI orchestration can run effectively on constrained Android hardware.
-
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Version](https://img.shields.io/badge/Version-2.8-blue)
-![Platform](https://img.shields.io/badge/Platform-Android_Termux-orange)
-
----
-
-### ✨ v2.8 Release Highlights
-
-- **`bunker_audit.sh`** — NIST-style mobile security audit engine with colored output
-- **Automation Suite** (`scripts/` folder) — Fully deployed and improved:
-
-| Script                    | Purpose |
-|---------------------------|--------|
-| `privacy_guard.py`        | PII, secrets & token sanitizer before Git pushes |
-| `port_harden.py`          | Continuous port sentry & trap trigger |
-| `air_gap_isolate.py`      | Emergency air-gap / trap-door isolation |
-| `osint_agent.py`          | Passive reconnaissance agent |
-| `threat_hunt_logs.py`     | TTP & IoC log analyzer |
-
----
-
-## 🚀 Quick Start
-
-```bash
-cd ~/Android-mobile-cybersecurity-workbench
-
-bash bunker_audit.sh                    # Run full NIST audit
-chmod 700 scripts/*.py && chmod +x bunker_audit.sh
-```
-
----
-
-## Core Strengths
-
-- Purple Team operations on mobile hardware
-- Defensive automation & threat hunting
-- AI-assisted analysis (Jarvis + Gemini + Claude + local Ollama)
-- Zero Trust enforcement in resource-limited environments
-- Mobile-to-cloud secure pipelines
-
-**Current Role**: Cybersecurity Innovation Fellow — The Knowledge House NY (IF-CS-26)  
-**Operator**: C.K. Bachoo | Navy Veteran
-
----
-
-## 📋 Full Table of Contents
-
-- [Hardware & Deployment](#hardware--deployment)
-- [Automation Suite](#automation-suite)
-- [GodMode AI Orchestration](#godmode-ai-orchestration)
-- [OPSEC & Security](#opsec--security)
-- [Setup & Troubleshooting](#setup--troubleshooting)
-
----
-
-## Hardware & Deployment
-
-- **Primary Device**: Samsung Galaxy Note 20 Ultra (Exynos 990, 12GB RAM, 256GB + MicroSD)
-- **Environment**: Termux + proot-distro (Kali) + X11
-- **Philosophy**: "The mission does not wait for better equipment."
-
----
-
-## Automation Suite
-
-All scripts are built with **zero third-party dependencies** to prevent RAM spikes and OOM kills on Android.
-
-Run `bunker_audit.sh` regularly to verify system hardening and compliance.
-
----
-
-## GodMode AI Orchestration
-
-- Jarvis Voice AI as primary interface
-- Multi-LLM support (Gemini, Claude, local Ollama/Gemma)
-- GodMode web wrapper for concurrent model access
-- Strict sandboxing and Zero Trust gates
-
----
-
-## OPSEC & Security
-
-- Sensitive data stays in `Vault/` (never committed)
-- `privacy_guard.py` scrubs PII/secrets before every push
-- Air-gap trap door via `air_gap_isolate.py`
-- Strong `.gitignore` + secrets folder protection
-
----
-
-## Full Detailed Documentation
-
-The complete setup guide (X11, Jarvis, Kali, AI stack, GitHub sync, thermal safety, troubleshooting, etc.) is maintained inside the repository.
-
----
-
-**"The mission does not wait for better equipment."** — C.K. Bachoo ⚓🫡
-
----
-
-**Connect**  
-Open to collaboration on mobile security, Purple Team ops, DevSecOps automation, and constrained-environment security.
-
----
-
-*Last updated: May 12, 2026*
-
-```
-
----
-
