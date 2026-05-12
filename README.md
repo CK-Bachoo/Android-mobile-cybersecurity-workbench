@@ -1,5 +1,5 @@
 ```markdown
-# 🛡️ Android Mobile Cybersecurity Workbench (The Bunker) v2.8
+🛡️ Android Mobile Cybersecurity Workbench (The Bunker) v2.8
 
 **Mobile-first Purple Team automation lab** running on Samsung Galaxy Note 20 Ultra + Termux.
 
@@ -112,5 +112,3 @@ Open to collaboration on mobile security, Purple Team ops, DevSecOps automation,
 *Last updated: May 12, 2026*
 
 ```
-
----
