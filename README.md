@@ -113,11 +113,11 @@ Open to collaboration on mobile security, Purple Team ops, DevSecOps automation,
 
 ### Android Mobile Cybersecurity Workbench: The Bunker SOP 🛡️
 
-Role: 🛡️Cybersecurity Innovation Fellow. Purple Team Ops | Mobile-to-Cloud Lab Environments | IT Support & AI Security Architect | Navy Veteran
+##Role: 🛡️Cybersecurity Innovation Fellow. Purple Team Ops | Mobile-to-Cloud Lab Environments | IT Support & AI Security Architect | Navy Veteran
 Deployment: Samsung Note 20 Ultra Exynos 990 12 GB RAM 256 GB internal storage with exp. SD card storage & Legacy MacBook Pro 13 2011 High Sierra (Decommissioned Feb 1, 2025 - Black Screen of Death)
 Operator: | Bachoo, C. K. | Cybersecurity Innovation Fellow NY IF-CS-26 | The Knowledge House Bronx, NY
 DEFCON Status: CHARLIE (Active Threat: ShinyHunters May 12 Deadline)
-00 / Core Directives & GodMode AI Orchestration
+##00 / Core Directives & GodMode AI Orchestration
 GodMode AI & OpenClaw Agent Integration
 The Bunker utilizes a native GodMode AI orchestration framework to manage multiple LLMs simultaneously. This prevents vendor lock-in, ensures operational continuity during network degradation, and enables multi-model cross-validation for complex threat hunting.
 GodMode Chat Browser Initialization (smol-ai): The GodMode webview wrapper is deployed to access ChatGPT, Claude 3.5, Bard, Bing, and Gemini 1.5 Pro concurrently.
@@ -132,7 +132,7 @@ Hardware Pool: 12GB LPDDR5 RAM.
 Execution: ollama serve & ollama run gemma:2b
 Constraint: Never run Ollama simultaneously with X11/Jarvis. The Android kernel's Signal 9 (Out of Memory) Phantom Process Killer will terminate the session. Graceful teardown requires pkill ollama to flush RAM.
 
-01 / Tactical Phases (Canvas Aligned)
+##01 / Tactical Phases (Canvas Aligned)
 Phase 0: System Foundations (S01 - S03)
 CTI & Navigation: Linux Scavenger Hunt & Access Control Hardening (harden.sh). Mastered the Filesystem Hierarchy Standard (FHS) to locate and extract hidden tokens from /var/tmp/.blackout/.
 Permissions: Applied the Read-Write-Execute (RWX) matrix (700 for private, 755 for scripts, 644 for standard files).
