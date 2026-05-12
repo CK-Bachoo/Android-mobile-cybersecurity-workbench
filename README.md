@@ -1,4 +1,4 @@
-# 🛡️ Mobile-first cybersecurity practitioner building enterprise-grade Purple Team capabilities on constrained Android hardware 
+# 🛡️ Mobile cybersecurity enterprise-grade Purple Team capabilities on constrained Android hardware 
 
 **Core Strengths**
 - Purple Team operations and defensive automation
