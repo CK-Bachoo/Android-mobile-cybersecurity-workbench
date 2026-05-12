@@ -1,7 +1,7 @@
 ```markdown
 🛡️ Android Mobile Cybersecurity Workbench (The Bunker) v2.8
 
-**Mobile-first Purple Team automation lab** running on Samsung Galaxy Note 20 Ultra + Termux.
+Mobile-first Purple Team automation lab** running on Samsung Galaxy Note 20 Ultra + Termux.
 
 A living proof that enterprise-grade security operations, threat hunting, defensive automation, and AI orchestration can run effectively on constrained Android hardware.
 
