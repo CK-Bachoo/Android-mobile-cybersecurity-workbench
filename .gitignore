@@ -1,3 +1,84 @@
-Vault/
-auto_audit.py
-ed_readme_md*
+# ======================
+# BUNKER .gitignore
+# Android Mobile Cybersecurity Workbench
+# ======================
+
+# Secrets & Credentials
+.secrets/
+*.key
+*.pem
+*.pfx
+*.password
+github_pat.txt
+*.env
+.env*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Temporary / Cache
+*.tmp
+*.temp
+.cache
+*.swp
+*\~
+.DS_Store
+Thumbs.db
+
+# Termux / Android specific
+termux*
+*.bak
+*.backup
+
+# Large files / Binaries
+*.apk
+*.bin
+*.exe
+*.dll
+
+# HTML / Generated files (if big)
+*.html.bak
+god-mode.html.bak
+
+# Virtual Environments
+venv/
+env/
+ENV/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.code-workspace
+
+# Git
+.gitignore.bak
+
+# Misc
+*.sqlite3
+*.db
