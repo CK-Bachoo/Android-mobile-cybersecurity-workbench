@@ -1,4 +1,4 @@
-🛡️ Android Mobile Cybersecurity Workbench (The Bunker)
+###🛡️ Android Mobile Cybersecurity Workbench (The Bunker)
 Mobile-first Purple Team automation lab engineered for ARM64 Android environments (Samsung Galaxy Note 20 Ultra + Termux).
 
 This repository stands as living proof that enterprise-grade security operations, proactive threat hunting, defensive automation, and zero-trust AI orchestration can execute flawlessly on constrained mobile hardware. Built on the core philosophy that the mission does not wait for better equipment, this workbench bypasses standard x86 hypervisor limitations by leveraging native Linux sub-systems and remote cloud-bridge infrastructure.
