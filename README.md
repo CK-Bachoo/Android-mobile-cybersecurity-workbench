@@ -1,6 +1,8 @@
 # 🛡️Mobile Cybersecurity Enterprise-Grade Purple Team capabilities on constrained Android hardware 
 (Samsung Note 20 Ultra 5g Exynos990 + Termux App + Chrome Browser +Google Cloud Shell +Azure +Aws +Github) 
 
+This is a live, operational security workbench built and run entirely on a Samsung Galaxy Note 20 Ultra. No shortcuts. Built by a Navy veteran and Cybersecurity Innovation Fellow to prove enterprise-grade Purple Team operations are a function of discipline, not hardware.
+
 **Core Strengths**
 - Purple Team operations and defensive automation
 - Mobile-to-cloud security pipelines
