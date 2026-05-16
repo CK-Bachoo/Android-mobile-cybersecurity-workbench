@@ -3,6 +3,7 @@ import http.server
 import socketserver
 import os
 import json
+from datetime import datetime, timezone
 
 PORT = 8080
 LOG_FILE = os.path.expanduser("~/Project-Dreadnought/vault/logs/threat_radar.json")
@@ -10,6 +11,38 @@ LOG_FILE = os.path.expanduser("~/Project-Dreadnought/vault/logs/threat_radar.jso
 class DreadnoughtGodModeHandler(http.server.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         return
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
+
+    def do_POST(self):
+        if self.path == "/api/telemetry":
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                payload = json.loads(post_data.decode('utf-8'))
+
+                if "timestamp" not in payload:
+                    payload["timestamp"] = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+
+                with open(LOG_FILE, "a") as f:
+                    f.write(json.dumps(payload) + "\n")
+
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(b'{"status":"success"}')
+            except Exception:
+                self.send_response(400)
+                self.end_headers()
+        else:
+            self.send_response(404)
+            self.end_headers()
 
     def do_GET(self):
         if self.path == "/api/telemetry":
@@ -138,7 +171,7 @@ class DreadnoughtGodModeHandler(http.server.BaseHTTPRequestHandler):
                             const data = await res.json();
                             const radarFeed = document.getElementById('radar-feed');
                             radarFeed.innerHTML = '';
-                            
+
                             const now = new Date();
                             let watchdogActive = false;
 
@@ -148,14 +181,14 @@ class DreadnoughtGodModeHandler(http.server.BaseHTTPRequestHandler):
                                 if ((now - logTime) < 45000) {
                                     watchdogActive = true;
                                 }
-                                
+
                                 const cMatch = top.message.match(/Connections:\s*(\d+)/);
                                 if(cMatch) animateValue('socket-vol', cMatch[1]);
-                                
+
                                 const iMatch = top.message.match(/interface:\s*([^|\n]+)/);
                                 if(iMatch) animateValue('active-iface', iMatch[1].trim());
                             }
-                            
+
                             const wdStatus = document.getElementById('watchdog-status');
                             if (watchdogActive) {
                                 wdStatus.innerText = "ONLINE";
@@ -175,17 +208,17 @@ class DreadnoughtGodModeHandler(http.server.BaseHTTPRequestHandler):
                             });
                         } catch(e) {}
                     }
-                    
+
                     function submitPrompt() {
                         const inputField = document.getElementById('ai-input');
                         const outputBox = document.getElementById('ai-output');
                         const prompt = inputField.value;
                         if (!prompt) return;
-                        
+
                         outputBox.innerHTML += `<br><br><span style="color:#ffffff;">> TRANSMITTED: ${prompt}</span><br><span style="color:#888888;">[PROCESSING VIA LOCAL/API HOOK...]</span>`;
                         inputField.value = '';
                         outputBox.scrollTop = outputBox.scrollHeight;
-                        
+
                         setTimeout(() => {
                             outputBox.innerHTML += `<br><span style="color:#00bcff;">[PRIMARY_XO] Directive received. Local Ollama routing standing by on port 11434.</span>`;
                             outputBox.scrollTop = outputBox.scrollHeight;
