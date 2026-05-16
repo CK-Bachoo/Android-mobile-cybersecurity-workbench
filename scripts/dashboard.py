@@ -3,6 +3,7 @@ import http.server
 import socketserver
 import os
 import json
+import subprocess
 from datetime import datetime, timezone
 
 PORT = 8080
@@ -20,29 +21,47 @@ class DreadnoughtGodModeHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_POST(self):
-        if self.path == "/api/telemetry":
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        
+        if self.path == "/api/command":
             try:
                 content_length = int(self.headers.get('Content-Length', 0))
                 post_data = self.rfile.read(content_length)
                 payload = json.loads(post_data.decode('utf-8'))
-
+                cmd = payload.get("command", "").strip().lower()
+                
+                response_payload = {"output": ""}
+                
+                if cmd == "ping":
+                    try:
+                        res = subprocess.run(["ping", "-c", "2", "127.0.0.1"], capture_output=True, text=True, timeout=5)
+                        response_payload["output"] = res.stdout if res.returncode == 0 else res.stderr
+                    except Exception as e:
+                        response_payload["output"] = f"Execution error: {str(e)}"
+                elif cmd:
+                    response_payload["output"] = f"[SYSTEM] Directive '{cmd}' received. Command validation matrix active. Restricted environment."
+                else:
+                    response_payload["output"] = "Empty directive."
+                    
+                self.wfile.write(json.dumps(response_payload).encode('utf-8'))
+            except Exception as e:
+                self.wfile.write(json.dumps({"output": f"Fatal processing loop anomaly: {str(e)}"}).encode('utf-8'))
+                
+        elif self.path == "/api/telemetry":
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                payload = json.loads(post_data.decode('utf-8'))
                 if "timestamp" not in payload:
                     payload["timestamp"] = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-
                 with open(LOG_FILE, "a") as f:
                     f.write(json.dumps(payload) + "\n")
-
-                self.send_response(200)
-                self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
-                self.end_headers()
                 self.wfile.write(b'{"status":"success"}')
             except Exception:
-                self.send_response(400)
-                self.end_headers()
-        else:
-            self.send_response(404)
-            self.end_headers()
+                pass
 
     def do_GET(self):
         if self.path == "/api/telemetry":
@@ -82,9 +101,7 @@ class DreadnoughtGodModeHandler(http.server.BaseHTTPRequestHandler):
                         .col-right { grid-column: span 8; display: flex; flex-direction: column; gap: 15px; }
                     }
                     .card { border: 1px solid #00ff66; padding: 12px; background: #070707; }
-                    .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #00ff66; padding-bottom: 4px; margin-bottom: 10px; }
-                    .card-header h3 { margin: 0; color: #ffffff; font-size: 14px; text-transform: uppercase; }
-                    .card-header span { font-size: 10px; color: #888888; }
+                    .card h3 { margin-top: 0; color: #ffffff; border-bottom: 1px dashed #00ff66; padding-bottom: 4px; font-size: 14px; text-transform: uppercase; }
                     .metric-box { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #003311; }
                     .metric-val { font-weight: bold; transition: all 0.3s ease; }
                     .agent-tag { color: #ffcc00; font-weight: bold; }
@@ -106,52 +123,34 @@ class DreadnoughtGodModeHandler(http.server.BaseHTTPRequestHandler):
                 <div class="grid-main">
                     <div class="col-left">
                         <div class="card">
-                            <div class="card-header">
-                                <h3>SYSTEM MATRIX</h3>
-                                <span>[NATIVE L3 SOCKETS]</span>
-                            </div>
+                            <h3>SYSTEM MATRIX</h3>
                             <div class="metric-box"><span>WATCHDOG</span><span class="metric-val" id="watchdog-status" style="color:#ff3333;">OFFLINE</span></div>
                             <div class="metric-box"><span>ACTIVE_INTERFACE</span><span class="metric-val" id="active-iface">SCANNING</span></div>
                             <div class="metric-box"><span>SOCKETS_MONITORED</span><span class="metric-val" id="socket-vol">0</span></div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <h3>ARCHITECT'S LEDGER</h3>
-                                <span>[IMMUTABLE]</span>
-                            </div>
+                            <h3>ARCHITECT'S LEDGER</h3>
                             <div class="metric-box"><span style="color:#ffcc00;">GLASSWING: CLASSIFIED</span></div>
                             <div style="font-size: 10px; color: #888; margin-top: 10px;">Zero-Trust DevSecOps pipeline active.</div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <h3>INTELLIGENCE CORE</h3>
-                                <span>[MULTI-AGENT]</span>
-                            </div>
+                            <h3>INTELLIGENCE CORE</h3>
                             <div class="metric-box"><span>PRIMARY_XO</span><span class="agent-tag">GEMINI_ULTRA</span></div>
                             <div class="metric-box"><span>LAB_MENTOR</span><span class="agent-tag">CLAUDE_3.5</span></div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <h3>COMMAND UPLINK</h3>
-                                <span>[ACTIVE OVERRIDE]</span>
-                            </div>
+                            <h3>COMMAND UPLINK</h3>
                             <input type="text" id="ai-input" placeholder="> AWAITING DIRECTIVE..." onkeypress="if(event.key === 'Enter') submitPrompt()">
                             <button onclick="submitPrompt()">TRANSMIT</button>
                         </div>
                     </div>
                     <div class="col-right">
                         <div class="card">
-                            <div class="card-header">
-                                <h3>TACTICAL RADAR</h3>
-                                <span>(AUTO-REFRESHING: 5S)</span>
-                            </div>
+                            <h3>TACTICAL RADAR</h3>
                             <div class="terminal-view" id="radar-feed" style="height: 320px;"></div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <h3>COGNITIVE OUTPUT</h3>
-                                <span>[AI RESPONSE]</span>
-                            </div>
+                            <h3>COGNITIVE OUTPUT</h3>
                             <div class="terminal-view" id="ai-output" style="height: 200px; color: #ffcc00;">[SYSTEM] Local Ollama / Remote API targets standing by. Awaiting input.</div>
                         </div>
                     </div>
@@ -182,10 +181,10 @@ class DreadnoughtGodModeHandler(http.server.BaseHTTPRequestHandler):
                                     watchdogActive = true;
                                 }
 
-                                const cMatch = top.message.match(/Connections:\s*(\d+)/);
+                                const cMatch = top.message.match(/Connections:\\s*(\\d+)/);
                                 if(cMatch) animateValue('socket-vol', cMatch[1]);
 
-                                const iMatch = top.message.match(/interface:\s*([^|\n]+)/);
+                                const iMatch = top.message.match(/interface:\\s*([^|\\n]+)/);
                                 if(iMatch) animateValue('active-iface', iMatch[1].trim());
                             }
 
@@ -209,20 +208,28 @@ class DreadnoughtGodModeHandler(http.server.BaseHTTPRequestHandler):
                         } catch(e) {}
                     }
 
-                    function submitPrompt() {
+                    async function submitPrompt() {
                         const inputField = document.getElementById('ai-input');
                         const outputBox = document.getElementById('ai-output');
-                        const prompt = inputField.value;
+                        const prompt = inputField.value.trim();
                         if (!prompt) return;
 
-                        outputBox.innerHTML += `<br><br><span style="color:#ffffff;">> TRANSMITTED: ${prompt}</span><br><span style="color:#888888;">[PROCESSING VIA LOCAL/API HOOK...]</span>`;
+                        outputBox.innerHTML += `<br><br><span style="color:#ffffff;">> TRANSMITTED: ${prompt}</span>`;
                         inputField.value = '';
                         outputBox.scrollTop = outputBox.scrollHeight;
 
-                        setTimeout(() => {
-                            outputBox.innerHTML += `<br><span style="color:#00bcff;">[PRIMARY_XO] Directive received. Local Ollama routing standing by on port 11434.</span>`;
-                            outputBox.scrollTop = outputBox.scrollHeight;
-                        }, 1000);
+                        try {
+                            const response = await fetch('/api/command', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ command: prompt })
+                            });
+                            const result = await response.json();
+                            outputBox.innerHTML += `<br><span style="color:#00bcff;">[COCKPIT_KERNEL]</span><br><span style="color:#ffffff;">${result.output.replace(/\\n/g, '<br>')}</span>`;
+                        } catch (error) {
+                            outputBox.innerHTML += `<br><span style="color:#ff3333;">[COMMS_ERROR] Failed to communicate with local kernel subsystem.</span>`;
+                        }
+                        outputBox.scrollTop = outputBox.scrollHeight;
                     }
 
                     setInterval(updateGrid, 5000);
