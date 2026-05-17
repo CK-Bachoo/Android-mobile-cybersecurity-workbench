@@ -1,5 +1,5 @@
 
-# 🛡️Mobile Cybersecurity Workbench / Rig: Independent Purple Team Lab Environments on Constrained Android Hardware
+# 🛡️ Mobile Cybersecurity Workbench/Rig: Independent Purple Team Lab Environments on Constrained Android Hardware
 ### (Samsung Note 20 Ultra 5G Exynos 990 + Termux App + Chrome Browser + Google Cloud Shell + Azure + AWS + GitHub)
 
 This is a live, operational security workbench built and run entirely on a Samsung Galaxy Note 20 Ultra. No shortcuts. Built by a Navy veteran and Cybersecurity Innovation Fellow to prove enterprise-inspired Purple Team workflows are a function of discipline, not hardware.
