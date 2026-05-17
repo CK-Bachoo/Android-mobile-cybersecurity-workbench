@@ -1,0 +1,42 @@
+{
+  "name": "android-mobile-cybersecurity-workbench",
+  "version": "1.0.0",
+  "description": "(Samsung Note 20 Ultra 5g Exynos990 + Termux App + Chrome Browser +Google Cloud Shell +Azure +Aws +Github)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench/issues"
+  },
+  "homepage": "https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench#readme",
+  "dependencies": {
+    "@tanstack/react-query": "^5.100.10",
+    "@trpc/client": "^11.17.0",
+    "@trpc/server": "^11.17.0",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.3",
+    "superjson": "^2.2.6",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.8.0",
+    "drizzle-kit": "^0.31.10",
+    "esbuild": "^0.28.0",
+    "tsx": "^4.22.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.13",
+    "vitest": "^4.1.6"
+  }
+}
