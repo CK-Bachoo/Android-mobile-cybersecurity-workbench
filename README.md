@@ -1,5 +1,5 @@
 
-# 🛡️ Mobile Cybersecurity: Independent Purple Team Lab Environments on Constrained Android Hardware
+# 🛡️Mobile Cybersecurity: Independent Purple Team Lab Environments on Constrained Android Hardware
 
 ### (Samsung Note 20 Ultra 5G Exynos 990 + Termux App + Chrome Browser + Google Cloud Shell + Azure + AWS + GitHub)
 
@@ -1050,6 +1050,4 @@ If an attacker managed to breach the local Termux environment, the Bunker employ
  * **The Execution:** Network interfaces are immediately disabled and volatile credentials are cleared to limit post-compromise persistence. The device drops all network interfaces, severing the connection to the outside world.
  * **The Result:** The attacker session is terminated. Simultaneously, the system flushes volatile memory, wiping ~/.bash_history and ~/.git-credentials. The operator is no longer reachable, leaving an empty, isolated shell.
  * **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** MAY 2026
-```
-
 ```
