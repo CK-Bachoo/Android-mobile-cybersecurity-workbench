@@ -100,6 +100,14 @@ Bypassing standard VNC overhead to run XFCE4 natively on Android.
  * **GPU Acceleration:** Virglrenderer deployed to bypass llvmpipe CPU rendering, allowing graphical analysis tools (Wireshark, Autopsy) to run smoothly using the device's native Mali GPU.
  * **Audio Routing:** PulseAudio TCP bridge established via PULSE_SERVER=tcp:127.0.0.1:4713 (Pre-loaded libskcodec.so via LD_PRELOAD to fix Samsung OneUI 6.1 codec crashes).
  * **x86 Emulation:** Box86/Box64 and Wine installed via proot to execute legacy Windows/Linux x86 security binaries on the ARM64 architecture, bridging the gap between mobile hardware and enterprise software.
+
+### ⚙️ The Command Engine (Project Dreadnought Integration)
+*Note: The operational scripts below are maintained in a private deployment repository to ensure strict OPSEC, but are designed to execute natively within this public workbench architecture.*
+
+*   **The XDR Cockpit (`dashboard.py`):** A custom Python HTTP micro-server that binds to local ports to serve a zero-latency HTML/CSS/JS frontend radar directly to the mobile Chrome browser, completely bypassing the memory constraints of heavy desktop frameworks.
+*   **The Orchestration Console (`dreadnought_console.sh`):** The master Bash interface that unifies scattered offensive payloads and defensive sentries into a single, modular execution menu, enabling rapid Purple Team operations directly from a mobile touchscreen.
+```
+
 # ⚙️ RAW WORKBENCH LOGS & HISTORICAL SPECS
 ### ARM64 Mobile-to-Cloud Security Workbench (The Bunker)
  * **Operator:** Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fellow | New York IF-CS-26
