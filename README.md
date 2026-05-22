@@ -1112,5 +1112,3 @@ If an attacker managed to breach the local Termux environment, the Bunker employ
 * **The Result:** The attacker session is terminated. Simultaneously, the system flushes volatile memory, wiping ~/.bash_history and ~/.git-credentials. The operator is no longer reachable, leaving an empty, isolated shell.
 * **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** MAY 2026
 ```
-
-I also fixed the TOC format so GitHub will render the section links correctly. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52985081/d0096385-6b43-4531-9a96-2e6de27adfa8/paste.txt)
