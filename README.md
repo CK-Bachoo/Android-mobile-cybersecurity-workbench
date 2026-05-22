@@ -36,68 +36,78 @@ The Bunker utilizes a native GodMode AI orchestration framework to manage multip
 * **Execution (The Agile Pivot):** 
   ```bash
   cd ~/GodMode && python -m http.server 8000
+  ```
+* **(Pivoted from heavy NodeJS/npm dependencies to a native Python HTTP server for "Intelligent Laziness" resource optimization, eliminating compiler overhead).**
+* **Architecture Context:** Running multiple heavy web-apps natively in Android Chrome crashes the Exynos 990 due to RAM constraints. The GodMode wrapper bypasses standard browser memory limits, creating a unified, lightweight interface for all API-less chat models, completely tunneled through our encrypted VPN.
+* **OpenClaw / PicoClaw Agentic Automation:** Local AI agents deployed via OpenClaw to perform autonomous log parsing, system audits, and threat hunting without requiring human-in-the-loop for every command.
+* **Security Constraint (MCP Security 101):** The Model Context Protocol (MCP) acts as the API layer for these agents. To prevent privilege escalation (e.g., tool poisoning or unauthorized system writes), all MCP tools are strictly sandboxed.
+* **Enforcement:** Implemented Client-Side Validation to strip Prompt Injection vectors before execution, and the Principle of Least Privilege is strictly enforced on the Termux environment (e.g., agents cannot write to /var/log, only read).
 
- * **(Pivoted from heavy NodeJS/npm dependencies to a native Python HTTP server for "Intelligent Laziness" resource optimization, eliminating compiler overhead).
- * **Architecture Context:** Running multiple heavy web-apps natively in Android Chrome crashes the Exynos 990 due to RAM constraints. The GodMode wrapper bypasses standard browser memory limits, creating a unified, lightweight interface for all API-less chat models, completely tunneled through our encrypted VPN.
- * **OpenClaw / PicoClaw Agentic Automation:** Local AI agents deployed via OpenClaw to perform autonomous log parsing, system audits, and threat hunting without requiring human-in-the-loop for every command.
- * **Security Constraint (MCP Security 101):** The Model Context Protocol (MCP) acts as the API layer for these agents. To prevent privilege escalation (e.g., tool poisoning or unauthorized system writes), all MCP tools are strictly sandboxed.
- * **Enforcement:** Implemented Client-Side Validation to strip Prompt Injection vectors before execution, and the Principle of Least Privilege is strictly enforced on the Termux environment (e.g., agents cannot write to /var/log, only read).
 ### Local Fallback (Ollama + Llama 3.2 / Gemma 2B)
 When external networks are compromised or air-gapped, the Bunker relies on 100% local, offline inference to parse sensitive logs without leaking proprietary data to cloud providers.
- * **Hardware Pool:** 12GB LPDDR5 RAM.
- * **Execution:**
-   ```bash
-   ollama serve & ollama run gemma:2b
-   
-   ```
- * **Constraint:** Never run Ollama simultaneously with X11/Jarvis. The Android kernel's Signal 9 (Out of Memory) Phantom Process Killer will terminate the session. Graceful teardown requires pkill ollama to flush RAM.
+* **Hardware Pool:** 12GB LPDDR5 RAM.
+* **Execution:**
+  ```bash
+  ollama serve &
+  ollama run gemma:2b
+  ```
+* **Constraint:** Never run Ollama simultaneously with X11/Jarvis. The Android kernel's Signal 9 (Out of Memory) Phantom Process Killer will terminate the session. Graceful teardown requires pkill ollama to flush RAM.
+
 ## 01 / Tactical Phases (Canvas Aligned)
 ### Phase 0: System Foundations (S01 - S03)
- * **CTI & Navigation:** Linux Scavenger Hunt & Access Control Hardening (harden.sh). Mastered the Filesystem Hierarchy Standard (FHS) to locate and extract hidden tokens from /var/tmp/.blackout/.
- * **Permissions:** Applied the Read-Write-Execute (RWX) matrix (700 for private, 755 for scripts, 644 for standard files).
- * **Text Plumbing:** Advanced log filtering using Grep, Sed, and Awk. Extracted top malicious IP addresses from a 10,000-line Apache access.log using standard streams.
+* **CTI & Navigation:** Linux Scavenger Hunt & Access Control Hardening (harden.sh). Mastered the Filesystem Hierarchy Standard (FHS) to locate and extract hidden tokens from /var/tmp/.blackout/.
+* **Permissions:** Applied the Read-Write-Execute (RWX) matrix (700 for private, 755 for scripts, 644 for standard files).
+* **Text Plumbing:** Advanced log filtering using Grep, Sed, and Awk. Extracted top malicious IP addresses from a 10,000-line Apache access.log using standard streams.
+
 ### Phase 1: Network & Protocol Defense (S04 - S06)
- * **Operation Broken Link (L1-L3):** Restored Layer 3 connectivity by diagnosing a missing default route and manually rebuilding the routing table (sudo ip route add default via 10.0.0.1).
- * **Operation Grid Lock (Subnetting Crucible):** Bypassed isolation caused by a CIDR mismatch. Expanded the subnet mask from a /26 to a /24 to include the gateway, allowing the terminal to successfully ping 10.50.50.1.
- * **Operation Hidden Door:** Protocol interrogation using ss -tuln and curl -I localhost:8080. Remediated local DNS deception by purging poisoned entries in /etc/hosts to restore legitimate resolution for Google.
+* **Operation Broken Link (L1-L3):** Restored Layer 3 connectivity by diagnosing a missing default route and manually rebuilding the routing table (sudo ip route add default via 10.0.0.1).
+* **Operation Grid Lock (Subnetting Crucible):** Bypassed isolation caused by a CIDR mismatch. Expanded the subnet mask from a /26 to a /24 to include the gateway, allowing the terminal to successfully ping 10.50.50.1.
+* **Operation Hidden Door:** Protocol interrogation using ss -tuln and curl -I localhost:8080. Remediated local DNS deception by purging poisoned entries in /etc/hosts to restore legitimate resolution for Google.
+
 ### Phase 2: Virtualization & Automation (S07 - S09)
- * **Infrastructure:** Sandboxed Debian via Proot-Distro in Termux, replacing resource-heavy Type-2 Hypervisors (VirtualBox/VMware).
- * **The Forge:** Developed Python-based security automation (port_check.py, log_filter.py, firewall_bot.py). Implemented try/except error handlers to build graceful failure into scripts, ensuring tools don't crash when logs are missing.
+* **Infrastructure:** Sandboxed Debian via Proot-Distro in Termux, replacing resource-heavy Type-2 Hypervisors (VirtualBox/VMware).
+* **The Forge:** Developed Python-based security automation (port_check.py, log_filter.py, firewall_bot.py). Implemented try/except error handlers to build graceful failure into scripts, ensuring tools don't crash when logs are missing.
+
 ### Phase 3: Cross-Platform Zero-Trust Enclave (Proton VPN + Kill Switch)
- * **Hardening Obsolete Infrastructure:** Enforced a Strict Kill Switch on a legacy MacBook Pro running macOS High Sierra (End-of-Life). If the encrypted tunnel drops for a millisecond, the network adapter is severed at the hardware level, effectively "air-gapping" the vulnerable machine from the local network while maintaining an AES-256 shield.
- * **The Mobile Bunker (Note 20 Ultra):** Implemented Layer 3 Traffic Isolation via Android's "Block connections without VPN" kernel setting. The Termux terminal now operates silently. ISP and local eavesdroppers cannot sniff SSH sessions or cloud-bridge payloads.
- * **Secure AI Orchestration:** By serving the GodMode UI locally over Python and tunneling it through Proton, we achieved a Hybrid Intelligence Pipeline. Heavy compute is securely passed to Gemini/Claude, while sensitive telemetry is analyzed offline by Gemma 2B.
+* **Hardening Obsolete Infrastructure:** Enforced a Strict Kill Switch on a legacy MacBook Pro running macOS High Sierra (End-of-Life). If the encrypted tunnel drops for a millisecond, the network adapter is severed at the hardware level, effectively "air-gapping" the vulnerable machine from the local network while maintaining an AES-256 shield.
+* **The Mobile Bunker (Note 20 Ultra):** Implemented Layer 3 Traffic Isolation via Android's "Block connections without VPN" kernel setting. The Termux terminal now operates silently. ISP and local eavesdroppers cannot sniff SSH sessions or cloud-bridge payloads.
+* **Secure AI Orchestration:** By serving the GodMode UI locally over Python and tunneling it through Proton, we achieved a Hybrid Intelligence Pipeline. Heavy compute is securely passed to Gemini/Claude, while sensitive telemetry is analyzed offline by Gemma 2B.
+
 ## 02 / Hardware Benchmarking & Field Reports
 ### [MISSION]: MiroFish-Offline Red/Blue Swarm (Terminal 0500)
- * **Status:** SUCCESSFUL TASK EXECUTION / STRATEGIC HARDWARE DECOMMISSIONING
- * **Hardware:** Samsung Note 20 Ultra 5G (Exynos 990 / 12GB RAM / 256GB Storage / SD Expanded Vault)
- * **Conditions:** 20% SOC | No Sleep | Manual OS Override (Phantom Process Killer Bypass)
+* **Status:** SUCCESSFUL TASK EXECUTION / STRATEGIC HARDWARE DECOMMISSIONING
+* **Hardware:** Samsung Note 20 Ultra 5G (Exynos 990 / 12GB RAM / 256GB Storage / SD Expanded Vault)
+* **Conditions:** 20% SOC | No Sleep | Manual OS Override (Phantom Process Killer Bypass)
+
 #### 1. Miro-Swarm-Offline: Terminal Functionality
- * **The Local Handshake:** The terminal displayed active negotiation between the Ollama (Tactical Brain) and the Miro-Swarm (Orchestra).
- * **The Mechanism:** Executed via local loopback. One terminal instance acted as the "Red" (Offensive) agent querying the Knowledge Graph, while the second instance provided "Blue" (Defensive) feedback — all without an internet handshake.
- * **Data Flow:** Logic weights were pulled from the SD Expanded Vault into the 12GB LPDDR5 RAM pool, bypassing standard Android storage latency.
+* **The Local Handshake:** The terminal displayed active negotiation between the Ollama (Tactical Brain) and the Miro-Swarm (Orchestra).
+* **The Mechanism:** Executed via local loopback. One terminal instance acted as the "Red" (Offensive) agent querying the Knowledge Graph, while the second instance provided "Blue" (Defensive) feedback — all without an internet handshake.
+* **Data Flow:** Logic weights were pulled from the SD Expanded Vault into the 12GB LPDDR5 RAM pool, bypassing standard Android storage latency.
+
 #### 2. Tactical Deployment & System Overrides
- * **Technical Logic:** Encountered Signal 9 (OOM) execution kills and pip-metadata locks due to aggressive Android system background limits. Executed manual dependency reconciliation and metadata overrides. Bypassed the Android Phantom Process Killer to force-initialize the swarm on a 20% SOC battery baseline.
- * *(Layman's Version):* The phone's software kept trying to "kill" the project to save power. I manually forced it to stay awake and broke through the system's "locks" to finish the install on a dying battery. The Offensive and Defensive AI teams successfully started working together on the terminal for the first time.
+* **Technical Logic:** Encountered Signal 9 (OOM) execution kills and pip-metadata locks due to aggressive Android system background limits. Executed manual dependency reconciliation and metadata overrides. Bypassed the Android Phantom Process Killer to force-initialize the swarm on a 20% SOC battery baseline.
+* *(Layman's Version):* The phone's software kept trying to "kill" the project to save power. I manually forced it to stay awake and broke through the system's "locks" to finish the install on a dying battery. The Offensive and Defensive AI teams successfully started working together on the terminal for the first time.
+
 #### 3. Hardware Preservation & Uninstall Logic
- * **The Audit:** System maintained a 32°C battery baseline during active GraphRAG builds. This is the thermal "Red Line" for an Exynos 990.
- * **The Decision:** UNINSTALLED & PURGED. Sustained heat over time from a recursive AI swarm would ruin the Mobile Cybersecurity Workbench. I proved the "Orchestra" works; then I decommissioned to save the rig.
+* **The Audit:** System maintained a 32°C battery baseline during active GraphRAG builds. This is the thermal "Red Line" for an Exynos 990.
+* **The Decision:** UNINSTALLED & PURGED. Sustained heat over time from a recursive AI swarm would ruin the Mobile Cybersecurity Workbench. I proved the "Orchestra" works; then I decommissioned to save the rig.
+
 #### 4. Decommissioning Forensic Checklist
- * Full Uninstall: Purged 2GB+ of recursive dependencies and model weights.
- * Port Sanitization: 7474 (Neo4j), 5001 (Backend), 3000 (Vite) verified CLOSED.
- * SD Vault Integrity: Verified vault remains secure and uncompromised post-purge.
- * Forensic Clear: ps aux confirms no ghost processes remaining.
+* Full Uninstall: Purged 2GB+ of recursive dependencies and model weights.
+* Port Sanitization: 7474 (Neo4j), 5001 (Backend), 3000 (Vite) verified CLOSED.
+* SD Vault Integrity: Verified vault remains secure and uncompromised post-purge.
+* Forensic Clear: ps aux confirms no ghost processes remaining.
+
 ## 03 / Infrastructure as Code & Desktop Rendering
 ### Termux-X11 & Hardware Acceleration
 Bypassing standard VNC overhead to run XFCE4 natively on Android.
- * **Initialization:**
-   ```bash
-   termux-x11 :1 & DISPLAY=:1 xfce4-session &
-   
-   ```
- * **GPU Acceleration:** Virglrenderer deployed to bypass llvmpipe CPU rendering, allowing graphical analysis tools (Wireshark, Autopsy) to run smoothly using the device's native Mali GPU.
- * **Audio Routing:** PulseAudio TCP bridge established via PULSE_SERVER=tcp:127.0.0.1:4713 (Pre-loaded libskcodec.so via LD_PRELOAD to fix Samsung OneUI 6.1 codec crashes).
- * **x86 Emulation:** Box86/Box64 and Wine installed via proot to execute legacy Windows/Linux x86 security binaries on the ARM64 architecture, bridging the gap between mobile hardware and enterprise software.
+* **Initialization:**
+  ```bash
+  termux-x11 :1 & DISPLAY=:1 xfce4-session &
+  ```
+* **GPU Acceleration:** Virglrenderer deployed to bypass llvmpipe CPU rendering, allowing graphical analysis tools (Wireshark, Autopsy) to run smoothly using the device's native Mali GPU.
+* **Audio Routing:** PulseAudio TCP bridge established via PULSE_SERVER=tcp:127.0.0.1:4713 (Pre-loaded libskcodec.so via LD_PRELOAD to fix Samsung OneUI 6.1 codec crashes).
+* **x86 Emulation:** Box86/Box64 and Wine installed via proot to execute legacy Windows/Linux x86 security binaries on the ARM64 architecture, bridging the gap between mobile hardware and enterprise software.
 
 ### ⚙️ The Command Engine (Project Dreadnought Integration)
 *Note: The operational scripts below are maintained in a private deployment repository to ensure strict OPSEC, but are designed to execute natively within this public workbench architecture.*
@@ -105,35 +115,26 @@ Bypassing standard VNC overhead to run XFCE4 natively on Android.
 *   **The XDR Cockpit (`dashboard.py`):** A custom Python HTTP micro-server that binds to local ports to serve a zero-latency HTML/CSS/JS frontend radar directly to the mobile Chrome browser, completely bypassing the memory constraints of heavy desktop frameworks.
 *   **The Orchestration Console (`dreadnought_console.sh`):** The master Bash interface that unifies scattered offensive payloads and defensive sentries into a single, modular execution menu, enabling rapid Purple Team operations directly from a mobile touchscreen.
 
-```
-### ⚙️ RAW WORKBENCH LOGS & HISTORICAL SPECS
-*ARM64 Mobile-to-Cloud Security Workbench (The Bunker)*
- * **Operator:** Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fellow | New York IF-CS-26
- * **Platform:** Samsung Galaxy Note 20 Ultra | Termux | Mobile-Only Architecture
- * **Mission:** Scale enterprise-level cybersecurity workflows on constrained mobile hardware.
-
->"The mission does not wait for better equipment." — C.K. Bachoo* 
-
 ## 📋 Table of Contents
-I. Hardware Matrix
-II. Pre-Flight Checklist
-III. Base Initialization
-IV. OPSEC Data Isolation
-V. SSH Keys for GitHub
-VI. X11 Graphical Interface
-VII. Kali Linux Virtualization
-VIII. AI Stack Deployment & Security Tooling
-IX. GitHub PAT Cloud Sync
-X. Operational Commands
-XI. Wake and Close Commands
-XII. Thermal Safety Protocol
-XIII. Full Troubleshooting Guide
-XIV. Business Integration Guide
-XV. Professional Verification
-XVI. Voice-Sec Terminal & Automation Suite
-XVII. Threat Intelligence Log: Aeternum C2
-XVIII. Forensic Mission Report: DNS Sabotage / OOB Recovery
-XIX. Threat Intelligence Log: ShinyHunters Canvas Breach & Trap-Door Defense
+- [I. Hardware Matrix](#i-hardware-matrix)
+- [II. Pre-Flight Checklist](#ii-pre-flight-checklist)
+- [III. Base Initialization](#iii-base-initialization)
+- [IV. OPSEC Data Isolation](#iv-opsec-data-isolation)
+- [V. SSH Keys for GitHub](#v-ssh-keys-for-github)
+- [VI. X11 Graphical Interface](#vi-x11-graphical-interface)
+- [VII. Kali Linux Virtualization](#vii-kali-linux-virtualization)
+- [VIII. AI Stack Deployment & Security Tooling](#viii-ai-stack-deployment-security-tooling)
+- [IX. GitHub PAT Cloud Sync](#ix-github-pat-cloud-sync)
+- [X. Operational Commands](#x-operational-commands)
+- [XI. Wake and Close Commands](#xi-wake-and-close-commands)
+- [XII. Thermal Safety Protocol](#xii-thermal-safety-protocol)
+- [XIII. Full Troubleshooting Guide](#xiii-full-troubleshooting-guide)
+- [XIV. Business Integration Guide](#xiv-business-integration-guide)
+- [XV. Professional Verification](#xv-professional-verification)
+- [XVI. Voice-Sec Terminal & Automation Suite](#xvi-voice-sec-terminal-automation-suite)
+- [XVII. Threat Intelligence Log: Aeternum C2](#xvii-threat-intelligence-log-aeternum-c2)
+- [XVIII. Forensic Mission Report: DNS Sabotage / OOB Recovery](#xviii-forensic-mission-report-dns-sabotage--oob-recovery)
+- [XIX. Threat Intelligence Log: ShinyHunters Canvas Breach & Trap-Door Defense](#xix-threat-intelligence-log-shinyhunters-canvas-breach--trap-door-defense)
 
 ## ⚙️ I. Hardware Matrix
 | Device | RAM | Status |
@@ -144,35 +145,36 @@ XIX. Threat Intelligence Log: ShinyHunters Canvas Breach & Trap-Door Defense
 | Samsung Z-Fold 3/4/5/6/Trifold | 12GB | Verified |
 | Google Pixel 6/7/8/9 Pro/Fold | 8-12GB | Verified |
 | iPhone (iOS) | Any | Codespaces + iSH/UTM Pivot |
+
 ### Minimum Requirements
- * Android 10 or higher
- * 8GB RAM minimum (12GB recommended)
- * 5G or Fiber Wi-Fi for GitHub sync and cloud AI
- * 256GB internal storage or 1TB MicroSD for Vault and PCAPs
- * S-Pen recommended for Wireshark packet precision on Note devices
- 
+- Android 10 or higher.
+- 8GB RAM minimum, 12GB recommended.
+- 5G or Fiber Wi-Fi for GitHub sync and cloud AI.
+- 256GB internal storage or 1TB MicroSD for Vault and PCAPs.
+- S-Pen recommended for Wireshark packet precision on Note devices.
+
 ### Hardware Troubleshooting
 | Problem | Fix |
 |---|---|
 | Phone overheats during setup | Stop all processes. Cool device. Restart one tool at a time. |
-| Not enough storage | Move Vault to MicroSD: ln -s /sdcard/Vault ~/Android-mobile-cybersecurity-workbench/Vault |
+| Not enough storage | Move Vault to MicroSD: `ln -s /sdcard/Vault ~/Android-mobile-cybersecurity-workbench/Vault` |
 | Android version too old | Codespaces browser fallback works on any Android version |
 | MicroSD not detected | Settings → Device Care → Storage → check SD card mount status |
 
 ## ✅ II. Pre-Flight Checklist
- * [ ] Termux installed from F-Droid (not Play Store)
- * [ ] Termux-API installed from F-Droid
- * [ ] Termux-X11 companion app installed
- * [ ] Battery above 50 percent
- * [ ] Connected to Wi-Fi
- * [ ] Storage permission granted to Termux
- * [ ] Battery optimization **DISABLED** for Termux in Android Settings
- * [ ] GitHub account created at github.com
- * [ ] At least 4GB free storage
- * [ ] MicroSD card inserted and mounted (recommended)
- * [ ] Gemini API key saved at ~/.secrets/gemini_api_key.txt
- *
- ### Battery Optimization Disable Sequence
+- [ ] Termux installed from F-Droid (not Play Store)
+- [ ] Termux-API installed from F-Droid
+- [ ] Termux-X11 companion app installed
+- [ ] Battery above 50 percent
+- [ ] Connected to Wi-Fi
+- [ ] Storage permission granted to Termux
+- [ ] Battery optimization **DISABLED** for Termux in Android Settings
+- [ ] GitHub account created at github.com
+- [ ] At least 4GB free storage
+- [ ] MicroSD card inserted and mounted (recommended)
+- [ ] Gemini API key saved at `~/.secrets/gemini_api_key.txt`
+
+### Battery Optimization Disable Sequence
 Android Settings → Apps → Termux → Battery → Unrestricted
 *Repeat for Termux-API and Termux-X11.*
 
@@ -182,7 +184,7 @@ Android Settings → Apps → Termux → Battery → Unrestricted
 | Termux from Play Store installed | Uninstall it. Install from F-Droid only. Play Store version is outdated. |
 | Battery optimization keeps re-enabling | Samsung One UI resets this. Check after every phone restart. |
 | No F-Droid on phone | Go to f-droid.org in browser. Download and install APK directly. |
-| MicroSD not showing in Termux | Run termux-setup-storage and tap Allow |
+| MicroSD not showing in Termux | Run `termux-setup-storage` and tap Allow |
 
 ## 🚀 III. Base Initialization
 Open Termux. Run each command one at a time. Wait for each to finish.
@@ -190,233 +192,243 @@ Open Termux. Run each command one at a time. Wait for each to finish.
 **Step 1 — Grant storage access:**
 ```bash
 termux-setup-storage
-
 ```
 *A popup will appear. Tap Allow.*
 
 **Step 2 — Update and upgrade:**
 ```bash
 pkg update -y && pkg upgrade -y
-
 ```
+
 **Step 3 — Install all required tools:**
 ```bash
 pkg install git python nmap openssh proot-distro termux-api termux-x11-repo x11-repo -y
-
 ```
+
 **Step 4 — Install Python security packages:**
 ```bash
 pip install requests scapy paramiko
-
 ```
+
 **Step 5 — Verify everything installed correctly:**
 ```bash
 python --version && git --version && nmap --version && ssh -V
-
 ```
 *All four should return version numbers.*
+
 **Step 6 — Clone this repository:**
 ```bash
-cd ~ && git clone --depth 1 [https://github.com/YOUR-GITHUB-USERNAME/Android-mobile-cybersecurity-workbench.git](https://github.com/YOUR-GITHUB-USERNAME/Android-mobile-cybersecurity-workbench.git) && cd Android-mobile-cybersecurity-workbench
-
+cd ~ && git clone --depth 1 https://github.com/YOUR-GITHUB-USERNAME/Android-mobile-cybersecurity-workbench.git && cd Android-mobile-cybersecurity-workbench
 ```
 *Replace YOUR-GITHUB-USERNAME with your actual GitHub username.*
+
 **Step 7 — Set your wake word:**
 ```bash
 bash scripts/set_wakeword.sh
-
 ```
 *Choose any word. That word launches X11 and Jarvis together.*
+
 ### Base Initialization Troubleshooting
 | Problem | Fix |
 |---|---|
-| pkg update fails | Run termux-change-repo and select a different mirror |
-| Package not found | Run pkg update first then retry install |
-| Storage permission denied | Run termux-setup-storage and tap Allow |
-| pip install fails | Run pip install --upgrade pip first |
+| pkg update fails | Run `termux-change-repo` and select a different mirror |
+| Package not found | Run `pkg update` first then retry install |
+| Storage permission denied | Run `termux-setup-storage` and tap Allow |
+| pip install fails | Run `pip install --upgrade pip` first |
 | git clone fails | Check Wi-Fi. Verify GitHub username is correct. |
-| Python not found after install | Close and reopen Termux. Run source ~/.bashrc |
+| Python not found after install | Close and reopen Termux. Run `source ~/.bashrc` |
+
 ## 🛡️ IV. OPSEC Data Isolation
 All sensitive scan results, packet captures, and logs stay in the Vault. Vault is never committed to GitHub.
+
 **Create Vault structure:**
 ```bash
 mkdir -p Vault/Scans Vault/PCAPs Vault/Logs Vault/Evidence
-
 ```
+
 **Add Vault to gitignore:**
 ```bash
 echo "Vault/" >> .gitignore && echo "*.pcap" >> .gitignore && echo "*.cap" >> .gitignore && echo ".secrets/" >> .gitignore && git config --local core.excludesfile .gitignore
-
 ```
+
 **Verify Vault is protected:**
 ```bash
 cat .gitignore && git status
-
 ```
 *Vault folder should NOT appear in git status output.*
+
 **Move Vault to MicroSD for physical isolation:**
 ```bash
 mkdir -p /sdcard/Vault && ln -s /sdcard/Vault ~/Android-mobile-cybersecurity-workbench/Vault
-
 ```
+
 ### OPSEC Rules
- 1. Never commit real IP addresses to GitHub
- 2. Never commit API keys or PAT tokens
- 3. Never commit pcap files — keep in Vault only
- 4. Always use YOUR-GITHUB-USERNAME placeholder in public docs
- 5. Revoke PAT immediately if accidentally exposed
+1. Never commit real IP addresses to GitHub.
+2. Never commit API keys or PAT tokens.
+3. Never commit pcap files — keep in Vault only.
+4. Always use YOUR-GITHUB-USERNAME placeholder in public docs.
+5. Revoke PAT immediately if accidentally exposed.
+
 ### OPSEC Troubleshooting
 | Problem | Fix |
 |---|---|
-| Vault appearing in git status | Run git rm -r --cached Vault/ then commit |
+| Vault appearing in git status | Run `git rm -r --cached Vault/` then commit |
 | Secrets accidentally committed | Immediately revoke PAT on GitHub. Rotate all keys. |
-| gitignore not working | Run git config --local core.excludesfile .gitignore |
+| gitignore not working | Run `git config --local core.excludesfile .gitignore` |
 | Vault files too large for phone | Move Vault to MicroSD using symlink above. |
-| secrets folder exposed | Run chmod 700 ~/.secrets && chmod 600 ~/.secrets/* |
+| secrets folder exposed | Run `chmod 700 ~/.secrets && chmod 600 ~/.secrets/*` |
+
 ## 🔑 V. SSH Keys for GitHub
 SSH keys give you passwordless GitHub access that never expires.
+
 **Step 1 — Generate your key:**
 ```bash
 ssh-keygen -t ed25519 -C "YOUR-GITHUB-USERNAME"
-
 ```
 *Press ENTER three times to accept all defaults.*
+
 **Step 2 — Display your public key:**
 ```bash
 cat ~/.ssh/id_ed25519.pub
-
 ```
+
 **Step 3 — Copy YOUR output. Never share it publicly.**
+
 **Step 4 — Add to GitHub:**
- * Open github.com in browser
- * Profile photo → Settings
- * SSH and GPG keys → New SSH key
- * Title: Note20Ultra-Termux
- * Paste YOUR key
- * Tap Add SSH key
+- Open github.com in browser
+- Profile photo → Settings
+- SSH and GPG keys → New SSH key
+- Title: Note20Ultra-Termux
+- Paste YOUR key
+- Tap Add SSH key
+
 **Step 5 — Verify connection:**
 ```bash
 ssh -T git@github.com
-
 ```
 *Should return: Hi YOUR-GITHUB-USERNAME! You've successfully authenticated.*
+
 ### SSH Troubleshooting
 | Problem | Fix |
 |---|---|
 | Permission denied | Make sure you copied the .pub file not the private key |
-| Connection refused | Run eval $(ssh-agent -s) then ssh-add ~/.ssh/id_ed25519 |
-| ssh not found | Run pkg install openssh first |
+| Connection refused | Run `eval $(ssh-agent -s)` then `ssh-add ~/.ssh/id_ed25519` |
+| ssh not found | Run `pkg install openssh` first |
 | Key not accepted by GitHub | Delete the key on GitHub and re-add it |
 | Authentication keeps failing | Generate a new key pair and start fresh |
+
 ## 🖥️ VI. X11 Graphical Interface
 X11 gives you a full Linux desktop GUI on your phone screen. Required for Wireshark, VS Code visual editing, and multi-window operations.
+
 **Install X11:**
 ```bash
 pkg install xfce4 xfce4-goodies x11-repo xorg-xrandr -y
-
 ```
+
 ### 🎯 Choose Your Operating Mode
- * **Mode 1 — Full Automation (Recommended):** Set your wake word once. Type it. Everything launches. Jarvis AI online. X11 desktop open. Zero Trust active.
-   ```bash
-   bash scripts/set_wakeword.sh
-   
-   ```
-   *Then type your wake word every session. Example: bunker*
- * **Mode 2 — Manual Control:** Run each tool individually from commands below. No automation stack.
- * **Mode 3 — Terminal Only:** Skip X11 entirely. Run everything in Termux terminal. Lightweight. Fast. Best for low battery or quick operations.
+- **Mode 1 — Full Automation (Recommended):** Set your wake word once. Type it. Everything launches. Jarvis AI online. X11 desktop open. Zero Trust active.
+  ```bash
+  bash scripts/set_wakeword.sh
+  ```
+  *Then type your wake word every session. Example: bunker*
+- **Mode 2 — Manual Control:** Run each tool individually from commands below. No automation stack.
+- **Mode 3 — Terminal Only:** Skip X11 entirely. Run everything in Termux terminal. Lightweight. Fast. Best for low battery or quick operations.
+
 ### HOW TO WAKE X11
- * **Automatic — wake word:**
-   ```bash
-   bunker
-   
-   ```
-   *(Replace bunker with your personal wake word).*
- * **Manual — step by step:**
-   ```bash
-   termux-x11 :1 &
-   DISPLAY=:1 xfce4-session &
-   
-   ```
-   *Then open Termux-X11 app. Acquire wakelock from notification bar.*
+- **Automatic — wake word:**
+  ```bash
+  bunker
+  ```
+  *(Replace bunker with your personal wake word).*
+- **Manual — step by step:**
+  ```bash
+  termux-x11 :1 &
+  DISPLAY=:1 xfce4-session &
+  ```
+  *Then open Termux-X11 app. Acquire wakelock from notification bar.*
+
 ### HOW TO LAUNCH APPS IN X11
 ```bash
 DISPLAY=:1 wireshark &
 DISPLAY=:1 thunar &
 DISPLAY=:1 xterm &
 DISPLAY=:1 [appname] &
-
 ```
+
 ### HOW TO CLOSE X11
 ```bash
 pkill xfce4-session && pkill termux-x11
-
 ```
+
 *Nuclear option if frozen:*
 ```bash
 pkill -9 -u $(whoami)
-
 ```
+
 > **X11 Wake Lock — CRITICAL**
->  * Swipe down notification bar
->  * Find Termux notification
->  * Tap **Acquire Wakelock**
->  * Do this EVERY TIME or X11 freezes within minutes.
-> 
+> - Swipe down notification bar.
+> - Find Termux notification.
+> - Tap **Acquire Wakelock**.
+> - Do this EVERY TIME or X11 freezes within minutes.
+
 ### X11 Troubleshooting
 | Problem | Fix |
 |---|---|
-| Black screen | Close Termux-X11 app. Reopen. Run termux-x11 :1 & again |
+| Black screen | Close Termux-X11 app. Reopen. Run `termux-x11 :1 &` again |
 | GUI freezes immediately | Acquire wakelock from notification bar first |
 | Process killed by Android | Disable battery optimization for Termux in Settings |
-| Display variable error | Run export DISPLAY=:1 before any GUI command |
-| xfce4-session not found | Run pkg install xfce4 -y again |
+| Display variable error | Run `export DISPLAY=:1` before any GUI command |
+| xfce4-session not found | Run `pkg install xfce4 -y` again |
 | Termux-X11 app crashes | Reinstall from F-Droid |
-| Wake word not working | Run source ~/.bashrc then try again |
-| X11 and Jarvis not starting together | Run bash scripts/bunker_wake.sh directly |
+| Wake word not working | Run `source ~/.bashrc` then try again |
+| X11 and Jarvis not starting together | Run `bash scripts/bunker_wake.sh` directly |
+
 ## 🧪 VII. Kali Linux Virtualization
 Kali runs as a full Linux environment inside Termux using proot. No root required.
+
 **Install Kali:**
 ```bash
 proot-distro install kali
-
 ```
 *Downloads about 500MB. Takes several minutes on Wi-Fi.*
+
 **Enter Kali:**
 ```bash
 proot-distro login kali
-
 ```
 *Your prompt changes to root@localhost.*
+
 **Update and install security tools:**
 ```bash
 apt update -y && apt install nmap wireshark-cli tshark metasploit-framework sqlmap nikto -y
-
 ```
+
 **Verify tools:**
 ```bash
 nmap --version && tshark --version && msfconsole --version
-
 ```
+
 **Exit Kali:**
 ```bash
 exit
-
 ```
+
 **Run single command without entering Kali:**
 ```bash
 proot-distro login kali -- nmap -sn 192.168.1.0/24
-
 ```
+
 ### Kali Troubleshooting
 | Problem | Fix |
 |---|---|
-| Install hangs at 0 percent | CTRL+C then proot-distro remove kali then reinstall |
-| apt not found | You are not inside Kali. Run proot-distro login kali |
-| Tool not found | apt update && apt install [toolname] -y inside Kali |
-| Kali environment corrupted | proot-distro remove kali then proot-distro install kali |
+| Install hangs at 0 percent | CTRL+C then `proot-distro remove kali` then reinstall |
+| apt not found | You are not inside Kali. Run `proot-distro login kali` |
+| Tool not found | `apt update && apt install [toolname] -y` inside Kali |
+| Kali environment corrupted | `proot-distro remove kali` then `proot-distro install kali` |
 | Cannot push from inside Kali | Exit Kali first. Push from Termux. |
 | Metasploit takes too long | Normal. First launch downloads dependencies. Wait 5 minutes. |
 | No internet inside Kali | Exit Kali. Check Wi-Fi. Re-enter Kali. |
+
 ## 🤖 VIII. AI Stack Deployment & Security Tooling
 ### Resource Management — Note 20 Ultra 12GB RAM
 | Tool | RAM Usage | Type | Safe to Run Together? |
@@ -429,55 +441,59 @@ proot-distro login kali -- nmap -sn 192.168.1.0/24
 | Wireshark X11 | ~300MB | Local GUI | **YES** — With X11 active |
 | Nmap | ~50MB | Local Scanner | **YES** — Lightweight |
 | Ollama / Gemma 2B | 4-6GB | Local LLM | **NO** — Run separately |
+
 > **Golden Rule:** Never run Ollama with anything else. Exynos 990 will overheat and 12GB RAM will max out.
-> 
+
 ### 🎙️ Jarvis Voice AI — Primary Command Interface
 Voice-activated AI built natively on the Note 20 Ultra. Zero Trust gate on all execute commands. All sessions logged to Vault, 512GB MicroSD, and GitHub.
- * **Hardware Specs:** Samsung Galaxy Note 20 Ultra, Exynos 990, 12GB RAM, 256GB Internal + 512GB MicroSD
+* **Hardware Specs:** Samsung Galaxy Note 20 Ultra, Exynos 990, 12GB RAM, 256GB Internal + 512GB MicroSD
+
 **Install Jarvis:**
 ```bash
 pkg install termux-api -y && pip install requests
-
 ```
+
 **Wake Jarvis manually:**
 ```bash
 cd ~/Android-mobile-cybersecurity-workbench
 python3 scripts/jarvis.py
-
 ```
+
 **Wake Jarvis automatically with X11:**
 ```bash
 bunker
-
 ```
+
 #### Jarvis Voice Commands
- * Say anything — Jarvis processes via Gemini and responds
- * Say "hardware check" — thermal and storage diagnostics
- * Say "scan my network" — suggests nmap command with Zero Trust gate
- * Say "start packet capture" — suggests tshark command
- * Say "help" — lists all capabilities
- * Say "exit" or "shutdown" — clean shutdown with session log
+- Say anything — Jarvis processes via Gemini and responds.
+- Say "hardware check" — thermal and storage diagnostics.
+- Say "scan my network" — suggests nmap command with Zero Trust gate.
+- Say "start packet capture" — suggests tshark command.
+- Say "help" — lists all capabilities.
+- Say "exit" or "shutdown" — clean shutdown with session log.
+
 **Stop Jarvis:**
 ```bash
 pkill -f jarvis.py
-
 ```
+
 ### Jarvis Troubleshooting
 | Problem | Fix |
 |---|---|
 | No voice input detected | Check termux-api permissions — Microphone must be allowed |
-| TTS not speaking | Run termux-tts-speak "test" to verify audio |
-| Gemini not responding | Run echo $GEMINI_API_KEY — if blank run source ~/.bashrc |
+| TTS not speaking | Run `termux-tts-speak "test"` to verify audio |
+| Gemini not responding | Run `echo $GEMINI_API_KEY` — if blank run `source ~/.bashrc` |
 | Phone gets hot | Stop Jarvis. Never run with Ollama simultaneously |
-| Jarvis loop crashes | Run source ~/.bashrc then restart jarvis.py |
+| Jarvis loop crashes | Run `source ~/.bashrc` then restart jarvis.py |
 | Zero Trust gate miss-hearing | Speak clearly. Move closer to mic. |
-| Wake word missing | Run source ~/.bashrc then try wake word again |
+| Wake word missing | Run `source ~/.bashrc` then try wake word again |
+
 ## 🔑 Bunker Wake System — One Word Launches Everything
 **First time setup:**
 ```bash
 bash scripts/set_wakeword.sh
-
 ```
+
 | Wake Word | Operator Style |
 |---|---|
 | **bunker** | C.K. Bachoo — Original |
@@ -487,31 +503,34 @@ bash scripts/set_wakeword.sh
 | **shadow** | Low profile |
 | **jarvis** | Classic AI reference |
 | **ops** | Short and tactical |
+
 **After setup — type your word and hit ENTER:**
 ```bash
 bunker
-
 ```
+
 #### Automated Sequence
- 1. Environment and PAT load
- 2. X11 server starts
- 3. XFCE blue desktop launches
- 4. Termux-X11 app opens
- 5. Jarvis speaks and goes online
+1. Environment and PAT load.
+2. X11 server starts.
+3. XFCE blue desktop launches.
+4. Termux-X11 app opens.
+5. Jarvis speaks and goes online.
+
 ### Wake Word Troubleshooting
 | Problem | Fix |
 |---|---|
-| Wake word not recognized | Run source ~/.bashrc then try again |
+| Wake word not recognized | Run `source ~/.bashrc` then try again |
 | Wake word launches but X11 black | Acquire wakelock from notification bar |
 | Jarvis silent after wake | Check termux-api mic permissions |
-| Want to change wake word | Run set_wakeword.sh again |
-| Wake word missing post-restart | Run source ~/.bashrc — alias reloads |
+| Want to change wake word | Run `set_wakeword.sh` again |
+| Wake word missing post-restart | Run `source ~/.bashrc` — alias reloads |
+
 ## 🛰️ Nmap — Network Intelligence
 **Install:**
 ```bash
 pkg install nmap -y
-
 ```
+
 **Essential commands:**
 ```bash
 nmap -sn 192.168.1.0/24
@@ -521,16 +540,16 @@ nmap -p 22,80,443,8080 192.168.1.1
 nmap -F 192.168.1.1
 nmap -oN Vault/Scans/scan_$(date +%Y%m%d_%H%M%S).txt 192.168.1.1
 nmap -oA Vault/Scans/scan_$(date +%Y%m%d) 192.168.1.1
-
 ```
+
 **Nmap + Wireshark workflow:**
 ```bash
 tshark -i wlan0 -w Vault/PCAPs/nmap_capture.pcap &
 nmap -sV 192.168.1.1
 pkill tshark
 DISPLAY=:1 wireshark Vault/PCAPs/nmap_capture.pcap &
-
 ```
+
 ### Nmap Troubleshooting
 | Problem | Fix |
 |---|---|
@@ -540,12 +559,13 @@ DISPLAY=:1 wireshark Vault/PCAPs/nmap_capture.pcap &
 | nmap not found | pkg install nmap -y |
 | Results not saving | mkdir -p Vault/Scans |
 | SYN scan requires root | Enter Kali proot for root-level scans |
+
 ## 🦈 Wireshark — Packet Analysis
 **Install CLI in Kali:**
 ```bash
 proot-distro login kali && apt install wireshark-cli tshark -y
-
 ```
+
 **Essential commands:**
 ```bash
 tshark -D
@@ -557,24 +577,25 @@ tshark -i wlan0 -Y "http"
 tshark -i wlan0 -Y "dns"
 tshark -i wlan0 -Y "ip.addr == 192.168.1.1"
 DISPLAY=:1 wireshark Vault/PCAPs/capture.pcap &
-
 ```
+
 ### Wireshark Troubleshooting
 | Problem | Fix |
 |---|---|
-| No interfaces found | Run termux-setup-storage and grant permissions |
+| No interfaces found | Run `termux-setup-storage` and grant permissions |
 | Permission denied on capture | Enter Kali proot for root access |
-| tshark not found | apt install tshark -y inside Kali |
+| tshark not found | `apt install tshark -y` inside Kali |
 | Wireshark GUI not opening | Make sure X11 is running and DISPLAY=:1 is set |
-| Capture file too large | Add -c 500 to limit packet count |
-| Cannot read pcap file | Run ls Vault/PCAPs/ to verify path |
+| Capture file too large | Add `-c 500` to limit packet count |
+| Cannot read pcap file | Run `ls Vault/PCAPs/` to verify path |
+
 ## 💻 VS Code — Development Environment
 ```bash
 # Open Kiwi browser
-# Go to [https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench](https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench)
+# Go to https://github.com/CK-Bachoo/Android-mobile-cybersecurity-workbench
 # Tap Code → Codespaces → Create codespace on master
-
 ```
+
 ### VS Code Troubleshooting
 | Problem | Fix |
 |---|---|
@@ -582,20 +603,22 @@ DISPLAY=:1 wireshark Vault/PCAPs/capture.pcap &
 | Changes not saving | Commit and push before closing |
 | Terminal not responding | Refresh the browser tab |
 | Codespace expired | Create a new one — repo is safe on GitHub |
+
 ## 🖥️ Local AI — Ollama
 Offline AI. No internet required. Heavy RAM usage. Run **ALONE**. Never with other tools.
+
 **Wake Ollama — close everything else first:**
 ```bash
 pkill -f jarvis.py && pkill xfce4-session && pkill termux-x11
 ollama serve &
 ollama run gemma:2b
-
 ```
+
 **Stop Ollama:**
 ```bash
 pkill ollama
-
 ```
+
 ### Ollama Troubleshooting
 | Problem | Fix |
 |---|---|
@@ -605,71 +628,74 @@ pkill ollama
 | Phone overheating | Stop immediately. pkill ollama |
 | Response too slow | Use smaller model or ensure terminal is not overloaded. |
 | Cannot run with Jarvis | By design. Close Jarvis first. Ollama needs all 12GB. |
+
 ## ☁️ Cloud AI — Gemini and Claude
 Built into Jarvis automatically. Zero local RAM.
+
 **Setup:**
 ```bash
 nano ~/.bashrc
-
 ```
 *Add at bottom:*
 ```bash
 export GEMINI_API_KEY="PASTE-YOUR-GEMINI-API-KEY-HERE"
 export CLAUDE_API_KEY="PASTE-YOUR-CLAUDE-API-KEY-HERE"
-
 ```
 *Save with CTRL+X then Y then ENTER. Then:*
 ```bash
 source ~/.bashrc
-
 ```
+
 ### Cloud AI Troubleshooting
 | Problem | Fix |
 |---|---|
-| Gemini silent in Jarvis | Run echo $GEMINI_API_KEY — if blank run source ~/.bashrc |
+| Gemini silent in Jarvis | Run `echo $GEMINI_API_KEY` — if blank run `source ~/.bashrc` |
 | API key expired | Generate new key at aistudio.google.com |
 | Rate limit hit | Wait 60 seconds. Free tier has limits. |
 | Claude not responding | Verify key at console.anthropic.com |
-| Keys clear post-restart | Run source ~/.bashrc at start of every session |
+| Keys clear post-restart | Run `source ~/.bashrc` at start of every session |
+
 ## 🔐 IX. GitHub PAT Cloud Sync
 **Step 1 — Generate PAT:**
- * github.com → Profile → Settings → Developer settings
- * Personal access tokens → Tokens (classic)
- * Generate new token — Note: Termux-Workbench-Push
- * Expiration: 90 days — Check repo
- * Generate — **COPY IMMEDIATELY**
+- github.com → Profile → Settings → Developer settings
+- Personal access tokens → Tokens (classic)
+- Generate new token — Note: Termux-Workbench-Push
+- Expiration: 90 days — Check repo
+- Generate — **COPY IMMEDIATELY**
+
 **Step 2 — Store securely:**
 ```bash
 mkdir -p ~/.secrets && chmod 700 ~/.secrets
 echo "PASTE-YOUR-PAT-HERE" > ~/.secrets/github_pat.txt
 chmod 600 ~/.secrets/github_pat.txt
-
 ```
+
 **Step 3 — Load PAT:**
 ```bash
 export GITHUB_PAT=$(cat ~/.secrets/github_pat.txt)
-
 ```
+
 **Step 4 — Set remote URL:**
 ```bash
-git remote set-url origin https://YOUR-GITHUB-USERNAME:${GITHUB_PAT}@[github.com/YOUR-GITHUB-USERNAME/Android-mobile-cybersecurity-workbench.git](https://github.com/YOUR-GITHUB-USERNAME/Android-mobile-cybersecurity-workbench.git)
-
+git remote set-url origin https://YOUR-GITHUB-USERNAME:${GITHUB_PAT}@github.com/YOUR-GITHUB-USERNAME/Android-mobile-cybersecurity-workbench.git
 ```
+
 **Step 5 — Push:**
 ```bash
 git add . && git commit -m "Sync — YOUR-GITHUB-USERNAME" && git push origin master
-
 ```
+
 ### PAT Troubleshooting
 | Problem | Fix |
 |---|---|
 | Authentication failed | Regenerate PAT and run Steps 2-4 again |
-| Push rejected | Run git pull origin master first then push |
-| Fatal: not a git repository | cd ~/Android-mobile-cybersecurity-workbench |
-| Remote already exists | git remote remove origin then run Step 4 |
+| Push rejected | Run `git pull origin master` first then push |
+| Fatal: not a git repository | cd `~/Android-mobile-cybersecurity-workbench` |
+| Remote already exists | `git remote remove origin` then run Step 4 |
 | PAT expired | Generate new 90 day token and repeat Steps 2-4 |
 | PAT accidentally committed | Immediately revoke on GitHub. Generate new one. |
-| Divergent branches | git config pull.rebase false && git pull origin master --no-edit && git push origin master |
+| Divergent branches | `git config pull.rebase false && git pull origin master --no-edit && git push origin master` |
+
 ## 🛰️ X. Operational Commands
 ```bash
 # Network Discovery
@@ -698,8 +724,8 @@ bunker
 
 # Sync to GitHub
 export GITHUB_PAT=$(cat ~/.secrets/github_pat.txt) && git add . && git commit -m "Audit sync $(date +%Y-%m-%d) — CK-Bachoo" && git push origin master
-
 ```
+
 ### Operational Commands Troubleshooting
 | Problem | Fix |
 |---|---|
@@ -708,11 +734,13 @@ export GITHUB_PAT=$(cat ~/.secrets/github_pat.txt) && git add . && git commit -m
 | git push fails | export GITHUB_PAT=$(cat ~/.secrets/github_pat.txt) |
 | Vault directory missing | mkdir -p Vault/Scans Vault/PCAPs Vault/Logs |
 | Wireshark missing in X11 | Make sure X11 is running first |
+
 ## ⚡ XI. Wake and Close Commands
 ### 🎯 Choose Your Operating Mode
- * **Mode 1 — Full Automation (Recommended):** bash scripts/set_wakeword.sh then type wake word.
- * **Mode 2 — Manual Control:** Run each tool individually from commands below.
- * **Mode 3 — Terminal Only:** Skip X11 entirely. Lightweight. Best for low battery.
+- **Mode 1 — Full Automation (Recommended):** bash scripts/set_wakeword.sh then type wake word.
+- **Mode 2 — Manual Control:** Run each tool individually from commands below.
+- **Mode 3 — Terminal Only:** Skip X11 entirely. Lightweight. Best for low battery.
+
 ### WAKE COMMANDS
 ```bash
 # Wake environment
@@ -735,8 +763,8 @@ DISPLAY=:1 wireshark &
 
 # Wake everything at once
 bunker
-
 ```
+
 ### CLOSE COMMANDS
 ```bash
 # Close Jarvis
@@ -753,35 +781,33 @@ exit
 
 # Nuclear — close everything
 pkill -9 -u $(whoami)
-
-# Safe full shutdown and sync
-pkill -f jarvis.py && pkill ollama && pkill xfce4-session && pkill termux-x11 && git add . && git commit -m "End of session — CK-Bachoo" && git push origin master
-
 ```
+
 ### Wake and Close Troubleshooting
 | Problem | Fix |
 |---|---|
-| Wake word unrecognized | Run source ~/.bashrc then try again |
+| Wake word unrecognized | Run `source ~/.bashrc` then try again |
 | X11 black after wake | Acquire wakelock from notification bar |
 | Jarvis silent after wake | Check termux-api mic permissions |
-| Cannot close frozen X11 | Run pkill -9 -u $(whoami) nuclear option |
-| Wake word clear on reboot | Run source ~/.bashrc to reload aliases |
+| Cannot close frozen X11 | Run `pkill -9 -u $(whoami)` nuclear option |
+| Wake word clear on reboot | Run `source ~/.bashrc` to reload aliases |
 | Rig lagging heavily | Close Ollama first. It consumes all RAM. |
+
 ## 🌡️ XII. Thermal Safety Protocol
 **Check temperature:**
 ```bash
 cat /sys/class/thermal/thermal_zone0/temp
-
 ```
 *Divide by 1000 for Celsius. 45000 = 45C.*
- * **Safe:** Below 40C
- * **Caution:** 40C to 45C — reduce workload
- * **Danger:** Above 45C — kill switch immediately
+- **Safe:** Below 40C
+- **Caution:** 40C to 45C — reduce workload
+- **Danger:** Above 45C — kill switch immediately
+
 **Thermal kill switch:**
 ```bash
 pkill -9 -u $(whoami)
-
 ```
+
 **Monitor every 30 seconds:**
 ```bash
 while true; do
@@ -789,93 +815,104 @@ while true; do
   echo "Temp: $((TEMP/1000))C"
   sleep 30
 done
-
 ```
 *Press CTRL+C to stop.*
+
 ### Thermal Troubleshooting
 | Problem | Fix |
 |---|---|
 | Phone hot during Nmap scan | Normal for intensive scans. Monitor temp. Stop above 45C. |
 | Phone hot with Ollama | Expected. Stop immediately above 45C. |
 | Phone hot with X11 + Jarvis | Disable 5G. Use Wi-Fi only during sessions. |
-| Thermal sensor not found | Try cat /sys/class/thermal/thermal_zone1/temp |
+| Thermal sensor not found | Try `cat /sys/class/thermal/thermal_zone1/temp` |
 | Phone restarts from heat | Cool 10 minutes. Enable airplane mode during heavy ops. |
 | Battery drains fast | Acquire wakelock AND plug in during long sessions. |
+
 ## 🔧 XIII. Full Troubleshooting Guide
 ### Termux Issues
 | Problem | Fix |
 |---|---|
-| pkg update fails | Run termux-change-repo and select different mirror |
-| Package not found | Run pkg update first then retry |
-| Storage permission denied | Run termux-setup-storage and tap Allow |
+| pkg update fails | Run `termux-change-repo` and select different mirror |
+| Package not found | Run `pkg update` first then retry |
+| Storage permission denied | Run `termux-setup-storage` and tap Allow |
 | Termux killed by Android | Disable battery optimization in Settings |
-| Command clear after install | Close and reopen Termux. Run source ~/.bashrc |
+| Command clear after install | Close and reopen Termux. Run `source ~/.bashrc` |
 | Termux crashes on open | Clear app cache in Android Settings → Apps → Termux |
+
 ### Git Issues
 | Problem | Fix |
 |---|---|
-| Fatal: not a git repository | cd ~/Android-mobile-cybersecurity-workbench |
-| Authentication failed | Regenerate PAT and run git remote set-url again |
-| Push rejected | Run git pull origin master first then push |
-| Divergent branches | git config pull.rebase false && git pull origin master --no-edit && git push origin master |
-| Merge conflict | Run git status. Edit conflicted files. git add . then commit. |
+| Fatal: not a git repository | cd `~/Android-mobile-cybersecurity-workbench` |
+| Authentication failed | Regenerate PAT and run `git remote set-url` again |
+| Push rejected | Run `git pull origin master` first then push |
+| Divergent branches | `git config pull.rebase false && git pull origin master --no-edit && git push origin master` |
+| Merge conflict | Run `git status`. Edit conflicted files. `git add .` then commit. |
 | Accidental commit of secrets | Immediately revoke PAT. Generate new one. |
+
 ### X11 Issues
 | Problem | Fix |
 |---|---|
-| Black screen | Close Termux-X11 app. Reopen. Run termux-x11 :1 & |
+| Black screen | Close Termux-X11 app. Reopen. Run `termux-x11 :1 &` |
 | GUI freezes immediately | Acquire wakelock from notification bar first |
 | Process killed | Battery optimization must be disabled |
-| Display error | Run export DISPLAY=:1 before any GUI command |
-| Cannot find xfce4 | pkg install xfce4 -y |
-| X11 and Jarvis conflict | Run bash scripts/bunker_wake.sh — it sequences them correctly |
+| Display error | Run `export DISPLAY=:1` before any GUI command |
+| Cannot find xfce4 | `pkg install xfce4 -y` |
+| X11 and Jarvis conflict | Run `bash scripts/bunker_wake.sh` — it sequences them correctly |
+
 ### Kali Issues
 | Problem | Fix |
 |---|---|
-| Install hangs | CTRL+C then proot-distro remove kali then reinstall |
-| apt not found | You are not inside Kali. Run proot-distro login kali |
-| Tool not found | apt update && apt install [toolname] -y inside Kali |
-| Kali environment broken | proot-distro remove kali then proot-distro install kali |
+| Install hangs | CTRL+C then `proot-distro remove kali` then reinstall |
+| apt not found | You are not inside Kali. Run `proot-distro login kali` |
+| Tool not found | `apt update && apt install [toolname] -y` inside Kali |
+| Kali environment broken | `proot-distro remove kali` then `proot-distro install kali` |
+
 ### Network Issues
 | Problem | Fix |
 |---|---|
 | Nmap permission denied | Use -sn for ping scan without root |
 | No hosts found | Verify same network. Check subnet. |
-| tshark no interfaces | Run termux-setup-storage and grant permissions |
+| tshark no interfaces | Run `termux-setup-storage` and grant permissions |
 | Cannot reach GitHub | Check Wi-Fi. Try ping github.com |
+
 ### Jarvis and AI Issues
 | Problem | Fix |
 |---|---|
 | Jarvis silent to voice | Check Android mic permissions for Termux-API |
 | Gemini API rate limit | Wait 60 seconds. Free tier has limits. |
 | Ollama out of memory | Close all other apps. Ollama needs full 12GB. |
-| Wake word missing | Run source ~/.bashrc then try again |
-| API keys missing | Run source ~/.bashrc at start of every session |
+| Wake word missing | Run `source ~/.bashrc` then try again |
+| API keys missing | Run `source ~/.bashrc` at start of every session |
+
 ### Dreadnought Console Issues
 | Problem | Fix |
 |---|---|
-| dreadnought_console.sh exits | Run chmod +x scripts/dreadnought_console.sh |
-| Env variables missing | Verify files exist in ~/.secrets/ |
-| Console runs, tools missing | Run pkg update && pkg upgrade -y |
+| dreadnought_console.sh exits | Run `chmod +x scripts/dreadnought_console.sh` |
+| Env variables missing | Verify files exist in `~/.secrets/` |
+| Console runs, tools missing | Run `pkg update && pkg upgrade -y` |
 | Safe mode required repeatedly | Close X11 or Ollama to free RAM |
+
 ## 💼 XIV. Business Integration Guide
 This repository proves enterprise-level cybersecurity runs on a mobile device.
+
 ### Use Cases
- * Field security audits — no laptop required
- * Rapid deployment in resource-constrained environments
- * Mobile SOC operations with voice AI command interface
- * AI-assisted threat analysis via Jarvis plus Gemini plus Claude
- * Voice-commanded network scanning via Jarvis plus Nmap
- * Training environments on any Android device
- * Disaster recovery — rebuild entire lab from one GitHub clone
+- Field security audits — no laptop required.
+- Rapid deployment in resource-constrained environments.
+- Mobile SOC operations with voice AI command interface.
+- AI-assisted threat analysis via Jarvis plus Gemini plus Claude.
+- Voice-commanded network scanning via Jarvis plus Nmap.
+- Training environments on any Android device.
+- Disaster recovery — rebuild entire lab from one GitHub clone.
+
 ### Architecture Evidence
- * Zero Trust security enforced from a mobile device
- * Voice AI command interface with confirmation gates
- * Full packet capture and analysis via Wireshark and tshark
- * Vulnerability scanning via Nmap and Metasploit
- * AI-assisted operations via Jarvis, Gemini, Claude, Ollama
- * Cloud synchronization with immutable audit trail on GitHub
- * Reproducible — any team member clones and deploys in 30 minutes
+- Zero Trust security enforced from a mobile device.
+- Voice AI command interface with confirmation gates.
+- Full packet capture and analysis via Wireshark and tshark.
+- Vulnerability scanning via Nmap and Metasploit.
+- AI-assisted operations via Jarvis, Gemini, Claude, Ollama.
+- Cloud synchronization with immutable audit trail on GitHub.
+- Reproducible — any team member clones and deploys in 30 minutes.
+
 ### Business Integration Troubleshooting
 | Problem | Fix |
 |---|---|
@@ -883,8 +920,10 @@ This repository proves enterprise-level cybersecurity runs on a mobile device.
 | Wake word conflicts with team | Each operator runs set_wakeword.sh independently |
 | Vault data needs sharing | Copy specific files from Vault manually. Never git add Vault. |
 | Jarvis API costs | Gemini free tier handles most operations. Monitor at aistudio.google.com |
- * **Integration contact:** github.com/CK-Bachoo
- * **Operator:** Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fellow | New York IF-CS-26
+
+* **Integration contact:** github.com/CK-Bachoo
+* **Operator:** Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fellow | New York IF-CS-26
+
 ## 🏅 XV. Professional Verification
 | Field | Details |
 |---|---|
@@ -916,8 +955,9 @@ This repository proves enterprise-level cybersecurity runs on a mobile device.
 | **GitHub** | github.com/CK-Bachoo |
 | **LinkedIn** | linkedin.com/in/ckbachoo |
 | **Status** | Mission Ready — March 2026 |
+
 > "The mission does not wait for better equipment." — C.K. Bachoo, 2026 ⚓🫡
-> 
+
 ## XVI. Voice-Sec Terminal & Automation Suite 🤖
 | Component | Script | Status |
 |---|---|---|
@@ -928,15 +968,15 @@ This repository proves enterprise-level cybersecurity runs on a mobile device.
 | TTP Log Analyzer | scripts/threat_hunt_logs.py | DEPLOYED |
 | NIST Audit Engine | bunker_audit.sh | DEPLOYED |
 | Dreadnought Secure Console | scripts/dreadnought_console.sh | DEPLOYED |
+
 ### A. Automation Suite Architecture
 The Bunker's Python automation suite operates on a single architectural constraint: zero third-party dependencies. Every script runs on Python's standard library only, eliminating pip install failures, RAM spikes, and Android Signal 9 (OOM) kills on the Exynos 990.
- * **privacy_guard.py:** Scrubs Student IDs, emails, API keys, PAT tokens, and public IP addresses from outgoing log files before every GitHub push. Safe private ranges (127.x, 10.x, 192.168.x) are whitelisted and pass through untouched. Operates on a named input file — never recursively rewrites the repo.
- * **port_harden.py:** Continuous port sentry polling every 15 seconds. Monitors Port 8022 (SSH) and Port 8080 (AI Server) for unauthorized IP bindings using ss with netstat fallback. Any binding outside 127.0.0.1 / ::1 / 0.0.0.0 immediately triggers air_gap_isolate.py.
- * **air_gap_isolate.py:** Trap-Door execution layer. Drops wlan0 and all rmnet_data* interfaces via ip link set down, then zeroes out ~/.bash_history and ~/.git-credentials. Includes --dry-run flag for safe testing without live network disruption. Non-root limitation documented honestly: interface drop is logged and operator is instructed to toggle Airplane Mode if root is unavailable.
- * **osint_agent.py:** Passive recon only. Performs DNS resolution, multi-record dig enumeration (A/AAAA/MX/TXT/NS/CNAME), WHOIS lookup, and TCP connect port probe on 10 common ports — no nmap required, no root required. Saves timestamped report to Vault/Logs/ automatically.
- * **threat_hunt_logs.py:** Read-only TTP log analyzer. Scans access logs against 18 IoC patterns across six categories: ShinyHunters/Canvas-specific, SQL injection (4 variants including time-based blind), directory traversal, sensitive file probes, command injection/RCE, and scanner fingerprints. Outputs severity-sorted (CRITICAL/HIGH/MEDIUM) color-coded terminal report and saves clean copy to Vault/Logs/.
- * **bunker_audit.sh:** NIST CSF 2.0 compliance check engine. Verifies root status, ADB daemon state, VPN tunnel interface, Vault/.gitignore protection, active listening ports, and full automation script arsenal presence. Saves timestamped audit report to Vault/Logs/.
- * **dreadnought_console.sh:** Hardened operator launch console for sanitized Purple Team operations. Loads isolated environment variables, verifies Vault protections, strips exposed secrets from shell history, and launches defensive tooling through a controlled execution layer. Prevents accidental disclosure of API keys, PAT tokens, usernames, internal paths, and student identifiers during screen sharing, logging, or GitHub synchronization. Includes safe-mode startup to prevent high-RAM process collisions on constrained Android hardware.
+* **privacy_guard.py:** Scrubs Student IDs, emails, API keys, PAT tokens, and public IP addresses from outgoing log files before every GitHub push. Safe private ranges (127.x, 10.x, 192.168.x) are whitelisted and pass through untouched. Operates on a named input file — never recursively rewrites the repo.
+* **port_harden.py:** Continuous port sentry polling every 15 seconds. Monitors Port 8022 (SSH) and Port 8080 (AI Server) for unauthorized IP bindings using ss with netstat fallback. Any binding outside 127.0.0.1 / ::1 / 0.0.0.0 immediately triggers air_gap_isolate.py.
+* **air_gap_isolate.py:** Trap-Door execution layer. Drops wlan0 and all rmnet_data* interfaces via ip link set down, then zeroes out ~/.bash_history and ~/.git-credentials. Includes --dry-run flag for safe testing without live network disruption. Non-root limitation documented honestly: interface drop is logged and operator is instructed to toggle Airplane Mode if root is unavailable.
+* **osint_agent.py:** Passive recon only. Performs DNS resolution, multi-record dig enumeration (A/AAAA/MX/TXT/NS/CNAME), WHOIS lookup, and TCP connect port probe on 10 common ports — no nmap required, no root required. Saves timestamped report to Vault/Logs/ automatically.
+* **threat_hunt_logs.py:** Read-only TTP log analyzer. Scans access logs against 18 IoC patterns across six categories: ShinyHunters/Canvas-specific, SQL injection (4 variants including time-based blind), directory traversal, sensitive file probes, command injection/RCE, and scanner fingerprints. Outputs severity-sorted (CRITICAL/HIGH/MEDIUM) color-coded terminal report and saves clean copy to Vault/Logs/.
+
 ### B. Deployment Commands
 ```bash
 # Make scripts executable
@@ -968,53 +1008,58 @@ bash scripts/dreadnought_console.sh --safe
 
 # Verify environment sanitization
 env | grep -Ei 'key|token|secret|pat'
-
 ```
+
 ### C. Script Interaction Map
 ```text
 port_harden.py       ──(breach detected)──▶  air_gap_isolate.py
 threat_hunt_logs.py  ──(CRITICAL hit)────▶  [operator alert]
 privacy_guard.py     ──(pre-push sweep)──▶  git push origin master
 bunker_audit.sh      ──(compliance check)─▶  Vault/Logs/audit_*.txt
-
 ```
- * **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** MAY 2026 ⚓🫡
+
+* **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** MAY 2026 ⚓🫡
+
 ## XVII. Threat Intelligence Log: Aeternum C2 (Blockchain C2) 🔗
 | Threat Actor | Vector | Target | Infrastructure | Status |
 |---|---|---|---|---|
 | **LenAI** | C++ Loader (x32/x64) | Enterprise Systems | Polygon Mainnet (Smart Contracts) | **ACTIVE (MAR 2026)** |
+
 ### A. Technical Breakdown: "Living off the Chain"
 Aeternum C2 represents a shift from centralized servers to immutable, decentralized infrastructure.
- * **C2 Mechanism:** Commands are stored as encrypted state variables within Solidity smart contracts. The attacker updates the contract to change the "active" payload (Clipper, Stealer, or RAT).
- * **Communication:** Infected endpoints utilize JSON-RPC calls (eth_call) to public nodes (e.g., polygon-rpc.com) to retrieve instructions.
- * **Resilience:** Since the "server" is the Polygon blockchain, there is no domain to seize or server to take down.
+* **C2 Mechanism:** Commands are stored as encrypted state variables within Solidity smart contracts. The attacker updates the contract to change the "active" payload (Clipper, Stealer, or RAT).
+* **Communication:** Infected endpoints utilize JSON-RPC calls (eth_call) to public nodes (e.g., polygon-rpc.com) to retrieve instructions.
+* **Resilience:** Since the "server" is the Polygon blockchain, there is no domain to seize or server to take down.
+
 ### B. Bunker Countermeasures: Note 20 Ultra / Termux Defense
- * **RPC Traffic Interception (tshark):**
-   ```bash
-   tshark -i any -Y 'http.request.method == "POST"' -T fields -e http.file_data | grep -E "eth_call|eth_getStorageAt"
-   
-   ```
- * **Infrastructure Decoupling (DNS Sinkhole):**
-   ```text
-   127.0.0.1 polygon-rpc.com
-   127.0.0.1 bor-mainnet.polygon.technology
-   
-   ```
- * **Behavioral Audit:** The workbench uses a background cron job to alert if outbound traffic to known Polygon/Ethereum RPC ports (8545, 443) exceeds a 60-second polling threshold, identifying the C2 "heartbeat."
- * **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** 21 MAR 2026
+* **RPC Traffic Interception (tshark):**
+  ```bash
+  tshark -i any -Y 'http.request.method == "POST"' -T fields -e http.file_data | grep -E "eth_call|eth_getStorageAt"
+  ```
+* **Infrastructure Decoupling (DNS Sinkhole):**
+  ```text
+  127.0.0.1 polygon-rpc.com
+  127.0.0.1 bor-mainnet.polygon.technology
+  ```
+* **Behavioral Audit:** The workbench uses a background cron job to alert if outbound traffic to known Polygon/Ethereum RPC ports (8545, 443) exceeds a 60-second polling threshold, identifying the C2 "heartbeat."
+* **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** 21 MAR 2026
+
 ## XVIII. Forensic Mission Report: Neutralizing DNS Sabotage via OOB ⚓🛡️
- * **Timestamp:** March 2026
- * **Threat Vector:** DNS Poisoning / Localized Network Sabotage ("Operation Blackout")
- * **Origin:** Compromised Local "Wire" (WLAN/Ethernet) at The Knowledge House
+* **Timestamp:** March 2026
+* **Threat Vector:** DNS Poisoning / Localized Network Sabotage ("Operation Blackout")
+* **Origin:** Compromised Local "Wire" (WLAN/Ethernet) at The Knowledge House
+
 ### A. Incident Analysis (The Attack)
- * **The Vector:** Sabotage of local name resolution intended to redirect or isolate cohort traffic.
- * **Observed Effect:** Primary "Wire" nodes failed to resolve external domains; manual pathing to /etc/resolv.conf was blocked by OS-level restrictions.
- * **Cybersecurity Domain:** Network Security / Incident Response (Remediation).
+* **The Vector:** Sabotage of local name resolution intended to redirect or isolate cohort traffic.
+* **Observed Effect:** Primary "Wire" nodes failed to resolve external domains; manual pathing to /etc/resolv.conf was blocked by OS-level restrictions.
+* **Cybersecurity Domain:** Network Security / Incident Response (Remediation).
+
 ### B. Bunker Countermeasures: Note 20 Ultra SOC
- * **Action:** Leveraged the Workbench's independent Spectrum LTE stack (rmnet_data2) for Out-of-Band (OOB) recovery.
- * **Method:** Redirected terminal pathing to $PREFIX/etc/resolv.conf to bypass Android kernel-level permission denied errors.
- * **Result:** Successful triage of Google Public DNS (8.8.8.8 / 8.8.4.4).
- * **Resilience:** The Workbench remained immune to the "Wire" sabotage because it maintains an independent physical and logical gateway.
+* **Action:** Leveraged the Workbench's independent Spectrum LTE stack (rmnet_data2) for Out-of-Band (OOB) recovery.
+* **Method:** Redirected terminal pathing to $PREFIX/etc/resolv.conf to bypass Android kernel-level permission denied errors.
+* **Result:** Successful triage of Google Public DNS (8.8.8.8 / 8.8.4.4).
+* **Resilience:** The Workbench remained immune to the "Wire" sabotage because it maintains an independent physical and logical gateway.
+
 ### C. Forensic Conclusion & GRC Verification
 The Android Mobile Cybersecurity Workbench proved 100% resilient. While the localized network was compromised, the Workbench utilized its native OOB capabilities to maintain technical integrity and connectivity.
 **Termux Infrastructure Check:**
@@ -1024,7 +1069,6 @@ drwx------ Android-mobile-cybersecurity-workbench
 drwx------ CK-Bachoo
 drwx------ Foundations_Lab_Final
 drwx------ IF-Cyber-Portfolio
-
 ```
 **NIST CSF Mobile Audit Execution:**
 ```bash
@@ -1043,24 +1087,30 @@ STATUS: NIST CSF COMPLIANCE CHECK
 17778 pts/0    00:00:00 head
 ----------------------------------------
 AUDIT COMPLETE. STANDING BY FOR UPLOAD.
-
 ```
- * **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** 23 MAR 2026 ⚓🫡
+* **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** 23 MAR 2026 ⚓🫡
+
 ## XIX. Threat Intelligence Log: ShinyHunters Canvas Breach & Trap-Door Defense 🚨
 | Threat Actor | Vector | Target | Deadline / Status |
 |---|---|---|---|
 | **ShinyHunters** | Free-For-Teacher Exploit / Credential Harvesting | Canvas LMS (Student PII) | **May 6 - May 12, 2026 (ACTIVE EXTORTION)** |
+
 ### A. Incident Analysis: The Canvas Breach
- * **The Threat:** ShinyHunters compromised the Canvas learning management system, exfiltrating 3.65 TB of data (275M records) including Student IDs, assignments, and private messages. The extortion window closes on May 12.
- * **The Hypothesis:** Exfiltrated PII is being leveraged for high-fidelity social engineering, phishing, and credential stuffing attacks against the fellowship cohort.
+* **The Threat:** ShinyHunters compromised the Canvas learning management system, exfiltrating 3.65 TB of data (275M records) including Student IDs, assignments, and private messages. The extortion window closes on May 12.
+* **The Hypothesis:** Exfiltrated PII is being leveraged for high-fidelity social engineering, phishing, and credential stuffing attacks against the fellowship cohort.
+
 ### B. Bunker Countermeasures & Protection
 Operating from the Note 20 Ultra "Bunker," I remained completely protected from the SaaS-layer compromise through strict environmental decoupling:
- * **Local Sovereignty:** Instead of relying on the compromised Canvas portal, all lab requirements and documentation were served via local Git clones and offline Markdown files.
- * **Jump-Host Isolation:** Any necessary downloads originating from Canvas were routed through Google Cloud Shell — an ephemeral, sandboxed environment — preventing any direct connection to my physical hardware.
- * **PrivacyGuard Agent:** Used local Gemma 2B via privacy_guard.py to automatically scrub outgoing logs of Student IDs and names before pushing to GitHub, neutralizing the value of any intercepted PII.
+* **Local Sovereignty:** Instead of relying on the compromised Canvas portal, all lab requirements and documentation were served via local Git clones and offline Markdown files.
+* **Jump-Host Isolation:** Any necessary downloads originating from Canvas were routed through Google Cloud Shell — an ephemeral, sandboxed environment — preventing any direct connection to my physical hardware.
+* **PrivacyGuard Agent:** Used local Gemma 2B via privacy_guard.py to automatically scrub outgoing logs of Student IDs and names before pushing to GitHub, neutralizing the value of any intercepted PII.
+
 ### C. The "Trap-Door Air-Gap" (Active Defense)
 If an attacker managed to breach the local Termux environment, the Bunker employs a defense mechanism to limit post-compromise persistence:
- * **The Logic:** If the automated port sentry (port_harden.py) detects an unauthorized IP binding to Port 8022 (SSH) or Port 8080 (AI Server), it instantly triggers the air_gap_isolate.py protocol.
- * **The Execution:** Network interfaces are immediately disabled and volatile credentials are cleared to limit post-compromise persistence. The device drops all network interfaces, severing the connection to the outside world.
- * **The Result:** The attacker session is terminated. Simultaneously, the system flushes volatile memory, wiping ~/.bash_history and ~/.git-credentials. The operator is no longer reachable, leaving an empty, isolated shell.
- * **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** MAY 2026
+* **The Logic:** If the automated port sentry (port_harden.py) detects an unauthorized IP binding to Port 8022 (SSH) or Port 8080 (AI Server), it instantly triggers the air_gap_isolate.py protocol.
+* **The Execution:** Network interfaces are immediately disabled and volatile credentials are cleared to limit post-compromise persistence.
+* **The Result:** The attacker session is terminated. Simultaneously, the system flushes volatile memory, wiping ~/.bash_history and ~/.git-credentials. The operator is no longer reachable, leaving an empty, isolated shell.
+* **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** MAY 2026
+```
+
+I also fixed the TOC format so GitHub will render the section links correctly. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52985081/d0096385-6b43-4531-9a96-2e6de27adfa8/paste.txt)
