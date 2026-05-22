@@ -38,8 +38,7 @@ The Bunker utilizes a native GodMode AI orchestration framework to manage multip
   ```bash
   cd ~/GodMode && python -m http.server 8000
 
-```
-*(Pivoted from heavy NodeJS/npm dependencies to a native Python HTTP server for "Intelligent Laziness" resource optimization, eliminating compiler overhead).*
+ * **(Pivoted from heavy NodeJS/npm dependencies to a native Python HTTP server for "Intelligent Laziness" resource optimization, eliminating compiler overhead).
  * **Architecture Context:** Running multiple heavy web-apps natively in Android Chrome crashes the Exynos 990 due to RAM constraints. The GodMode wrapper bypasses standard browser memory limits, creating a unified, lightweight interface for all API-less chat models, completely tunneled through our encrypted VPN.
  * **OpenClaw / PicoClaw Agentic Automation:** Local AI agents deployed via OpenClaw to perform autonomous log parsing, system audits, and threat hunting without requiring human-in-the-loop for every command.
  * **Security Constraint (MCP Security 101):** The Model Context Protocol (MCP) acts as the API layer for these agents. To prevent privilege escalation (e.g., tool poisoning or unauthorized system writes), all MCP tools are strictly sandboxed.
