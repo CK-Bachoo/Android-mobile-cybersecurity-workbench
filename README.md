@@ -105,15 +105,16 @@ Bypassing standard VNC overhead to run XFCE4 natively on Android.
 
 *   **The XDR Cockpit (`dashboard.py`):** A custom Python HTTP micro-server that binds to local ports to serve a zero-latency HTML/CSS/JS frontend radar directly to the mobile Chrome browser, completely bypassing the memory constraints of heavy desktop frameworks.
 *   **The Orchestration Console (`dreadnought_console.sh`):** The master Bash interface that unifies scattered offensive payloads and defensive sentries into a single, modular execution menu, enabling rapid Purple Team operations directly from a mobile touchscreen.
-```
 
+```
 # ⚙️ RAW WORKBENCH LOGS & HISTORICAL SPECS
-### ARM64 Mobile-to-Cloud Security Workbench (The Bunker)
+ARM64 Mobile-to-Cloud Security Workbench (The Bunker)
  * **Operator:** Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fellow | New York IF-CS-26
  * **Platform:** Samsung Galaxy Note 20 Ultra | Termux | Mobile-Only Architecture
  * **Mission:** Scale enterprise-level cybersecurity workflows on constrained mobile hardware.
-> "The mission does not wait for better equipment." — C.K. Bachoo ⚓
-> 
+
+> "The mission does not wait for better equipment." — C.K. Bachoo
+
 ## 📋 Table of Contents
 I. Hardware Matrix
 II. Pre-Flight Checklist
@@ -178,14 +179,16 @@ Android Settings → Apps → Termux → Battery → Unrestricted
 | Battery optimization keeps re-enabling | Samsung One UI resets this. Check after every phone restart. |
 | No F-Droid on phone | Go to f-droid.org in browser. Download and install APK directly. |
 | MicroSD not showing in Termux | Run termux-setup-storage and tap Allow |
+
 ## 🚀 III. Base Initialization
+
 Open Termux. Run each command one at a time. Wait for each to finish.
 **Step 1 — Grant storage access:**
 ```bash
 termux-setup-storage
-
 ```
 *A popup will appear. Tap Allow.*
+
 **Step 2 — Update and upgrade:**
 ```bash
 pkg update -y && pkg upgrade -y
