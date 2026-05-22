@@ -1,4 +1,3 @@
-
 # 🛡️ Mobile Cybersecurity Workbench / Rig: Independent Purple Team Lab Environments on Constrained Android Hardware
 ### (Samsung Note 20 Ultra 5G Exynos 990 + Termux App + Chrome Browser + Google Cloud Shell + Azure + AWS + GitHub)
 
@@ -107,13 +106,13 @@ Bypassing standard VNC overhead to run XFCE4 natively on Android.
 *   **The Orchestration Console (`dreadnought_console.sh`):** The master Bash interface that unifies scattered offensive payloads and defensive sentries into a single, modular execution menu, enabling rapid Purple Team operations directly from a mobile touchscreen.
 
 ```
-# ⚙️ RAW WORKBENCH LOGS & HISTORICAL SPECS
-ARM64 Mobile-to-Cloud Security Workbench (The Bunker)
+### ⚙️ RAW WORKBENCH LOGS & HISTORICAL SPECS
+*ARM64 Mobile-to-Cloud Security Workbench (The Bunker)*
  * **Operator:** Bachoo, C. K. | Navy Veteran | Dual Google/CompTIA A+ | Innovation Fellow | New York IF-CS-26
  * **Platform:** Samsung Galaxy Note 20 Ultra | Termux | Mobile-Only Architecture
  * **Mission:** Scale enterprise-level cybersecurity workflows on constrained mobile hardware.
 
-> "The mission does not wait for better equipment." — C.K. Bachoo
+>"The mission does not wait for better equipment." — C.K. Bachoo* 
 
 ## 📋 Table of Contents
 I. Hardware Matrix
@@ -135,6 +134,7 @@ XVI. Voice-Sec Terminal & Automation Suite
 XVII. Threat Intelligence Log: Aeternum C2
 XVIII. Forensic Mission Report: DNS Sabotage / OOB Recovery
 XIX. Threat Intelligence Log: ShinyHunters Canvas Breach & Trap-Door Defense
+
 ## ⚙️ I. Hardware Matrix
 | Device | RAM | Status |
 |---|---|---|
@@ -150,6 +150,7 @@ XIX. Threat Intelligence Log: ShinyHunters Canvas Breach & Trap-Door Defense
  * 5G or Fiber Wi-Fi for GitHub sync and cloud AI
  * 256GB internal storage or 1TB MicroSD for Vault and PCAPs
  * S-Pen recommended for Wireshark packet precision on Note devices
+ 
 ### Hardware Troubleshooting
 | Problem | Fix |
 |---|---|
@@ -157,6 +158,7 @@ XIX. Threat Intelligence Log: ShinyHunters Canvas Breach & Trap-Door Defense
 | Not enough storage | Move Vault to MicroSD: ln -s /sdcard/Vault ~/Android-mobile-cybersecurity-workbench/Vault |
 | Android version too old | Codespaces browser fallback works on any Android version |
 | MicroSD not detected | Settings → Device Care → Storage → check SD card mount status |
+
 ## ✅ II. Pre-Flight Checklist
  * [ ] Termux installed from F-Droid (not Play Store)
  * [ ] Termux-API installed from F-Droid
@@ -169,9 +171,11 @@ XIX. Threat Intelligence Log: ShinyHunters Canvas Breach & Trap-Door Defense
  * [ ] At least 4GB free storage
  * [ ] MicroSD card inserted and mounted (recommended)
  * [ ] Gemini API key saved at ~/.secrets/gemini_api_key.txt
-### Battery Optimization Disable Sequence
+ *
+ ### Battery Optimization Disable Sequence
 Android Settings → Apps → Termux → Battery → Unrestricted
 *Repeat for Termux-API and Termux-X11.*
+
 ### Pre-Flight Troubleshooting
 | Problem | Fix |
 |---|---|
@@ -181,11 +185,12 @@ Android Settings → Apps → Termux → Battery → Unrestricted
 | MicroSD not showing in Termux | Run termux-setup-storage and tap Allow |
 
 ## 🚀 III. Base Initialization
-
 Open Termux. Run each command one at a time. Wait for each to finish.
+
 **Step 1 — Grant storage access:**
 ```bash
 termux-setup-storage
+
 ```
 *A popup will appear. Tap Allow.*
 
