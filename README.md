@@ -16,6 +16,10 @@ This is a live, operational security workbench built and run entirely on a Samsu
 
 *Open to connecting on mobile security, DevSecOps, automation, and Purple Team topics.*
 
+<p align="left">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=00F72D&width=750&lines=Purple+Team+Operations+C.K.+BACHOO+TKH+Innovation+Fellow+IF-CS-26+NY;Mobile-to-Cloud+SecOps;AI+Security+Architecture;Penetration+Testing+%26+DFIR;Samsung+Galaxy+Note+20+Ultra+%2B+Termux;Zero-Trust+Automation+Pipelines" />
+</p>
+
 ---
 
 ## Android Mobile Cybersecurity Workbench: The Bunker SOP 🛡️
