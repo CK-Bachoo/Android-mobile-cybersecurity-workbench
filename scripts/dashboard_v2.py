@@ -1,4 +1,3 @@
-import streamlit as st
 #!/usr/bin/env python3
 """
 G0DM0D3 v2.0 // Project Dreadnought
@@ -16,7 +15,7 @@ import threading
 import time
 from datetime import datetime
 
-PORT = 8081
+PORT = 8080
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 VAULT_DIR = os.path.join(os.path.dirname(BASE_DIR), "vault", "logs")
 LOG_FILE = os.path.join(VAULT_DIR, "threat_radar.json")
@@ -672,38 +671,3 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             print("\n[-] G0DM0D3 v2.0 shutting down...")
 
-
-# ==============================================================================
-# TERMINAL ATTACHMENT HUB (PINNED LOWER MATRIX INTERFACE)
-# ==============================================================================
-st.markdown("---")
-st.markdown("<h3 style='color: #00ff66; font-family: monospace;'>🐉 LOCAL SUBSYSTEM KALI TERMINAL // INTERACTIVE HARDWARE LINK</h3>", unsafe_allow_html=True)
-
-# Using future-proof framing to anchor your local ttyd session seamlessly
-st.iframe(
-    src="http://127.0.0.1:7681",
-    height=500,
-    scrolling=True
-)
-
-st.markdown(
-    "<div class='footer' style='color: #00ff41; font-family: monospace; font-weight: bold; font-size: 12px; border-top: 1px solid #00ff41; padding-top: 10px; margin-top: 20px; text-align: center;'> "
-    "GODMOD3 v2.0 // PROJECT DREADNOUGHT // PURPLE TEAM COMMAND CENTER // MOBILE-FIRST ZERO-TRUST ARCHITECTURE<br>"
-    "C._K._BACHOO // NAVY VETERAN // THE KNOWLEDGE HOUSE IF-CS-26 NY // ALL SYSTEMS OPERATIONAL"
-    "</div>",
-    unsafe_allow_html=True
-)
-
-
-# ==============================================================================
-# INTEGRATED TERMINAL ATTACHMENT HUD NODE
-# ==============================================================================
-st.markdown("---")
-st.markdown("### 🐉 KALI PROOT INTERACTIVE HARDWARE LINK")
-
-# Utilizing Streamlit's official clean framing tool to pull in port 7681
-st.iframe(
-    src="http://127.0.0.1:7681",
-    height=600,
-    scrolling=True
-)
