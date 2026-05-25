@@ -417,257 +417,30 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
   <div class="tools-grid">
 
     <div class="tool-slot active">
-      <div class="tslot-hdr g">S15 // SOS AGENT</div>
-      <div class="tslot-desc">76-line bash SOS agent. Emergency alert system. ARM64 native execution verified.</div>
-      <div class="tslot-status dep">&#9679; DEPLOYED // scripts/sos_agent.sh</div>
-    </div>
 
-    <div class="tool-slot blue">
-      <div class="tslot-hdr b">S16 // WATCHDOG v2</div>
-      <div class="tslot-desc">Python socket monitor. PII redaction. JSON vault. 30s heartbeat. Live telemetry feed.</div>
-      <div class="tslot-status dep">&#9679; DEPLOYED // scripts/watchdog_v2.py</div>
-    </div>
+# ==============================================================================
+# TERMINAL ATTACHMENT HUB (PINNED LOWER MATRIX)
+# ==============================================================================
+st.markdown("---")
 
-    <div class="tool-slot yellow">
-      <div class="tslot-hdr y">S28-S29 // DFIR + AUTOPSY</div>
-      <div class="tslot-desc">Live triage engine. Digital autopsy IaC bypass via raw strings. Purple team verified.</div>
-      <div class="tslot-status dep">&#9679; DEPLOYED // IF-Cyber-Portfolio</div>
-    </div>
+st.markdown(
+    "<h3 style='color: #00ff66; font-family: monospace; letter-spacing: 1px;'>"
+    "🐉 LOCAL SUBSYSTEM KALI TERMINAL // INTERACTIVE HARDWARE LINK"
+    "</h3>", 
+    unsafe_allow_html=True
+)
 
-    <div class="tool-slot active">
-      <div class="tslot-hdr g">G0DM0D3 // DASHBOARD v2</div>
-      <div class="tslot-desc">Pure Python http.server. Live telemetry. Command Uplink. Real Termux execution. ARM64.</div>
-      <div class="tslot-status dep">&#9679; DEPLOYED // scripts/dashboard_v2.py</div>
-    </div>
+# Render your local ttyd Kali terminal frame inside your dashboard
+st.components.v1.iframe(
+    src="http://127.0.0.1:7681",
+    height=480,
+    scrolling=True
+)
 
-    <div class="tool-slot pending">
-      <div class="tslot-hdr dim">SLOT 05 // PENDING</div>
-      <div class="tslot-desc">Next session tool deploys here. Add weekly.</div>
-      <div class="tslot-status pend">&#9675; AWAITING DEPLOYMENT</div>
-    </div>
-
-    <div class="tool-slot pending">
-      <div class="tslot-hdr dim">SLOT 06 // PENDING</div>
-      <div class="tslot-desc">Next session tool deploys here. Add weekly.</div>
-      <div class="tslot-status pend">&#9675; AWAITING DEPLOYMENT</div>
-    </div>
-
-  </div>
-</div>
-
-<div class="footer">G0DM0D3 v2.0 // PROJECT DREADNOUGHT // PURPLE TEAM COMMAND CENTER // MOBILE-FIRST ZERO-TRUST ARCHITECTURE<br>C.K. BACHOO // NAVY VETERAN // THE KNOWLEDGE HOUSE IF-CS-26 NY // ALL SYSTEMS OPERATIONAL</div>
-
-<script>
-let cmdHistory = [];
-let histIdx = -1;
-
-function addOutput(text, cls) {
-  const out = document.getElementById('cogout');
-  const div = document.createElement('div');
-  div.className = cls;
-  div.textContent = text;
-  out.appendChild(div);
-  out.scrollTop = out.scrollHeight;
-}
-
-function clearOutput() {
-  const out = document.getElementById('cogout');
-  out.innerHTML = '';
-}
-
-async function transmit() {
-  const inp = document.getElementById('cmdInput');
-  const btn = document.getElementById('txBtn');
-  const cmd = inp.value.trim();
-  if (!cmd) return;
-
-  cmdHistory.unshift(cmd);
-  histIdx = -1;
-
-  addOutput('> ' + cmd, 'co-cmd');
-  btn.textContent = '[ TRANSMITTING... ]';
-  btn.disabled = true;
-  inp.value = '';
-
-  try {
-    const res = await fetch('/api/execute', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({cmd: cmd})
-    });
-    const data = await res.json();
-    if (data.output) {
-      const lines = data.output.split('\\n');
-      lines.forEach(line => {
-        if (line.trim()) {
-          const cls = line.startsWith('[ERROR]') || line.startsWith('[BLOCKED]') || line.startsWith('[TIMEOUT]') ? 'co-err' :
-                      line.startsWith('[STATUS') ? 'co-ok' : 'co-out';
-          addOutput(line, cls);
-        }
-      });
-    }
-  } catch(e) {
-    addOutput('[ERROR] Connection failed: ' + e.message, 'co-err');
-  }
-
-  btn.textContent = '[ TRANSMIT ]';
-  btn.disabled = false;
-  inp.focus();
-}
-
-// Enter key
-document.getElementById('cmdInput').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') { transmit(); return; }
-  if (e.key === 'ArrowUp') {
-    if (histIdx < cmdHistory.length - 1) { histIdx++; this.value = cmdHistory[histIdx]; }
-    e.preventDefault();
-  }
-  if (e.key === 'ArrowDown') {
-    if (histIdx > 0) { histIdx--; this.value = cmdHistory[histIdx]; }
-    else { histIdx = -1; this.value = ''; }
-    e.preventDefault();
-  }
-});
-
-async function refreshTelemetry() {
-  try {
-    const res = await fetch('/api/telemetry');
-    const data = await res.json();
-    const entries = data.entries || [];
-
-    // Update counters
-    let hb = 0, boot = 0, anom = 0;
-    entries.forEach(e => {
-      if (e.event_type === 'HEARTBEAT') hb++;
-      else if (e.event_type === 'SYSTEM_BOOT') boot++;
-      else anom++;
-    });
-    document.getElementById('hbCount').textContent = hb;
-    document.getElementById('bootCount').textContent = boot;
-    document.getElementById('anomCount').textContent = anom;
-    document.getElementById('totalEvents').textContent = entries.length;
-
-    // Update radar log
-    const tlog = document.getElementById('tlog');
-    if (entries.length > 0) {
-      const recent = entries.slice(-20).reverse();
-      tlog.innerHTML = recent.map(e => {
-        const cls = e.event_type === 'SYSTEM_BOOT' ? 'tentry boot' :
-                    e.event_type !== 'HEARTBEAT' ? 'tentry anomaly' : 'tentry';
-        const ts = (e.timestamp || '').substring(11, 19);
-        const iface = e.interface || e.details || '';
-        return '<div class="' + cls + '">[' + ts + '] [' + (e.event_type||'EVENT') + '] ' + iface + '</div>';
-      }).join('');
-    }
-
-    // Watchdog status
-    const s = await fetch('/api/status').then(r => r.json());
-    const wd = document.getElementById('wdStatus');
-    if (s.watchdog_age && s.watchdog_age !== 'N/A') {
-      const secs = parseInt(s.watchdog_age);
-      if (!isNaN(secs) && secs < 120) {
-        wd.className = 'sval online';
-        wd.textContent = 'ONLINE (' + s.watchdog_age + ')';
-      } else {
-        wd.className = 'sval stale';
-        wd.textContent = 'STALE (' + s.watchdog_age + ')';
-      }
-    }
-
-    // Socket count
-    const sockN = Math.min(entries.length, 50);
-    document.getElementById('sockPct').textContent = sockN + ' SOCKETS';
-    document.getElementById('netBar').style.width = Math.min(sockN * 2, 100) + '%';
-
-    // CPU bar (simulated from event density)
-    const cpuSim = Math.min(30 + (hb % 30), 85);
-    document.getElementById('cpuPct').textContent = cpuSim + '%';
-    document.getElementById('cpuBar').style.width = cpuSim + '%';
-
-  } catch(e) {
-    console.log('Telemetry error:', e);
-  }
-
-  // Timestamp
-  const now = new Date();
-  document.getElementById('lastUpdate').textContent = 'LAST UPDATE: ' +
-    now.toTimeString().substring(0, 8);
-}
-
-// Run on load and every 30s
-refreshTelemetry();
-setInterval(refreshTelemetry, 30000);
-</script>
-<div style="padding:20px;text-align:center;border-top:1px solid #00ff41;margin-top:20px"><div style="color:#00ff41;font-family:monospace;font-size:14px;margin-bottom:10px">☁️ GOOGLE CLOUD SHELL // TERMINAL UPLINK</div><a href="https://shell.cloud.google.com" target="_blank" style="background:#00ff41;color:#000;padding:12px 24px;font-family:monospace;font-weight:bold;text-decoration:none;border-radius:4px">🚀 LAUNCH CLOUD SHELL</a></div></body>
-</html>'''
-
-class DreadnoughtHandler(http.server.BaseHTTPRequestHandler):
-    def log_message(self, format, *args):
-        pass  # Silent logging
-
-    def do_GET(self):
-        if self.path == "/" or self.path == "/index.html":
-            self.send_response(200)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            self.wfile.write(HTML_TEMPLATE.encode())
-
-        elif self.path == "/api/telemetry":
-            entries = get_log_data()
-            self.send_response(200)
-            self.send_header("Content-type", "application/json")
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write(json.dumps({"entries": entries[-50:]}).encode())
-
-        elif self.path == "/api/status":
-            s = get_status()
-            self.send_response(200)
-            self.send_header("Content-type", "application/json")
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write(json.dumps(s).encode())
-
-        else:
-            self.send_response(404)
-            self.end_headers()
-
-    def do_POST(self):
-        if self.path == "/api/execute":
-            length = int(self.headers.get("Content-Length", 0))
-            body = self.rfile.read(length)
-            try:
-                data = json.loads(body)
-                cmd = data.get("cmd", "").strip()
-                output = execute_command(cmd)
-            except Exception as e:
-                output = f"[ERROR] {str(e)}"
-
-            self.send_response(200)
-            self.send_header("Content-type", "application/json")
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write(json.dumps({"output": output}).encode())
-        else:
-            self.send_response(404)
-            self.end_headers()
-
-    def do_OPTIONS(self):
-        self.send_response(200)
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
-        self.end_headers()
-
-if __name__ == "__main__":
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("", PORT), DreadnoughtHandler) as httpd:
-        print(f"[+] G0DM0D3 v2.0 // Project Dreadnought dashboard live on http://127.0.0.1:{PORT}")
-        print(f"[+] Command Uplink ACTIVE - Real Termux execution enabled")
-        print(f"[+] Tool Arsenal loaded - Weekly slots ready")
-        print(f"[+] Zero-Trust whitelist enforced")
-        try:
-            httpd.serve_forever()
-        except KeyboardInterrupt:
-            print("\n[-] G0DM0D3 v2.0 shutting down...")
-
+st.markdown(
+    "<div class='footer' style='color: #00ff41; font-family: monospace; font-weight: bold; font-size: 12px; border-top: 1px solid #00ff41; padding-top: 10px; margin-top: 20px;'>"
+    "GODMOD3 v2.0 // PROJECT DREADNOUGHT // PURPLE TEAM COMMAND CENTER // MOBILE-FIRST ZERO-TRUST ARCHITECTURE<br>"
+    "C._K._BACHOO // NAVY VETERAN // THE KNOWLEDGE HOUSE IF-CS-26 NY // ALL SYSTEMS OPERATIONAL"
+    "</div>",
+    unsafe_allow_html=True
+)

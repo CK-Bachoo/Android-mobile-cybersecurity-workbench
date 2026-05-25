@@ -1116,3 +1116,7 @@ If an attacker managed to breach the local Termux environment, the Bunker employ
 * **The Result:** The attacker session is terminated. Simultaneously, the system flushes volatile memory, wiping ~/.bash_history and ~/.git-credentials. The operator is no longer reachable, leaving an empty, isolated shell.
 * **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** MAY 2026
 ```
+
+## 🚀 GODMOD3 v2.0 Integration
+- **Inline Kali Terminal Matrix**: Integrated a dynamic web-TTY pipeline layer to route native Kali Linux proot environments directly into core dashboard frames via port `7681`.
+- **Zero-Trust Local Loopback Binding**: Locked down port parameters to safely run inside localized sandboxed environments.
