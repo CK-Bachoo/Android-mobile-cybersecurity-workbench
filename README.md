@@ -1120,3 +1120,46 @@ If an attacker managed to breach the local Termux environment, the Bunker employ
 ## 🚀 GODMOD3 v2.0 Integration
 - **Inline Kali Terminal Matrix**: Integrated a dynamic web-TTY pipeline layer to route native Kali Linux proot environments directly into core dashboard frames via port `7681`.
 - **Zero-Trust Local Loopback Binding**: Locked down port parameters to safely run inside localized sandboxed environments.
+
+## 🛡️ Project Dreadnought v5.0 — Sanitized Workflows
+
+Public, credential-free components extracted from my private Project Dreadnought v5.0 SOC build. These demonstrate working automation patterns without exposing operational secrets or API keys.
+
+### What's Here
+
+| Workflow | File | Purpose |
+|----------|------|---------|
+| G0DM0D3 Dashboard | `scripts/dashboard_v2.py` | Pure-Python HTTP dashboard, thermal-optimized for ARM64 (5s clock / 30s audit poll — no Streamlit, no Electron, no ttyd) |
+| MITRE ATT&CK Tagger | `workflows/mitre_tag.sh` | Classifies log lines against 10 MITRE techniques (brute force, C2, exfiltration, lateral movement, etc.) |
+| CTF Reconnaissance | `workflows/ctf_workflow.sh` | OSINT + DNS enumeration + port discovery pipeline for authorized CTF/lab targets |
+| DFIR Evidence Collection | `workflows/incident_response.sh` | Captures process list, network connections, disk usage, and recent log activity for incident timelines |
+| OSINT Agent | `workflows/osint_agent.py` | IP/domain intelligence with multi-source API failover |
+| SaaS Governance Sentinel | `workflows/grip_saas_sentinel.py` | Detects unauthorized outbound calls to external AI APIs; scans for credential leakage in payloads and environment variables |
+
+### Try It
+
+```bash
+# Dashboard (view SOC status locally)
+python3 scripts/dashboard_v2.py
+# Open http://127.0.0.1:8080
+
+# Tag a log file against MITRE ATT&CK
+bash workflows/mitre_tag.sh your_logfile.log
+
+# OSINT sweep on an IP
+python3 workflows/osint_agent.py 8.8.8.8
+
+# Scan environment for credential exposure
+python3 workflows/grip_saas_sentinel.py
+```
+
+### What's NOT Here (Private)
+
+The full v5.0 build includes a cryptographic Merkle audit chain, pre-execution AI safety scoring, multi-agent HITL orchestration, NIST/FedRAMP/ISO/CIS compliance template generation, and multi-cloud XDR modules. That orchestration logic remains in my private repository as it constitutes the core architectural work of the project.
+
+### Legal
+
+All CTF/reconnaissance workflows are for authorized lab and competition environments only. Unauthorized scanning of systems you do not own or have permission to test is illegal.
+
+---
+```
