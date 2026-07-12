@@ -1140,7 +1140,7 @@ Public, credential-free components extracted from my private Project Dreadnought
 
 ```bash
 # Dashboard (view SOC status locally)
-python3 scripts/dashboard_v2.py
+python3 scripts/dashboard_v2.1.py
 # Open http://127.0.0.1:8080
 
 # Tag a log file against MITRE ATT&CK
