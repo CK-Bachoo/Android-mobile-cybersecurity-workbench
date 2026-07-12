@@ -1129,7 +1129,7 @@ Public, credential-free components extracted from my private Project Dreadnought
 
 | Workflow | File | Purpose |
 |----------|------|---------|
-| G0DM0D3 Dashboard | `scripts/dashboard_v2.py` | Pure-Python HTTP dashboard, thermal-optimized for ARM64 (5s clock / 30s audit poll — no Streamlit, no Electron, no ttyd) |
+| G0DM0D3 Dashboard | `scripts/dashboard_v2.1.py` | Pure-Python HTTP dashboard, thermal-optimized for ARM64 (5s clock / 30s audit poll — no Streamlit, no Electron, no ttyd) |
 | MITRE ATT&CK Tagger | `workflows/mitre_tag.sh` | Classifies log lines against 10 MITRE techniques (brute force, C2, exfiltration, lateral movement, etc.) |
 | CTF Reconnaissance | `workflows/ctf_workflow.sh` | OSINT + DNS enumeration + port discovery pipeline for authorized CTF/lab targets |
 | DFIR Evidence Collection | `workflows/incident_response.sh` | Captures process list, network connections, disk usage, and recent log activity for incident timelines |
