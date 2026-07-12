@@ -1160,6 +1160,4 @@ The full v5.0 build includes a cryptographic Merkle audit chain, pre-execution A
 ### Legal
 
 All CTF/reconnaissance workflows are for authorized lab and competition environments only. Unauthorized scanning of systems you do not own or have permission to test is illegal.
-
 ---
-```
