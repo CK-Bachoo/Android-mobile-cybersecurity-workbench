@@ -102,3 +102,14 @@ Vault/Evidence/
 # Misc
 *.sqlite3
 *.db
+node_modules/
+drizzle/
+client/
+server/
+src/
+package.json
+package-lock.json
+drizzle.config.ts
+tsconfig.json
+vite.config.ts
+*.ts
