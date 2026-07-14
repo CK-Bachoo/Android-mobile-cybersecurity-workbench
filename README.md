@@ -55,7 +55,7 @@ When external networks are compromised or air-gapped, the Bunker relies on 100% 
   ollama serve &
   ollama run gemma:2b
   ```
-* **Constraint:** Never run Ollama simultaneously with X11/Jarvis. The Android kernel's Signal 9 (Out of Memory) Phantom Process Killer will terminate the session. Graceful teardown requires pkill ollama to flush RAM.
+* **Constraint:** Never run Ollama simultaneously with X11/Jarvis. The Android kernel's Signal 9 (Out o f Memory) Phantom Process Killer will terminate the session. Graceful teardown requires pkill ollama to flush RAM.
 
 ## 01 / Tactical Phases (Canvas Aligned)
 ### Phase 0: System Foundations (S01 - S03)
@@ -1117,9 +1117,7 @@ If an attacker managed to breach the local Termux environment, the Bunker employ
 * **Analyst:** C.K. Bachoo | **Verified:** XO | **Date:** MAY 2026
 ```
 
-## 🚀 GODMOD3 v2.0 Integration
-- **Inline Kali Terminal Matrix**: Integrated a dynamic web-TTY pipeline layer to route native Kali Linux proot environments directly into core dashboard frames via port `7681`.
-- **Zero-Trust Local Loopback Binding**: Locked down port parameters to safely run inside localized sandboxed environments.
+
 
 ## 🛡️ Project Dreadnought v5.0 — Sanitized Workflows
 
